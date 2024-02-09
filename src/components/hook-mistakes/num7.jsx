@@ -1,18 +1,32 @@
 // primitive v. non-primitives
 
+// Objects are passed by reference... 
+// Numbers, strings, booleans, null, and undefined are passed by value
+
 "use client";
 
 import { useEffect, useState } from "react";
 
 export default function Price() {
+    console.log('component rendering...' );
     
-    
-    const [price, setPrice] = useState(0);
+    // objects are passed by reference, so it will re-render
+    const [price, setPrice] = useState({
+        number: 100,
+        totalPrice: true
+    });
 
     const handleClick = () => {
-        setPrice(0);
+        setPrice({
+            number: 100, 
+            totalPrice: true,
+        });
     }
 
+    // could use this, need to look at how this works further...
+    // useEffect(() => {
+
+    // }, [price.number]);
 
     return (<div className="container">
         <button
