@@ -33,10 +33,9 @@ export default function Counter() {
     //     })
     // }
 
-    // could also have multiple useState()
+    // could also have multiple useState() OR in the case of a color change, just an additional function w/o a new state
     const [count, setCount] = useState(4);
-    const [theme, setTheme] = useState('');
-    
+    // const [theme, setTheme] = useState('');    
 
     const incCount = () => {
         setCount(prevCount => prevCount + 1)
@@ -45,8 +44,6 @@ export default function Counter() {
     const decCount = () => {
         setCount(prevCount => prevCount - 1)
     }
-
-    
 
     const spanClass = () => {
         let res = '';
