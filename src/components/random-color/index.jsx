@@ -47,7 +47,7 @@ export default function RandomColor() {
                 height: "100vh",
                 background: color
             }}
-            className="container"
+            className="randColor"
         >
             <button onClick={()=> setTypeOfColor('hex')}>Create HEX Color</button>
             <button onClick={()=> setTypeOfColor('rgb')}>Create RGB Color</button>

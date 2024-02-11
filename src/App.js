@@ -1,6 +1,7 @@
 // https://youtu.be/5ZdHfJVAY-s?si=AJhaXd5c4CbPokLd
 
 import './App.css';
+import CurrentDate from './components/date';
 import Accordian from './components/accordian';
 import RandomColor from './components/random-color';
 import Counter from './components/counter';
@@ -21,36 +22,44 @@ function App() {
   
   return (
     <div className="App">
-      {/* Accordian component */}
-      {/* <Accordian/> */}
+      <div className="container">
+        <div className='row mx-auto '>
+          <CurrentDate/>
+        </div>
+        <div className='row'>
+          {/* Accordian component */}
+        {/* <Accordian/> */}
 
-      {/* Hook Mistakes */}
-      {/* <NewCounter/> */}
-      {/* <ProductCard/> */}
-      {/* <User/> */}
-      {/* <Form/> */}
-      {/* <Cart/> */}
-      {/* <Price/> */}
-      {/* <BlogPost/> */}
-      {/* <ExampleComponent1/> */}
-      {/* <ServerComponentExample/> */}
-      {/* <CounterExample/> */}
-      <Post/> 
+        {/* Hook Mistakes */}
+        {/* <NewCounter/> */}
+        {/* <ProductCard/> */}
+        {/* <User/> */}
+        {/* <Form/> */}
+        {/* <Cart/> */}
+        {/* <Price/> */}
+        {/* <BlogPost/> */}
+        {/* <ExampleComponent1/> */}
+        {/* <ServerComponentExample/> */}
+        {/* <CounterExample/> */}
+        {/* <Post/>  */}
 
-      {/* Currency Converter */}
-      {/* <CurrencyConvert /> */}
+        {/* Currency Converter */}
+        {/* <CurrencyConvert /> */}
 
-      {/* Counter */}
-      {/* <Counter/> */}
+        {/* Counter */}
+        {/* <Counter/> */}
 
-      {/* Random Color Generator */}
-      {/* <RandomColor/> */}
-    
-      {/* Tic Tac Toe */}
-      {/* <Tic-tac-toe/> */}
+        {/* Random Color Generator */}
+        {/* <RandomColor/> */}
 
+        {/* Tic Tac Toe */}
+        {/* <Tic-tac-toe/> */}
 
+        </div>
+        
+        
 
+      </div>
     </div>
   );
 }

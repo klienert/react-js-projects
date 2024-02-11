@@ -57,7 +57,7 @@ export default function Counter() {
         return res;
     }
 
-    return <div className="container">
+    return <div className="counter">
 
         <button onClick={decCount}> - </button>
         <span className={spanClass()}>{count}</span>        
