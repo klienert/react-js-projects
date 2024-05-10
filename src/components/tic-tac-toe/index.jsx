@@ -3,6 +3,10 @@ import { useState } from "react";
 import Board from "./board.jsx";
 import Info from "./info.jsx";
 
+/**
+ * https://www.geeksforgeeks.org/how-to-build-a-tic-tac-toe-game-using-react-hooks/
+ */
+
 export default function TicTacToe() {
 
     // create a reset state, indicates whether the game should be reset or not
