@@ -2,6 +2,8 @@
 
 import './App.css';
 import CurrentDate from './components/date';
+import { CognitoUserPool } from 'amazon-cognito-identity-js';
+import CognitoForm from './components/cognito-form';
 import Accordian from './components/accordian';
 import RandomColor from './components/random-color';
 import Counter from './components/counter';
@@ -17,6 +19,7 @@ import ExampleComponent1 from './components/hook-mistakes/num4';
 import ServerComponentExample from './components/hook-mistakes/num3';
 import CounterExample from './components/hook-mistakes/num2';
 import Post from './components/hook-mistakes/num1';
+import TicTacToe from './components/tic-tac-toe';
 
 function App() {
   
@@ -27,38 +30,38 @@ function App() {
           <CurrentDate/>
         </div>
         <div className='row'>
+          {/*<CognitoForm/> */}
+
+
           {/* Accordian component */}
-        {/* <Accordian/> */}
+          {/* <Accordian/> */}
 
-        {/* Hook Mistakes */}
-        {/* <NewCounter/> */}
-        {/* <ProductCard/> */}
-        {/* <User/> */}
-        {/* <Form/> */}
-        {/* <Cart/> */}
-        {/* <Price/> */}
-        {/* <BlogPost/> */}
-        {/* <ExampleComponent1/> */}
-        {/* <ServerComponentExample/> */}
-        {/* <CounterExample/> */}
-        {/* <Post/>  */}
+          {/* Hook Mistakes */}
+          {/* <NewCounter/> */}
+          {/* <ProductCard/> */}
+          {/* <User/> */}
+          {/* <Form/> */}
+          {/* <Cart/> */}
+          {/* <Price/> */}
+          {/* <BlogPost/> */}
+          {/* <ExampleComponent1/> */}
+          {/* <ServerComponentExample/> */}
+          {/* <CounterExample/> */}
+          {/* <Post/>  */}
 
-        {/* Currency Converter */}
-        {/* <CurrencyConvert /> */}
+          {/* Currency Converter */}
+          {/* <CurrencyConvert /> */}
 
-        {/* Counter */}
-        {/* <Counter/> */}
+          {/* Counter */}
+          {/* <Counter/> */}
 
-        {/* Random Color Generator */}
-        {/* <RandomColor/> */}
+          {/* Random Color Generator */}
+          {/* <RandomColor/> */}
 
-        {/* Tic Tac Toe */}
-        {/* <Tic-tac-toe/> */}
+          {/* Tic Tac Toe */}
+          <TicTacToe/>
 
         </div>
-        
-        
-
       </div>
     </div>
   );
