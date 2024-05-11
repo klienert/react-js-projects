@@ -1,4 +1,4 @@
-export default Info = () => {
+const Info = () => {
     return (
         <div className="info">
             <div className="player">Player 1: X</div>
@@ -6,3 +6,5 @@ export default Info = () => {
         </div>
     );
 };
+
+export default Info;

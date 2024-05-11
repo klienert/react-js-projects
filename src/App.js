@@ -59,7 +59,7 @@ function App() {
           {/* <RandomColor/> */}
 
           {/* Tic Tac Toe */}
-          <TicTacToe/>
+          {/* <TicTacToe/> */}
 
         </div>
       </div>
