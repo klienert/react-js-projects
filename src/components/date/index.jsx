@@ -1,6 +1,6 @@
 
 
-export default function CurrentDate() {
+export default function CurrentDate( { name }) {
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -19,7 +19,7 @@ export default function CurrentDate() {
     }
   
     return <div className="time">
-        <h3>{greeting(date.getHours())}</h3>
+        <h3>{greeting(date.getHours())}, {name}</h3>
         <p>Today is {days[date.getDay()]} {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p>
 
 

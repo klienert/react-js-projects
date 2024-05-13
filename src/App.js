@@ -20,18 +20,34 @@ import ServerComponentExample from './components/hook-mistakes/num3';
 import CounterExample from './components/hook-mistakes/num2';
 import Post from './components/hook-mistakes/num1';
 import TicTacToe from './components/tic-tac-toe';
+import HookBtn from './components/hooks/hook1'
+import HookCheck from './components/hooks/hook2';
+import StarRating from './components/hooks/hook3';
+import UseEffectHook from './components/hooks/hook4';
+import FetchingData from './components/hooks/hook5';
+import Reducer from './components/hooks/hook6';
+import ReducerCheck from './components/hooks/hook7';
+import Colors from './components/hooks/hook8';
 
 function App() {
   
   return (
-    <div className="App">
-      <div className="container">
+    <div className="App">      
+      <div className="container">        
         <div className='row mx-auto '>
-          <CurrentDate/>
+          <CurrentDate  name={"Keith"} />
         </div>
         <div className='row'>
-          {/*<CognitoForm/> */}
-
+          {/* <HookBtn/> */}
+          {/* <HookCheck/> */}
+          {/* <StarRating /> */}
+          {/* <UseEffectHook /> */}
+          {/* <FetchingData /> */}
+          {/* <Reducer /> */}
+          {/* <ReducerCheck /> */}
+          <Colors/>
+          
+          {/* <CognitoForm/> */}
 
           {/* Accordian component */}
           {/* <Accordian/> */}
