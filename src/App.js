@@ -1,5 +1,4 @@
 // https://youtu.be/5ZdHfJVAY-s?si=AJhaXd5c4CbPokLd
-
 import './App.css';
 import CurrentDate from './components/date';
 import { CognitoUserPool } from 'amazon-cognito-identity-js';
@@ -28,6 +27,8 @@ import FetchingData from './components/hooks/hook5';
 import Reducer from './components/hooks/hook6';
 import ReducerCheck from './components/hooks/hook7';
 import Colors from './components/hooks/hook8';
+import Todo from './components/todoList/Todo';
+import CurrentWeather from './components/weatherAPI/currentWeather';
 
 function App() {
   
@@ -45,8 +46,17 @@ function App() {
           {/* <FetchingData /> */}
           {/* <Reducer /> */}
           {/* <ReducerCheck /> */}
-          <Colors/>
+          {/* <Colors/> */}
           
+          {/* TODO APP (hard coded list) */}
+          {/* <Todo /> */}
+
+
+          <CurrentWeather />
+  
+
+
+
           {/* <CognitoForm/> */}
 
           {/* Accordian component */}

@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "event": "Take out the trash",
+        "finished": true
+    },
+    {
+        "id": 2,
+        "event": "Mow the lawn",
+        "finished": false
+    },
+    {
+        "id": 3,
+        "event": "Do laundry",
+        "finished": false
+    },
+    {
+        "id": 4,
+        "event": "Clean the bathroom",
+        "finished": false
+    },
+    {
+        "id": 5,
+        "event": "Wash the dishes",
+        "finished": false
+    },
+    {
+        "id": 6,
+        "event": "Sweep the floors",
+        "finished": false
+    },
+    {
+        "id": 7,
+        "event": "Water the plants",
+        "finished": false
+    },
+    {
+        "id": 8,
+        "event": "Dust the furniture",
+        "finished": false
+    },
+    {
+        "id": 9,
+        "event": "Vacuum the carpets",
+        "finished": false
+    },
+    {
+        "id": 10,
+        "event": "Organize the pantry",
+        "finished": false
+    }
+]
