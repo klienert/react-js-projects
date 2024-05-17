@@ -1,0 +1,52 @@
+.current {    
+    padding: 8px;
+    /* border: 1px solid #c1bebe; */
+    margin: 0;
+}
+
+.current p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.curr-location-name {
+    font-size: 20pt;
+    line-height: 1;
+    max-width: 120px;    
+}
+
+.curr-location-tempRow {
+    line-height: 1.5;
+}
+
+.curr-location-tempf {
+    font-size: 22pt;
+}
+
+.curr-feel {
+    font-size: 12pt;
+}
+
+.curr-location-tempUnit {
+    font-size: 14pt;
+}
+
+.forecast {
+    margin: 0;
+    display: flex;
+}
+.forecast-temps {
+    font-size: 14pt;
+}
+
+.forecast-date {
+    font-size: 18pt;
+    margin: 0;
+}
+
+.forecast-day1, .forecast-day2 {
+    padding: 5px;
+    margin: 0;
+}
+

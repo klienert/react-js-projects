@@ -1,7 +1,7 @@
 // https://youtu.be/XN5elYWiSuw?si=c_0MOHLswYpEZgbW
 
 // import React, { useEffect, useState } from "react"
-import "./styles.css";
+// import "./cc_styles.css";
 import data from "./data.json";
 // import { useEffect, useState } from "react";
 

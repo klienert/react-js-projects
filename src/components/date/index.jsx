@@ -1,4 +1,4 @@
-
+import './date.css';
 
 export default function CurrentDate( { name }) {
 
@@ -11,19 +11,17 @@ export default function CurrentDate( { name }) {
     const greeting = (num) => {
         if (num < 12) {
             return "Good Morning";
-        } else if (num > 12 && num < 18) {
+        } else if (num >= 12 && num <= 18) {
             return "Good Afternoon";
-        } else {
+        } else {            
             return "Good Evening";
         }
     }
+
+    // console.log(date.getHours());
   
     return <div className="time">
-        <h3>{greeting(date.getHours())}, {name}</h3>
+        <h1>{greeting(date.getHours())}, {name}</h1>
         <p>Today is {days[date.getDay()]} {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p>
-
-
-        
-        
     </div>
 }

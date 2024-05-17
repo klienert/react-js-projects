@@ -32,6 +32,9 @@ import CurrentWeather from './components/weatherAPI/currentWeather';
 
 function App() {
   
+  // add a list of useStates, 
+  // buttons for each component
+
   return (
     <div className="App">      
       <div className="container">        
@@ -53,7 +56,6 @@ function App() {
 
 
           <CurrentWeather />
-  
 
 
 

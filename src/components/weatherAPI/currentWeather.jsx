@@ -1,13 +1,11 @@
 import React from "react";
-import Swr from './swr'
+import GetCurrentWeather from "./fetch";
 
 
 const CurrentWeather = () => {
 
     return (
-        <>
-            <p>Current Weather...</p>
-        </>
+        <><GetCurrentWeather /></>
     )
 }
 
