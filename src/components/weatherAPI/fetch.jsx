@@ -8,7 +8,6 @@ import { FaLongArrowAltDown } from "react-icons/fa";
 const TEST = '77320';
 
 const url = (loc) => {
-    const prefix = 'https://api.weatherapi.com/v1/current.json?';
     const forecastPrefix = 'https://api.weatherapi.com/v1/forecast.json?';
     const suffix = '&aqi=no&alerts=no';
     const key = '3ccb52233b424b7a8d9140104232303';
@@ -22,6 +21,10 @@ const getDate = (input) => {
     } else {
         throw new Error('Invalid input type');
     }
+    
+    // console.log(date.toString());
+
+    
     const options = {
         weekday: 'short',
         month: 'short',
@@ -31,7 +34,7 @@ const getDate = (input) => {
     const formatter = new Intl.DateTimeFormat('en-US', options);
 
     return formatter.format(date);
-    // TODO: This is returning the wrong date... 
+    
 }
 
 // substitute TEST for loc, bring loc in as a param
@@ -56,14 +59,14 @@ const GetCurrentWeather = () => {
     }, []);
 
     useEffect(() => {
-        console.log(data);
+        // console.log(data);
     }, [data])
 
     
 
-    // console.log(data && data.forecast.forecastday[0].date);
-    // console.log(data && data.forecast.forecastday[1].date);
-    console.log(data && data.forecast.forecastday[2].date);
+    // console.log("Current Date from API: " + (data && data.forecast.forecastday[0].date));
+    // console.log("1st Forecast Date from API: " + (data && data.forecast.forecastday[1].date));
+    // console.log("2nd Forecast Date from API: " + (data && data.forecast.forecastday[2].date));
 
 
     return (
