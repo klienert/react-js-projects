@@ -11,7 +11,7 @@ export default function CurrentDate( { name }) {
     const greeting = (num) => {
         if (num < 12) {
             return "Good Morning";
-        } else if (num >= 12 && num <= 18) {
+        } else if (num >= 12 && num <= 17) {
             return "Good Afternoon";
         } else {            
             return "Good Evening";

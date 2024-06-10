@@ -29,6 +29,7 @@ import ReducerCheck from './components/hooks/hook7';
 import Colors from './components/hooks/hook8';
 import Todo from './components/todoList/Todo';
 import CurrentWeather from './components/weatherAPI/currentWeather';
+import GoogleChart from './components/google_charts/index';
 
 function App() {
   
@@ -56,6 +57,9 @@ function App() {
 
 
           <CurrentWeather />
+        </div>
+        <div className='row'>
+          <GoogleChart />
 
 
 
