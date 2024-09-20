@@ -29,7 +29,8 @@ import ReducerCheck from './components/hooks/hook7';
 import Colors from './components/hooks/hook8';
 import Todo from './components/todoList/Todo';
 import CurrentWeather from './components/weatherAPI/currentWeather';
-import TypesOfFood from './components/fcc1';
+import TypesOfFood from './components/fcc1/fcc1';
+import Calendar from './components/fcc1/fcc2';
 
 function App() {
   
@@ -60,7 +61,8 @@ function App() {
         </div>
         <div className='row'>
           
-          <TypesOfFood />
+          {/* <TypesOfFood /> */}
+          <Calendar />
 
 
           {/* <CognitoForm/> */}
