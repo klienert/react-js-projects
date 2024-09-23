@@ -1,8 +1,6 @@
 // https://youtu.be/5ZdHfJVAY-s?si=AJhaXd5c4CbPokLd
 import './App.css';
 import CurrentDate from './components/date';
-import { CognitoUserPool } from 'amazon-cognito-identity-js';
-import CognitoForm from './components/cognito-form';
 import Accordian from './components/accordian';
 import RandomColor from './components/random-color';
 import Counter from './components/counter';
@@ -31,6 +29,11 @@ import Todo from './components/todoList/Todo';
 import CurrentWeather from './components/weatherAPI/currentWeather';
 import TypesOfFood from './components/fcc1/fcc1';
 import Calendar from './components/fcc1/fcc2';
+import ShoppingCart from './components/fcc1/fcc3';
+import App1 from './components/fcc1/fcc4';
+import CampSite from './components/fcc1/fcc5';
+import StatefulComponent from './components/fcc2/state1';
+import MyComponent from './components/fcc2/state2';
 
 function App() {
   
@@ -44,28 +47,20 @@ function App() {
           <CurrentDate  name={"Keith"} />
         </div>
         <div className='row'>
-          {/* <HookBtn/> */}
-          {/* <HookCheck/> */}
-          {/* <StarRating /> */}
-          {/* <UseEffectHook /> */}
-          {/* <FetchingData /> */}
-          {/* <Reducer /> */}
-          {/* <ReducerCheck /> */}
-          {/* <Colors/> */}
-          
-          {/* TODO APP (hard coded list) */}
-          {/* <Todo /> */}
-
-
           <CurrentWeather />
         </div>
         <div className='row'>
-          
+
+          {/* <StatefulComponent /> */}
+          <MyComponent />
+
+          {/* <CampSite /> */}
+
+          {/* <App1 /> */}
+          {/* <ShoppingCart/> */}
+
           {/* <TypesOfFood /> */}
-          <Calendar />
-
-
-          {/* <CognitoForm/> */}
+          {/* <Calendar /> */}
 
           {/* Accordian component */}
           {/* <Accordian/> */}
