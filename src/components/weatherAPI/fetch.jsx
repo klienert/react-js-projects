@@ -21,18 +21,14 @@ const getDate = (input) => {
     } else {
         throw new Error('Invalid input type');
     }
-    
-    // console.log(date.toString());
-
-    
+    // console.log(date.toString());    
     const options = {
         weekday: 'short',
         month: 'short',
         day: 'numeric',
         timezone: 'America/Chicago'
     };
-    const formatter = new Intl.DateTimeFormat('en-US', options);
-
+    const formatter = new Intl.DateTimeFormat('en-US', options);    
     return formatter.format(date);
     
 }
@@ -64,9 +60,9 @@ const GetCurrentWeather = () => {
 
     
 
-    console.log("Current Date from API: " + (data && data.forecast.forecastday[0].date));
-    console.log("1st Forecast Date from API: " + (data && data.forecast.forecastday[1].date));
-    console.log("2nd Forecast Date from API: " + (data && data.forecast.forecastday[2].date));
+    // console.log("Current Date from API: " + (data && data.forecast.forecastday[0].date));
+    // console.log("1st Forecast Date from API: " + (data && data.forecast.forecastday[1].date));
+    // console.log("2nd Forecast Date from API: " + (data && data.forecast.forecastday[2].date));
 
 
     return (

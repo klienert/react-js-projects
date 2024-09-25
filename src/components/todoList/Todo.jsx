@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Header from './Header';
-import Task from './Task';
+// import Task from './Task';
 import TaskList from './TaskList';
 import data from './data.json';
 
