@@ -38,6 +38,15 @@ import FCC_Counter from './components/fcc2/counter1';
 import ControlledInput from './components/fcc2/controlledInput';
 import MyForm from './components/fcc2/controlledForm';
 import MyApp1 from './components/fcc2/passProps';
+import MyApp2 from './components/fcc2/callbackProps';
+import DidMount from './components/fcc2/didMount';
+import EventListening from './components/fcc2/eventListener';
+import Controller from './components/fcc2/shouldUpdate';
+import Colorful from './components/fcc2/inlineStyles';
+import MagicEightBall from './components/fcc2/magicEight';
+import ConditionalRender from './components/fcc2/conditionalRender';
+import MoreConditional from './components/fcc2/moreConditional';
+import CheckUserAge from './components/fcc2/ternaryExp';
 
 function App() {
   
@@ -61,8 +70,18 @@ function App() {
         {/* <div className='row'> <FCC_Counter /> </div> */}
         {/* <div className='row'> <ControlledInput /> </div> */}
         {/* <div className='row'> <MyForm /> </div> */}
-        <div className='row'> <MyApp1 /> </div>
+        {/* <div className='row'> <MyApp1 /> </div> */}
+        {/* <div className='row'> <MyApp2 /> </div> */}
+        {/* <div className='row'> <DidMount /> </div> */}
+        {/* <div className='row'> <EventListening /> </div> */}
+        {/* <div className='row'> <Controller /> </div> */}
+        {/* <div className='row'> <Colorful /> </div> */}
+        {/* <div className='row'> <MagicEightBall /> </div> */}
+        {/* <div className='row'> <ConditionalRender /> </div> */}
+        {/* <div className='row'> <MoreConditional /> </div> */}
+        <div className='row'> <CheckUserAge /> </div>
         
+
       </div>
     </div>
   );

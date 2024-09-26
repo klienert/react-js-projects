@@ -7,10 +7,11 @@ class MyApp1 extends React.Component {
             name: 'CamperBot'
         }        
     }
+    
     render() {
         return (
             <>
-                <Navbar />
+                <Navbar name={this.state.name}/>
             </>
         )
     }
@@ -23,7 +24,7 @@ class Navbar extends React.Component {
     render() {
         return (
             <>
-                <h1>Hello my name is: </h1>
+                <h1>Hello my name is: {this.props.name}</h1>                
             </>
         )
     }
