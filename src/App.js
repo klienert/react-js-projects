@@ -50,6 +50,8 @@ import CheckUserAge from './components/fcc2/ternaryExp';
 import GameOfChance from './components/fcc2/gameChance';
 import GateKeeper from './components/fcc2/cssSetState';
 import MyToDoList from './components/fcc2/MyToDo';
+import Frameworks from './components/fcc2/frameworks';
+import UsingArrayFilter from './components/fcc2/usingFilter';
 
 function App() {
   
@@ -85,8 +87,9 @@ function App() {
         {/* <div className='row'> <CheckUserAge /> </div> */}
         {/* <div className='row'> <GameOfChance />  </div> */}
         {/* <div className='row'> <GateKeeper /> </div> */}
-        <div className='row'> <MyToDoList /> </div>
-
+        {/* <div className='row'> <MyToDoList /> </div> */}
+        {/* <div className='row'> <Frameworks /> </div> */}
+        <div className='row'> <UsingArrayFilter /> </div>
         
         
 

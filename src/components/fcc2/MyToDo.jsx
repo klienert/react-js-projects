@@ -28,10 +28,10 @@ export default class MyToDoList extends React.Component {
     handleChange(e) {
         this.setState({
             userInput: e.target.value
-        });
+        });        
     }
     render() {
-        const items = null; // change this
+        const items = this.state.toDoList.map(v => <li>{v}</li>); // change this
         return (
             <div>
                 <textarea
