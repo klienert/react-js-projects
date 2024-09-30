@@ -47,6 +47,9 @@ import MagicEightBall from './components/fcc2/magicEight';
 import ConditionalRender from './components/fcc2/conditionalRender';
 import MoreConditional from './components/fcc2/moreConditional';
 import CheckUserAge from './components/fcc2/ternaryExp';
+import GameOfChance from './components/fcc2/gameChance';
+import GateKeeper from './components/fcc2/cssSetState';
+import MyToDoList from './components/fcc2/MyToDo';
 
 function App() {
   
@@ -79,7 +82,12 @@ function App() {
         {/* <div className='row'> <MagicEightBall /> </div> */}
         {/* <div className='row'> <ConditionalRender /> </div> */}
         {/* <div className='row'> <MoreConditional /> </div> */}
-        <div className='row'> <CheckUserAge /> </div>
+        {/* <div className='row'> <CheckUserAge /> </div> */}
+        {/* <div className='row'> <GameOfChance />  </div> */}
+        {/* <div className='row'> <GateKeeper /> </div> */}
+        <div className='row'> <MyToDoList /> </div>
+
+        
         
 
       </div>

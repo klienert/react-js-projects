@@ -9,10 +9,9 @@ export default class CheckUserAge extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            userAge: '',
             input: ''
-
         }
-
         this.submit = this.submit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -43,6 +42,15 @@ export default class CheckUserAge extends React.Component {
                     onChange={this.handleChange}
                 /><br/>
                 {/* Add conditional here? */}
+                
+                {
+                    this.state.userAge === '' 
+                        ? btn1 
+                        : this.state.userAge >= 18 
+                        ? btn2 
+                        : btn3
+                }
+                
 
             </div>
         )
