@@ -52,6 +52,7 @@ import GateKeeper from './components/fcc2/cssSetState';
 import MyToDoList from './components/fcc2/MyToDo';
 import Frameworks from './components/fcc2/frameworks';
 import UsingArrayFilter from './components/fcc2/usingFilter';
+import RandomQuoteGenerator from './components/RandomQuote/index';
 
 function App() {
   
@@ -89,7 +90,10 @@ function App() {
         {/* <div className='row'> <GateKeeper /> </div> */}
         {/* <div className='row'> <MyToDoList /> </div> */}
         {/* <div className='row'> <Frameworks /> </div> */}
-        <div className='row'> <UsingArrayFilter /> </div>
+        {/* <div className='row'> <UsingArrayFilter /> </div> */}
+        
+        {/* Random Quote Generator */}
+        <div className='row'> <RandomQuoteGenerator /></div>
         
         
 
