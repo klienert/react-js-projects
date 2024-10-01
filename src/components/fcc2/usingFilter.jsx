@@ -33,8 +33,11 @@ export default class UsingArrayFilter extends React.Component {
         };
     }
     render() {
-        const usersOnline = null; // change this
-        const renderOnline = null; // change this
+        const usersOnline = this.state.users.filter(user => user.online === true); // change this
+        const renderOnline = usersOnline.map(user => {
+          return <li key={user.username}>{user.username}</li>
+
+        }); // change this      
         return (
             <div>
                 <h1>Current Online Users</h1>
