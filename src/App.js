@@ -53,6 +53,7 @@ import MyToDoList from './components/fcc2/MyToDo';
 import Frameworks from './components/fcc2/frameworks';
 import UsingArrayFilter from './components/fcc2/usingFilter';
 import RandomQuoteGenerator from './components/RandomQuote/index';
+import Calculator from './components/calculator';
 
 function App() {
   
@@ -94,6 +95,9 @@ function App() {
         
         {/* Random Quote Generator */}
         <div className='row'> <RandomQuoteGenerator /></div>
+        {/* Calculator */}
+        <div className='row'> <Calculator /></div>
+
         
         
 
