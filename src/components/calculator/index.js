@@ -17,11 +17,11 @@ export const ACTIONS = {
 function reducer(state, { type, payload }) {
     switch(type) {
         case ACTIONS.ADD_DIGIT:
-            // state.overwrite
             if (state.overwrite) {
                 return {
                     ...state,
-                    currentOperand: payload
+                    currentOperand: payload.digit,
+                    overwrite: false,
                 }
             }
             if (payload.digit === "0" && state.currentOperand === "0") return state
@@ -52,7 +52,6 @@ function reducer(state, { type, payload }) {
 
         
         case ACTIONS.CHOOSE_OPERATION:
-            // choosing an operation before selecting a digit
             if (state.currentOperand == null && state.previousOperand == null) {
                 return state
             }
@@ -81,7 +80,11 @@ function reducer(state, { type, payload }) {
             }
 
         case ACTIONS.EVALUATE:
-            if (state.operation == null || state.previousOperand == null || state.currentOperand == null) {
+            if (
+                state.operation == null || 
+                state.previousOperand == null || 
+                state.currentOperand == null
+            ) {
                 return state
             }
 
@@ -104,22 +107,18 @@ function evaluate( { currentOperand, previousOperand, operation }) {
         return ""
     }
     let computation = "";
-    switch (operation) {
-        case "+":
-            computation = prev + curr
-            break;
 
-        case "&minus;":
-            computation = prev - curr
-            break;
-
-        case "*":
-            computation = prev * curr
-            break;
-
-        case "&divide;":
-            computation = prev / curr
-            break;
+    if (operation === "+" ) {
+        computation = prev + curr;
+    }
+    if (operation === "-" ) {
+        computation = prev - curr;
+    }
+    if (operation === "*" ) {
+        computation = prev * curr;
+    }
+    if (operation === "÷" ) {
+        computation = prev / curr;
     }
     return computation.toString();
 }
@@ -154,7 +153,7 @@ export default function Calculator() {
                     onClick={() =>dispatch({ type: ACTIONS.CLEAR })}>AC</button>
                 <button 
                     onClick={() =>dispatch({ type: ACTIONS.DELETE_DIGIT })}>DEL</button>
-                <OperationButton operation="&divide;" dispatch={dispatch}/>
+                <OperationButton operation="÷" dispatch={dispatch}/>
 
                 <DigitButton digit="1" dispatch={dispatch}/>
                 <DigitButton digit="2" dispatch={dispatch}/>
@@ -169,7 +168,7 @@ export default function Calculator() {
                 <DigitButton digit="7" dispatch={dispatch}/>
                 <DigitButton digit="8" dispatch={dispatch}/>
                 <DigitButton digit="9" dispatch={dispatch}/>
-                <OperationButton operation="&minus;" dispatch={dispatch}/>
+                <OperationButton operation="-" dispatch={dispatch}/>
 
                 <DigitButton digit="." dispatch={dispatch}/>
                 <DigitButton digit="0" dispatch={dispatch}/>
