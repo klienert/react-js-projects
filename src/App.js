@@ -94,8 +94,8 @@ function App() {
         {/* <div className='row'> <Frameworks /> </div> */}
         {/* <div className='row'> <UsingArrayFilter /> </div> */}
         
-        
-        {/* <div className='row mx-auto no-wrap'>
+{/*         
+        <div className='row mx-auto no-wrap'>
           <div className='col'> <RandomQuoteGenerator /></div>
           <div className='col'> <Calculator /></div>
         </div> */}

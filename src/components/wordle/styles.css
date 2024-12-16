@@ -1,5 +1,16 @@
 :root {
-    --color1: #F8F8F8;
+    /* key == keyboard tiles */
+    /* --color1: #F8F8F8; */
+    --key-text-color: #000;
+    --key-bg: #d3d6da;
+    --color-present: #B59F3B;
+    --color-correct: #6AAA64;
+    --key-evaluated-text: #F8F8F8;    
+    --key-evaluated-text-absent: #FFF;
+    --key-evaluated-text-color: #FFF;
+    --key-bg-absent: #787C7E;
+    --key-bg-present: #B59F3B;
+    --key-bg-correct: #6AAA64;
 }
 
 .app-module {
@@ -53,7 +64,8 @@
     margin: 0 6px 0 0;
     height: 58px;
     border-radius: 4px;
-    color: var(--color1);
+    color: var(--key-text);
+    background-color: var(--key-bg);
     display: flex;
     justify-content: center;
     align-items: center;
