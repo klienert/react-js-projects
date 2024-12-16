@@ -54,6 +54,7 @@ import CurrentWeather from './components/weatherAPI/currentWeather';
 // import UsingArrayFilter from './components/fcc2/usingFilter';
 import RandomQuoteGenerator from './components/RandomQuote/index';
 import Calculator from './components/calculator';
+import Wordle from './components/wordle';
 
 function App() {
   
@@ -93,11 +94,14 @@ function App() {
         {/* <div className='row'> <Frameworks /> </div> */}
         {/* <div className='row'> <UsingArrayFilter /> </div> */}
         
-        {/* Random Quote Generator */}
-        <div className='row'> <RandomQuoteGenerator /></div>
-        {/* Calculator */}
-        <div className='row'> <Calculator /></div>
-
+        
+        {/* <div className='row mx-auto no-wrap'>
+          <div className='col'> <RandomQuoteGenerator /></div>
+          <div className='col'> <Calculator /></div>
+        </div> */}
+        
+        {/* Wordle  */}
+        <div className='row'> <Wordle /></div>
         
         
 
