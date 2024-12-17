@@ -3,46 +3,58 @@ import './styles.css';
 
 export default function Wordle () {
 
-    const [guesses, setGuesses] = useState(["", "", "", "", ""]); // Five letter guesses per row
+    const [board, setBoard] = useState(
+        Array(6).fill("").map(() => Array(5).fill(""))
+    );
     const [currRow, setCurrRow] = useState(0); // tracks the current row
+    const [currWord, setCurrWord] = useState("");
 
-    // handle key presses
-    const handleKeyPress = (e) => {
-        const key = e.key.toUpperCase();
+    const handleKeyPress = (key) => {
+        if (/^[a-zA-Z]$/.test(key) && currWord.length < 5) {
+            setCurrWord((prev) => prev + key().toUpperCase());
+        }
 
-        if (key === 'BACKSPACE') {
-            setGuesses((prevGuesses) => {
-                const updatedGuesses = [...prevGuesses];
-                updatedGuesses[currRow] = updatedGuesses[currRow].slice(0, -1);
-                return updatedGuesses;
+        if (key === "Backspace") {
+            setCurrWord((prev) => prev.slice(0, -1));
+
+        } else if (key === "Enter" && currWord.length === 5) {
+            setBoard((prevBoard) => {
+                const newBoard = [...prevBoard];
+                newBoard[currRow] = currWord.split("");
+                return newBoard;
             });
-        } else if (/^[A-Z]$/.test(key) && guesses[currRow].length < 5) {
-            // handle letter input
-            console.log(key);
-            setGuesses((prevGuesses) => {
-                const updatedGuesses = [...prevGuesses];
-                updatedGuesses[currRow] += key;
-                return updatedGuesses;
-            });
-        } else if (key === "ENTER" && guesses[currRow].length === 5) {
-            if (currRow < guesses.length - 1) {
-                setCurrRow(currRow + 1);
-            } else {
-                console.log('Check word');
-            }
+            setCurrRow((prev) => Math.min(prev + 1, 5));
+            setCurrWord("");
         }
     };
 
     // event listener for key presses
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyPress);
-        return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [handleKeyPress]);
+        const handlePhysicalKeyPress = (e) => handleKeyPress(e.key);            
+        
+        window.addEventListener('keydown', handlePhysicalKeyPress);
+        return () => {
+            window.removeEventListener('keydown', handlePhysicalKeyPress);
+        }        
+    }, [currWord, currRow]);
+
 
     return (
         <div className="wordle">
             <main className="app-module">
                 <div className="board-container">
+                    <div className="board-module">
+                    {board.map((row, rowIndex) => (
+                        <div className="board-row" key={rowIndex}>
+                        {row.map((tile, tileIndex) => (
+                            <div className="board-tile" key={tileIndex}>
+                            {tile}
+                            </div>
+                        ))}
+                        </div>
+                    ))}
+                    </div>
+                    {/*  
                     <div className="board-module">
                         <div className="board-row">
                             <div className="board-tile"></div>
@@ -85,9 +97,12 @@ export default function Wordle () {
                             <div className="board-tile"></div>
                             <div className="board-tile"></div>
                             <div className="board-tile"></div>
-                        </div>
+                        </div>                        
                     </div>
+                    */}
                 </div>
+                
+                {/* 
                 <div className="keyboard-container">
                     <div className="keyboard-row">
                         <button type="button" data-key="q" aria-label="add q" aria-disabled="false" className="keyboard-key">q</button>
@@ -131,6 +146,47 @@ export default function Wordle () {
                         
                     </div>    
                 </div>
+                 */}
+
+                <div className="keyboard-container">
+                    {["QWERTYUIOP", "ASDFGHJKL", "↵ZXCVBNM←"].map((row, rowIndex) => {
+                        <div className="keyboard-row" key={rowIndex}>
+                            {row.split("").map((key) => {
+                                <button
+                                    type="button"
+                                    key={key}
+                                    data-key={key}
+                                    aria-label={`add ${key}`}
+                                    aria-disabled="false"
+                                    className={`keyboard-key ${
+                                    key === "↵" || key === "←" ? "keyboard-key-enterBackspace" : ""
+                                    }`}
+                                    onClick={() => handleKeyPress(key === "↵" ? "Enter" : key === "←" ? "Backspace" : key)}
+                                >
+                                {key === "←" ? (
+                                    <svg
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                    className="game-icon"
+                                    data-testid="icon-backspace"
+                                  >
+                                <path
+                                      fill="var(--color1)"
+                                      d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"
+                                    ></path>
+                                  </svg>
+                                ) : (
+                                  key
+                                )}
+                              </button>
+                            })}
+                        </div>
+                    })}
+                </div>
+
             </main>
         </div>
     )
