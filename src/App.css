@@ -1,3 +1,19 @@
+:root {
+  --body-bkg: #FFF;
+  --body-color: #000;
+
+}
+
+[data-theme="dark"] {
+  --body-bkg: #282C34;
+  --body-color: #F8F8F8;
+}
+
+body {
+  background-color: var(--body-bkg);
+  color: var(--body-color);
+}
+
 .App {
-  /* text-align: center; */
+  
 }
