@@ -1,106 +1,72 @@
 import React, { useEffect, useState } from "react";
-import './styles.css';
+// import './styles.css';
+import './newStyles.css';
+import Board from "./Board";
+import Keyboard from "./Keyboard";
 
 export default function Wordle () {
 
-    const [board, setBoard] = useState(
-        Array(6).fill("").map(() => Array(5).fill(""))
-    );
-    const [currRow, setCurrRow] = useState(0); // tracks the current row
-    const [currWord, setCurrWord] = useState("");
-
-    const handleKeyPress = (key) => {
-        if (/^[a-zA-Z]$/.test(key) && currWord.length < 5) {
-            setCurrWord((prev) => prev + key().toUpperCase());
-        }
-
-        if (key === "Backspace") {
-            setCurrWord((prev) => prev.slice(0, -1));
-
-        } else if (key === "Enter" && currWord.length === 5) {
-            setBoard((prevBoard) => {
-                const newBoard = [...prevBoard];
-                newBoard[currRow] = currWord.split("");
-                return newBoard;
-            });
-            setCurrRow((prev) => Math.min(prev + 1, 5));
-            setCurrWord("");
-        }
-    };
-
-    // event listener for key presses
-    useEffect(() => {
-        const handlePhysicalKeyPress = (e) => handleKeyPress(e.key);            
-        
-        window.addEventListener('keydown', handlePhysicalKeyPress);
-        return () => {
-            window.removeEventListener('keydown', handlePhysicalKeyPress);
-        }        
-    }, [currWord, currRow]);
-
-
     return (
-        <div className="wordle">
-            <main className="app-module">
-                <div className="board-container">
-                    <div className="board-module">
-                    {board.map((row, rowIndex) => (
-                        <div className="board-row" key={rowIndex}>
-                        {row.map((tile, tileIndex) => (
-                            <div className="board-tile" key={tileIndex}>
-                            {tile}
-                            </div>
-                        ))}
-                        </div>
-                    ))}
-                    </div>
-                    {/*  
-                    <div className="board-module">
-                        <div className="board-row">
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                        </div>
-                        <div className="board-row">
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                        </div>                    
-                        <div className="board-row">
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                        </div>
-                        <div className="board-row">
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                        </div>
-                        <div className="board-row">
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                        </div>
-                        <div className="board-row">
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                            <div className="board-tile"></div>
-                        </div>                        
-                    </div>
-                    */}
-                </div>
+        <div>
+            <Board />
+            <Keyboard />
+        </div>
+    )
+}
+    
+
+    // const [board, setBoard] = useState(
+    //     Array(6).fill("").map(() => Array(5).fill(""))
+    // );
+    // const [currRow, setCurrRow] = useState(0); // tracks the current row
+    // const [currWord, setCurrWord] = useState("");
+
+    // const handleKeyPress = (key) => {
+    //     if (/^[a-zA-Z]$/.test(key) && currWord.length < 5) {
+    //         setCurrWord((prev) => prev + key().toUpperCase());
+    //     }
+
+    //     if (key === "Backspace") {
+    //         setCurrWord((prev) => prev.slice(0, -1));
+
+    //     } else if (key === "Enter" && currWord.length === 5) {
+    //         setBoard((prevBoard) => {
+    //             const newBoard = [...prevBoard];
+    //             newBoard[currRow] = currWord.split("");
+    //             return newBoard;
+    //         });
+    //         setCurrRow((prev) => Math.min(prev + 1, 5));
+    //         setCurrWord("");
+    //     }
+    // };
+
+    // // event listener for key presses
+    // useEffect(() => {
+    //     const handlePhysicalKeyPress = (e) => handleKeyPress(e.key);            
+        
+    //     window.addEventListener('keydown', handlePhysicalKeyPress);
+    //     return () => {
+    //         window.removeEventListener('keydown', handlePhysicalKeyPress);
+    //     }        
+    // }, [currWord, currRow]);
+
+
+    // return (
+    //     <div className="wordle">
+    //         <main className="app-module">
+    //             <div className="board-container">
+    //                 <div className="board-module">
+    //                 {board.map((row, rowIndex) => (
+    //                     <div className="board-row" key={rowIndex}>
+    //                     {row.map((tile, tileIndex) => (
+    //                         <div className="board-tile" key={tileIndex}>
+    //                         {tile}
+    //                         </div>
+    //                     ))}
+    //                     </div>
+    //                 ))}
+    //                 </div>
+    //             </div>
                 
                 {/* 
                 <div className="keyboard-container">
@@ -143,51 +109,50 @@ export default function Wordle () {
                                 <path fill="var(--color1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
                             </svg>
                         </button>
-                        
-                    </div>    
+                    </div>
                 </div>
                  */}
 
-                <div className="keyboard-container">
-                    {["QWERTYUIOP", "ASDFGHJKL", "↵ZXCVBNM←"].map((row, rowIndex) => {
-                        <div className="keyboard-row" key={rowIndex}>
-                            {row.split("").map((key) => {
-                                <button
-                                    type="button"
-                                    key={key}
-                                    data-key={key}
-                                    aria-label={`add ${key}`}
-                                    aria-disabled="false"
-                                    className={`keyboard-key ${
-                                    key === "↵" || key === "←" ? "keyboard-key-enterBackspace" : ""
-                                    }`}
-                                    onClick={() => handleKeyPress(key === "↵" ? "Enter" : key === "←" ? "Backspace" : key)}
-                                >
-                                {key === "←" ? (
-                                    <svg
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    width="20"
-                                    className="game-icon"
-                                    data-testid="icon-backspace"
-                                  >
-                                <path
-                                      fill="var(--color1)"
-                                      d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"
-                                    ></path>
-                                  </svg>
-                                ) : (
-                                  key
-                                )}
-                              </button>
-                            })}
-                        </div>
-                    })}
-                </div>
+                // <div className="keyboard-container">
+                //     {["QWERTYUIOP", "ASDFGHJKL", "↵ZXCVBNM←"].map((row, rowIndex) => {
+                //         <div className="keyboard-row" key={rowIndex}>
+                //             {row.split("").map((key) => {
+                //                 <button
+                //                     type="button"
+                //                     key={key}
+                //                     data-key={key}
+                //                     aria-label={`add ${key}`}
+                //                     aria-disabled="false"
+                //                     className={`keyboard-key ${
+                //                     key === "↵" || key === "←" ? "keyboard-key-enterBackspace" : ""
+                //                     }`}
+                //                     onClick={() => handleKeyPress(key === "↵" ? "Enter" : key === "←" ? "Backspace" : key)}
+                //                 >
+                //                 {key === "←" ? (
+                //                     <svg
+                //                     aria-hidden="true"
+                //                     xmlns="http://www.w3.org/2000/svg"
+                //                     height="20"
+                //                     viewBox="0 0 24 24"
+                //                     width="20"
+                //                     className="game-icon"
+                //                     data-testid="icon-backspace"
+                //                   >
+                //                 <path
+                //                       fill="var(--color1)"
+                //                       d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"
+                //                     ></path>
+                //                   </svg>
+                //                 ) : (
+                //                   key
+                //                 )}
+                //               </button>
+                //             })}
+                //         </div>
+                //     })}
+                // </div>
 
-            </main>
-        </div>
-    )
-}
+//             </main>
+//         </div>
+//     )
+// }

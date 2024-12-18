@@ -6,35 +6,26 @@ const DarkModeToggle = () => {
     const [isDarkMode, setDarkMode] = useState(false);
 
     const toggleMode = () => {
-        setDarkMode(!isDarkMode);
-        if (isDarkMode) { // checked
-            document.querySelector('body').setAttribute('data-theme', 'dark');
-        } else {
-            document.querySelector('body').setAttribute('data-theme', 'light');
-            
-            
-        }
+        setDarkMode((prevMode) => {
+            const newMode = !prevMode;
+            document.querySelector('body').setAttribute('data-theme', newMode ? 'dark' : 'light');
+            return newMode;
+        })
     };
 
     return (
-        <div className="darkMode">
+        <div className="dark-mode-switch">
             <h3>{isDarkMode ? 'Light' : 'Dark'} Mode</h3>
             <label className="switch">
-                <input type="checkbox" />
-                <span className="slider round"></span>                
-            </label>
-            {/* <div className="darkModeSwitch">
-                <button 
-                    className="switch-btn" 
+                <input 
                     type="checkbox" 
-                    aria-label="Dark Mode"
-                    onClick={toggleMode}                    
-                >
-                    <span className="switch-knob"></span>
-            </button> 
-        </div> */}
+                    aria-label="Dark Mode Switch"
+                    onClick={toggleMode}
+                    checked={isDarkMode}
+                />
+                <span className="slider"></span>
+            </label>
         </div>
-        
     )
 }
 

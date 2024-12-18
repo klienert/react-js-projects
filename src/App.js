@@ -39,24 +39,30 @@ function App() {
     <div className="App">      
       <div className="container">        
         <div className='row mx-auto no-wrap' >
-          <div className='col-xs-4 '>
-            <CurrentDate  name={"Keith"} />
-            <DarkModeToggle />
+          <div className='col-8'>
+            <CurrentDate  name={"Keith"} />            
           </div>
-          <div className='col-xs-8'>
-            <CurrentWeather />
+          <div className='col-3'>
+            <DarkModeToggle />
           </div>          
         </div>
-        <hr></hr>
-        <div className='row'> <Counter/></div>
         <div className='row mx-auto no-wrap'>
-          <div className='col'> <RandomQuoteGenerator /></div>
-          <div className='col'> <Calculator /></div>
+          <div className='col-8'>
+            <CurrentWeather />
+          </div>
+          <div className='col-4'>
+            <Counter/>
+          </div>
+        </div>        
+        {/* <div className='row mx-auto no-wrap'>
+          <RandomQuoteGenerator />
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
+          <Calculator />
+        </div> */}
+        <div className='row mx-auto no-wrap'>
+          <Wordle />
         </div>
-        <div className='row'> <Wordle /></div>
-        
-        
-
       </div>
     </div>
   );
