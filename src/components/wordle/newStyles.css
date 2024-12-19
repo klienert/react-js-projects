@@ -12,7 +12,7 @@
     margin: 0;
   }  */
   
-  nav {
+  .wordle-nav {
     height: 60px;
     width: 100%;
     margin: 0;
@@ -21,7 +21,7 @@
     place-items: center;
   }
   
-  nav h1 {
+  .wordle-nav h1 {
     margin: 0;
     font-family: Helvetica, Arial, sans-serif;
     color: white;
@@ -36,7 +36,7 @@
     flex-direction: column;
   }
   
-  .board {
+  .wordle-board {
     width: 450px;
     height: 550px;
     border: 1px solid black;
@@ -44,7 +44,7 @@
     flex-direction: column;
   }
   
-  .row {
+  .wordle-board-row {
     flex: 33%;
     display: flex;
     flex-direction: row;
@@ -112,7 +112,7 @@
     border-radius: 4px;
     display: grid;
     place-items: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     background-color: grey;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
