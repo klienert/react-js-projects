@@ -20,8 +20,8 @@ const DarkModeToggle = () => {
                 <input 
                     type="checkbox" 
                     aria-label="Dark Mode Switch"
-                    onClick={toggleMode}
-                    checked={isDarkMode}
+                    // onClick={toggleMode}
+                    onChange={toggleMode}
                 />
                 <span className="slider"></span>
             </label>

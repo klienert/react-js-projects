@@ -106,7 +106,7 @@
   }
   
   .key {
-    width: 50px;
+    width: 4rem;
     height: 70px;
     margin: 5px;
     border-radius: 4px;
@@ -120,7 +120,7 @@
   }
   
   #big {
-    width: 100px;
+    width: 8rem;
   }
   #disabled {
     background-color: #3a393c;
