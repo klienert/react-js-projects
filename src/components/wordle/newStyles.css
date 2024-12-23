@@ -119,9 +119,21 @@
     cursor: pointer;
   }
   
+  .big {
+    width: 8rem;
+  }
+
+  .disabled {
+    background-color: #3a393c;
+  }
+
   #big {
     width: 8rem;
   }
   #disabled {
     background-color: #3a393c;
+  }
+
+  .correct {
+    background-color: #528d4e;
   }
