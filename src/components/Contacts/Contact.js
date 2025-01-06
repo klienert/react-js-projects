@@ -9,7 +9,7 @@ export default function Contact(props) {
         <article className="contact-card">
             <img
                 src={props.img}
-                alt="Photo of Mr. Whiskerson"
+                alt={props.name}
             />
             <h3>{props.name}</h3>
             <div className="info-group">
