@@ -18,23 +18,29 @@ const Keyboard = () => {
         } else if (event.key === "Backspace") {
             onDelete();
         } else {
-            keys[0].forEach((key) => {
+            keys.flat().forEach((key) => {
                 if (event.key.toLowerCase() === key.toLowerCase()) {
                     onSelectLetter(key);
                 }
             });
-            keys[1].forEach((key) => {
-                if (event.key.toLowerCase() === key.toLowerCase()) {
-                    onSelectLetter(key);
-                }
-            });
-            keys[2].forEach((key) => {
-                if (event.key.toLowerCase() === key.toLowerCase()) {
-                    onSelectLetter(key);
-                }
-            });
+
+            // keys[0].forEach((key) => {
+            //     if (event.key.toLowerCase() === key.toLowerCase()) {
+            //         onSelectLetter(key);
+            //     }
+            // });
+            // keys[1].forEach((key) => {
+            //     if (event.key.toLowerCase() === key.toLowerCase()) {
+            //         onSelectLetter(key);
+            //     }
+            // });
+            // keys[2].forEach((key) => {
+            //     if (event.key.toLowerCase() === key.toLowerCase()) {
+            //         onSelectLetter(key);
+            //     }
+            // });
         }
-    });    
+    }, [onEnter, onDelete, onSelectLetter]);    
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyboard);
@@ -48,20 +54,20 @@ const Keyboard = () => {
         <div className="wordle-keyboard" onKeyDown={handleKeyboard}>
             <div className="line1">
                 {keys[0].map((key) => {
-                    return <Key keyVal={key} disabled={disabledLetters.includes(key)}/>
+                    return <Key key={key} keyVal={key} disabled={disabledLetters.includes(key)}/>
                 })}
             </div>
             <div className="line2">
                 {keys[1].map((key) => {
-                    return <Key keyVal={key} disabled={disabledLetters.includes(key)}/>
+                    return <Key key={key} keyVal={key} disabled={disabledLetters.includes(key)}/>
                 })}
             </div>
             <div className="line3">
-                <Key keyVal={"ENTER"} bigKey/>
+                <Key key={"ENTER"} keyVal={"ENTER"} bigKey/>
                 {keys[2].map((key) => {
-                    return <Key keyVal={key} disabled={disabledLetters.includes(key)}/>
+                    return <Key key={key} keyVal={key} disabled={disabledLetters.includes(key)}/>
                 })}
-                <Key keyVal={"←"} bigKey/>
+                <Key key={"BACKSPACE"} keyVal={"←"} bigKey/>
             </div>
         </div>
     )

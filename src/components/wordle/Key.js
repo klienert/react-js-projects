@@ -19,7 +19,7 @@ const Key = ({ keyVal, bigKey, disabled, correct  }) => {
             return "key big";
         } else if (disabled) {
             return "key disabled";
-        } else if (correct ) {
+        } else if (correct) {
             return "key correct";        
         } else {
             return "key";
@@ -30,7 +30,6 @@ const Key = ({ keyVal, bigKey, disabled, correct  }) => {
 
     return <div 
         className={className1}
-        // data-key={keyVal}
         onClick={selectLetter}
     >{keyVal}</div>
 }

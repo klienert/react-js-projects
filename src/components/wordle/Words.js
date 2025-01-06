@@ -19,22 +19,22 @@ export const generateWordSet = async () => {
     await fetch(wordBank)
         .then((resp) => resp.text())
         .then((res) => {
-            wordArr = res.split("\n");
-            todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)];            
+            wordArr = res.split("\n").map(word => word.trim());
+            todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)];
         });
 
     await fetch(guessBank)
         .then((resp) => resp.text())
         .then((res) => {
-            guessArr = res.split("\n");            
+            guessArr = res.split("\n").map(word => word.trim());            
         })
     // combines guess words and 'correct' words to one large set 
     if (wordArr.length > 0 && guessArr.length > 0) {
         wordSet = new Set([...wordArr, ...guessArr]);
     }
 
-    // console.log(todaysWord);
-    // console.log(wordSet);
+    console.log(todaysWord);
+    console.log(wordSet);
     
 
     return { wordSet, todaysWord };

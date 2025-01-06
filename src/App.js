@@ -1,7 +1,7 @@
 // https://youtu.be/5ZdHfJVAY-s?si=AJhaXd5c4CbPokLd
 import './App.css';
 import CurrentDate from './components/date';
-import DarkModeToggle from './components/darkmode/darkmode';
+// import DarkModeToggle from './components/darkmode/darkmode';
 import Counter from './components/counter';
 // import CurrencyConvert from './components/currency-converter';
 // import NewCounter from './components/hook-mistakes/num12';
@@ -28,7 +28,10 @@ import Counter from './components/counter';
 import CurrentWeather from './components/weatherAPI/currentWeather';
 import RandomQuoteGenerator from './components/RandomQuote/index';
 import Calculator from './components/calculator';
-import Wordle from './components/wordle';
+// import Wordle from './components/wordle';
+import StaticPage from './components/static_pages';
+import TravelJournal from './components/travelJournal';
+import Contacts from './components/Contacts';
 
 function App() {
   
@@ -43,7 +46,7 @@ function App() {
             <CurrentDate  name={"Keith"} />            
           </div>
           <div className='col-3'>
-            <DarkModeToggle />
+            {/* <DarkModeToggle /> */}
           </div>          
         </div>
         <div className='row mx-auto no-wrap'>
@@ -60,9 +63,19 @@ function App() {
         {/* <div className='row mx-auto no-wrap'>
           <Calculator />
         </div> */}
-        <div className='row mx-auto no-wrap'>
+        {/* <div className='row mx-auto no-wrap'>
           <Wordle />
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
+          <StaticPage />
+        </div> */}
+        <div className='row mx-auto no-wrap'>
+          <TravelJournal />
         </div>
+        <div className='row mx-auto no-wrap'>
+          <Contacts />
+        </div>
+        
       </div>
     </div>
   );
