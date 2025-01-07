@@ -1,5 +1,7 @@
 .travel-journal-container {
-    font-family: "Inter", serif;    
+    font-family: "Inter", serif;
+    background-color: rgb(236, 236, 229);
+    color: black;
 }
 
 header {

@@ -28,10 +28,12 @@ import Counter from './components/counter';
 import CurrentWeather from './components/weatherAPI/currentWeather';
 import RandomQuoteGenerator from './components/RandomQuote/index';
 import Calculator from './components/calculator';
-// import Wordle from './components/wordle';
-import StaticPage from './components/static_pages';
+import Wordle from './components/wordle';
+// import StaticPage from './components/static_pages';
 import TravelJournal from './components/travelJournal';
-import Contacts from './components/Contacts';
+// import ReviewMaps from './components/MapReview';
+// import Contacts from './components/Contacts';
+import Jokes from './components/Jokes';
 
 function App() {
   
@@ -72,10 +74,15 @@ function App() {
         <div className='row mx-auto no-wrap'>
           <TravelJournal />
         </div>
-        <div className='row mx-auto no-wrap'>
+        {/* <div className='row mx-auto no-wrap'>
           <Contacts />
-        </div>
-        
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
+          <Jokes />
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
+          <ReviewMaps />
+        </div> */}
       </div>
     </div>
   );
