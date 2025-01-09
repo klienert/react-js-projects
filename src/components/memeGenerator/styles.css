@@ -99,10 +99,10 @@
         2px 2px 5px #000;
 }
 
-.meme-gen-bottom {
+.meme-gen-meme .bottom {
     bottom: 0;
 }
 
-.meme-gen-top {
+.meme-gen-meme .top {
     top: 0;
 }

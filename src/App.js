@@ -35,6 +35,8 @@ import Wordle from './components/wordle';
 // import Contacts from './components/Contacts';
 // import Jokes from './components/Jokes';
 import MemeGenerator from './components/memeGenerator';
+import ChefClaude from './components/ChefClaude';
+
 
 function App() {
   
@@ -85,8 +87,11 @@ function App() {
           <ReviewMaps />
         </div> */}
         <div className='row mx-auto no-wrap'>
-          <MemeGenerator />
+          <ChefClaude />
         </div>
+        {/* <div className='row mx-auto no-wrap'>
+          <MemeGenerator />
+        </div> */}
       </div>
     </div>
   );

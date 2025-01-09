@@ -1,0 +1,60 @@
+.chef-claude {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    background-color: #FAFAF8;
+    color: #000;
+
+}
+
+.chef-claude-header {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: .5rem 1rem;
+    height: 3rem;
+    background-color: #FFF;
+}
+
+.chef-claude-header > img {
+    width: 2rem;    
+}
+
+.chef-claude-main {
+    padding: 2rem 2rem 2rem;        
+}
+
+.add-ingredient-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 4rem;
+}
+
+.add-ingredient-form > input {
+    border-radius: .25rem;
+    border: 1px solid #D1D5DB;
+    padding: .5rem 1rem;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    min-width: 11rem;
+    max-width: 25rem;
+}
+
+.add-ingredient-form > button {
+    font-family: 'Inter', sans-serif;
+    border-radius: .25rem;
+    border: none;
+    background-color: #141413;
+    color: #FAFAF8;
+    width: 11rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.add-ingredient-form > button::before {
+    content: "+";
+    margin-right: 5px;
+}
