@@ -58,3 +58,275 @@
     content: "+";
     margin-right: 5px;
 }
+
+/* on click practice */
+.onclick-practice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.onclick-practice-container > img {
+    width: 100%;
+    border-radius: 10px;
+    transition: filter .1s ease-in-out;
+}
+
+.onclick-practice-container > img:hover {
+    filter: brightness(120%);
+}
+
+.onclick-practice-container > button {
+    width: 100%;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 2px solid lightgray;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.3rem;
+}
+
+/* state1 */
+.state1 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    margin-bottom: 2rem;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.state1-title {
+    text-align: center;    
+}
+
+.state1-value {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* state2 */
+.state2 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.state2 > h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.state2-counter {
+    display: flex;
+    align-items: flex-end;
+    align-self: center;
+    margin-top: 40px;
+}
+
+.state2-counter > button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: #737373;
+    color: #D9D9D9;
+    font-size: 1.5rem;
+}
+
+.state2-counter > button:hover {
+    background-color: #404040;
+    color: #D9D9D9;
+}
+
+.state2-count {
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    margin-block: 0 10px;
+    font-size: 2rem;
+}
+
+.state2-plus { margin-left: -20px; }
+
+.state2-minus {
+    margin-right: -20px;
+    z-index: 1;
+}
+
+/* ternary practice */
+.t-practice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 4rem;
+    height: 40vh;
+    justify-content: center;
+    margin: 1rem;
+
+}
+
+.t-practice-title {
+    text-align: center;
+}
+
+.t-practice-value {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.state3 {
+    background-color: #70B85D;
+    color: white;
+    padding: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.state3 > button {
+    width: 100%;
+    max-width: 300px;
+    background-color: transparent;
+    padding: 1rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Karla', sans-serif;
+    margin-bottom: 20px;
+}
+
+.state3 > button:hover {
+    background-color: #FFFEF1;
+    color: #2C5E2E;
+}
+
+.state3 > button:focus {
+    outline: 0;
+}
+
+.state3 > p {
+    margin-block: 10px;
+    font-size: 2rem;
+}
+
+/* complex obj 1 */
+.complexObj {
+    background-color: white;
+    width: 200px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 350px;
+}
+
+.complex-card {
+    background-color: white;
+    width: 200px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 350px;
+}
+
+.complex-card .avatar {
+    width: 100%;
+    padding: 10%;
+    padding-bottom: 0;
+}
+
+.complex-card .name {
+    margin-block: 13px;
+    color: #333333;
+}
+
+.complex-card .info { padding: 10px; }
+
+.complex-card .favorite {
+    width: 25px;
+    cursor: pointer;
+}
+
+.complex-card .contact {
+    font-size: 0.75rem;
+    color: gray;
+    margin-block: 7px;
+}
+
+.complex-card .favorite-button {
+    border: none;
+    background: transparent;
+}
+
+.complex-card .favorite-button:active {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Form1 */
+.form1 {
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 10px;
+    background-color: #70B85D;
+}
+
+.form1 > form > label {
+    margin-right: .5rem;
+}
+
+.form1 > input {
+    border-radius: 100px;
+    border: 1px solid black;
+    margin-block: 10px;
+    display: block;
+    height: 2rem;
+    text-indent: 10px;
+}
+
+.form1[input="submit"] {
+    padding: 1.5rem;
+}

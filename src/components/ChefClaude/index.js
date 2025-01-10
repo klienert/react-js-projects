@@ -2,6 +2,13 @@ import React from "react";
 import "./styles.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
+// import OnClickPractice from "./components/OnClickPractice";
+// import State1 from "./components/State1";
+// import State2 from "./components/State2";
+// import TernaryPractice from "./components/TernaryPractice";
+// import State3 from "./components/State3";
+// import ComplexStateObj from "./components/ObjPractice1";
+// import Form1 from "./components/Form1";
 
 const ChefClaude = () => {
 
@@ -9,6 +16,13 @@ const ChefClaude = () => {
         <section className="chef-claude">
             <Header />
             <Main />
+            {/* <OnClickPractice /> */}
+            {/* <State1 /> */}
+            {/* <State2 /> */}
+            {/* <TernaryPractice /> */}
+            {/* <State3 /> */}            
+            {/* <ComplexStateObj /> */}
+            {/* <Form1 /> */}
         </section>
     )
 }
