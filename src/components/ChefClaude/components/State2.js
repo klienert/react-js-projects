@@ -1,14 +1,11 @@
 import React, { useState } from "react";
+import Count from "./Count"
 
 export default function State2() {
 
     const [count, setCount] = useState(0);
     
     const increment = () => {
-        // one way:
-        setCount(count + 1); // this does not work with the previous value of count
-
-        // another way (using a callback function);
         setCount(prevCount => prevCount + 1); 
                
     }
@@ -16,6 +13,8 @@ export default function State2() {
     const decrement = () => {
         setCount(prevCount => prevCount - 1);
     }
+
+    // console.log('State2 (main) rendered');
 
     return (
         <section className="state2">
@@ -26,7 +25,8 @@ export default function State2() {
                     aria-label="Decrease count"
                     onClick={decrement}
                 >-</button>
-                <h2 className="state2-count">{count}</h2>
+                {/* <h2 className="state2-count">{count}</h2> */}
+                <Count number={count}/>
                 <button 
                     className="state2-plus" 
                     aria-label="Increase count"

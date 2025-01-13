@@ -38,9 +38,7 @@ const Form1 = () => {
             ...data,
             dietaryRestrictions: diet
         }
-
         console.log(allData);
-
     }
 
 
