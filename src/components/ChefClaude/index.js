@@ -8,7 +8,7 @@ import Main from "./components/Main";
 // import TernaryPractice from "./components/TernaryPractice";
 // import State3 from "./components/State3";
 // import ComplexStateObj from "./components/ObjPractice1";
-// import Form1 from "./components/Form1";
+import Form1 from "./components/Form1";
 
 const ChefClaude = () => {
 
@@ -22,7 +22,7 @@ const ChefClaude = () => {
             {/* <TernaryPractice /> */}
             {/* <State3 /> */}            
             {/* <ComplexStateObj /> */}
-            {/* <Form1 /> */}
+            <Form1 />
         </section>
     )
 }

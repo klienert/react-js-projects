@@ -312,13 +312,20 @@
     margin-bottom: 1rem;
     padding: 10px;
     background-color: #70B85D;
+    width: 33%;
 }
 
-.form1 > form > label {
-    margin-right: .5rem;
+.form1-form {
+    padding-inline: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.form1 > input {
+.form1-form label {    
+    margin: 0 .5rem .25rem 0;
+}
+
+.form1-form > input[type="email"], input[type= "password"] {
     border-radius: 100px;
     border: 1px solid black;
     margin-block: 10px;
@@ -327,6 +334,17 @@
     text-indent: 10px;
 }
 
-.form1[input="submit"] {
-    padding: 1.5rem;
+.form1-form > input[type="checkbox"], form1> input[type="radio"] {
+    margin-right: 10px;
+}
+
+.form1-form > textarea {
+    margin-bottom: 1.25rem;
+}
+
+.form1-fieldset {
+    border: 1px solid #262626;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }

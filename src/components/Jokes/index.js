@@ -7,10 +7,11 @@ import jokesData from "./jokesData";
 const Jokes = () => {
     
     const jokeElements = jokesData.map((joke) => { // a joke object
-        return <Joke 
+        return <Joke
+                key={joke.id} 
                 setup={joke.setup}
                 punchline={joke.punchline}                
-               ><small>Test</small></Joke>
+               ></Joke>
     });
 
     return (
