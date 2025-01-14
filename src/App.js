@@ -34,7 +34,7 @@ import Wordle from './components/wordle';
 // import ReviewMaps from './components/MapReview';
 // import Contacts from './components/Contacts';
 // import Jokes from './components/Jokes';
-import MemeGenerator from './components/memeGenerator';
+// import MemeGenerator from './components/memeGenerator';
 import ChefClaude from './components/ChefClaude';
 
 

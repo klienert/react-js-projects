@@ -4,9 +4,13 @@ import padsData from '../pads';
 const SoundPads = () => {
     
     const [pads, setPads] = useState(padsData);
+    const styles = {
+        backgroundColor: "red"
+    }
 
     const buttonElements = pads.map(pad => (
         <button
+            style={styles}
             key={pad.id}
             className="pad-btn"
         >X
