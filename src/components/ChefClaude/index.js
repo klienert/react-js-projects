@@ -25,7 +25,7 @@ const ChefClaude = () => {
             {/* <State3 /> */}
             {/* <ComplexStateObj /> */}
             {/* <Form1 /> */}
-            <SoundPads />
+            {/* <SoundPads darkMode={true}/> */}
         </section>
     )
 }
