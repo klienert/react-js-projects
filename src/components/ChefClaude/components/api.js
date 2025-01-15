@@ -27,7 +27,6 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
         ],
         system: SYSTEM_PROMPT
     });
-    // console.log(ingredientsString);
     // console.log(msg);
     return msg.content[0].text;
 }

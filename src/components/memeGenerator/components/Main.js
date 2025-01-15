@@ -21,9 +21,9 @@ const Main = () => {
                 <button>Get a new meme image 🖼</button>
             </div>
             <div className="meme-gen-meme">
-                {/* <img src="" /> */}
-                <span className="top">topText</span>
-                <span className="bottom">botText</span>
+                <img src="http://i.imgflip.com/1bij.jpg" alt="meme image" />
+                <span className="top">One does not simply</span>
+                <span className="bottom">walk into mordor</span>
             </div>
         </aside>
     )

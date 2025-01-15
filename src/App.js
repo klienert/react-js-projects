@@ -34,7 +34,7 @@ import Wordle from './components/wordle';
 // import ReviewMaps from './components/MapReview';
 // import Contacts from './components/Contacts';
 // import Jokes from './components/Jokes';
-// import MemeGenerator from './components/memeGenerator';
+import MemeGenerator from './components/memeGenerator';
 import ChefClaude from './components/ChefClaude';
 
 
@@ -58,9 +58,9 @@ function App() {
           <div className='col-8'>
             <CurrentWeather />
           </div>
-          <div className='col-4'>
+          {/* <div className='col-4'>
             <Counter/>
-          </div>
+          </div> */}
         </div>        
         {/* <div className='row mx-auto no-wrap'>
           <RandomQuoteGenerator />
@@ -89,9 +89,9 @@ function App() {
         <div className='row mx-auto no-wrap'>
           <ChefClaude />
         </div>
-        {/* <div className='row mx-auto no-wrap'>
+        <div className='row mx-auto no-wrap'>
           <MemeGenerator />
-        </div> */}
+        </div>
       </div>
     </div>
   );

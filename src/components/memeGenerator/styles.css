@@ -23,8 +23,9 @@
     padding: 2.5rem;
 }
 
-.meme-gen-header > img {
-    height: 100%;
+.meme-gen-header-icon {
+    max-width: 100%;
+    height: auto;
     margin-right: .5rem;
 }
 
