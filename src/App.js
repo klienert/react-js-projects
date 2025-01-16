@@ -86,12 +86,12 @@ function App() {
         {/* <div className='row mx-auto no-wrap'>
           <ReviewMaps />
         </div> */}
-        <div className='row mx-auto no-wrap'>
+        {/* <div className='row mx-auto no-wrap'>
           <ChefClaude />
-        </div>
-        <div className='row mx-auto no-wrap'>
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
           <MemeGenerator />
-        </div>
+        </div> */}
       </div>
     </div>
   );
