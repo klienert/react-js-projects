@@ -1,5 +1,5 @@
 
-const Die = ( {value} ) => {
+const Die = ( {value, isHeld, id} ) => {
 
     return (
         <button>{value}</button>
