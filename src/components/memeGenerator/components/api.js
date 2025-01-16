@@ -4,7 +4,7 @@ import React,{ useEffect } from "react";
 const memeUrl = 'https://api.imgflip.com/get_memes';
 
 
-const getRandomImage = () => {
+export const getRandomImage = async () => {
 
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);

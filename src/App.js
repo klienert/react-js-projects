@@ -36,7 +36,8 @@ import Wordle from './components/wordle';
 // import Jokes from './components/Jokes';
 import MemeGenerator from './components/memeGenerator';
 import ChefClaude from './components/ChefClaude';
-
+import UsingUseEffect from './components/useEffect';
+import Tenzies from './components/Tenzies';
 
 function App() {
   
@@ -86,11 +87,17 @@ function App() {
         {/* <div className='row mx-auto no-wrap'>
           <ReviewMaps />
         </div> */}
-        <div className='row mx-auto no-wrap'>
+        {/* <div className='row mx-auto no-wrap'>
           <ChefClaude />
-        </div>
-        <div className='row mx-auto no-wrap'>
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
           <MemeGenerator />
+        </div> */}
+        {/* <div className='row mx-auto no-wrap'>
+          <UsingUseEffect />
+        </div> */}
+        <div className='row mx-auto no-wrap'>
+          <Tenzies />
         </div>
       </div>
     </div>

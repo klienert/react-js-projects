@@ -107,3 +107,40 @@
 .meme-gen-meme .top {
     top: 0;
 }
+
+/* using useEffect */
+.using-effect {
+    box-sizing: border-box;
+    color: white;
+    padding: 2rem;
+}
+
+.using-effect button {
+    border: none;
+    border-radius: .25rem;
+    padding: .5em 1em;
+    margin-bottom: .5rem;
+}
+
+/* Window Tracker */
+.window-tracker-container {
+    box-sizing: border-box;
+    background-color: #172554;
+    color: #FFF;
+    margin: .125em;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.window-tracker-container button {
+    border: none;
+    border-radius: .125em;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.window-tracker-container h1 {
+    text-align: center;
+}
+

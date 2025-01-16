@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const IngredientsList = ( { ing, showRecipe}) => {
+const IngredientsList = ( { ing, showRecipe, ref}) => {
     
     const ingredientListItems = ing.map(x => (
         <li key={x}>{x}</li>
@@ -12,7 +12,9 @@ const IngredientsList = ( { ing, showRecipe}) => {
             <ul className="ingredients-list" aria-live="polite">{ingredientListItems}</ul>
             {ingredientListItems.length > 3 && 
                 <div className="get-recipe-container">
-                    <div>
+                    <div
+                        ref={ref}
+                    >
                         <h3>Ready for a Recipe?</h3>
                         <p>Generate a recipe from yoru list of ingredients.</p>
                     </div>
