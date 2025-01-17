@@ -38,6 +38,7 @@ import MemeGenerator from './components/memeGenerator';
 import ChefClaude from './components/ChefClaude';
 import UsingUseEffect from './components/useEffect';
 import Tenzies from './components/Tenzies';
+import AssemblyEndgame from './components/AssemblyEndgame';
 
 function App() {
   
@@ -51,24 +52,16 @@ function App() {
           <div className='col-8'>
             <CurrentDate  name={"Keith"} />            
           </div>
-          <div className='col-3'>
-            {/* <DarkModeToggle /> */}
-          </div>          
         </div>
         <div className='row mx-auto no-wrap'>
           <div className='col-8'>
             <CurrentWeather />
           </div>
-          {/* <div className='col-4'>
-            <Counter/>
-          </div> */}
         </div>        
         {/* <div className='row mx-auto no-wrap'>
           <RandomQuoteGenerator />
         </div> */}
-        {/* <div className='row mx-auto no-wrap'>
-          <Calculator />
-        </div> */}
+        
         {/* <div className='row mx-auto no-wrap'>
           <Wordle />
         </div> */}
@@ -80,13 +73,8 @@ function App() {
         </div> */}
         {/* <div className='row mx-auto no-wrap'>
           <Contacts />
-        </div> */}
-        {/* <div className='row mx-auto no-wrap'>
-          <Jokes />
-        </div> */}
-        {/* <div className='row mx-auto no-wrap'>
-          <ReviewMaps />
-        </div> */}
+        </div> */}        
+        
         {/* <div className='row mx-auto no-wrap'>
           <ChefClaude />
         </div> */}
@@ -94,10 +82,10 @@ function App() {
           <MemeGenerator />
         </div> */}
         {/* <div className='row mx-auto no-wrap'>
-          <UsingUseEffect />
+          <Tenzies />
         </div> */}
         <div className='row mx-auto no-wrap'>
-          <Tenzies />
+          <AssemblyEndgame/>
         </div>
       </div>
     </div>
