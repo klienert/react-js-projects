@@ -10,6 +10,7 @@
     "amazon-cognito-identity-js": "^6.3.12",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
+    "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.7",
     "react-confetti": "^6.2.2",

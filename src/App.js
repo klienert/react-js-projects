@@ -61,9 +61,9 @@ function App() {
         {/* <div className='row mx-auto no-wrap'>
           <MemeGenerator />
         </div> */}
-        <div className='row mx-auto no-wrap'>
+        {/* <div className='row mx-auto no-wrap'>
           <Tenzies />
-        </div>
+        </div> */}
         <div className='row mx-auto no-wrap'>
           <AssemblyEndgame/>
         </div>
