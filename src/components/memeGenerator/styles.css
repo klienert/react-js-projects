@@ -1,10 +1,12 @@
 .meme-generator {
     box-sizing: border-box;
     max-width: 100%;    
-    background-color: aliceblue;
+    background-color: #D5D4D8;
     color: black;
     font-family: "Karla", sans-serif;
-    margin: 0;
+    margin-top: 1em;
+    padding: 1em;
+    
     
 }
 

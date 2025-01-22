@@ -3,18 +3,20 @@ import './styles.css';
 import { languages } from './language';
 import clsx from 'clsx';
 import Keyboard from './components/Keyboard';
-import { getFarewellText } from './utils';
+import { getFarewellText, getRandomWord } from './utils';
+import Confetti from "react-confetti";
 
 const AssemblyEndgame = () => {
 
     // state values
-    const [currentWord, setCurrentWord] = useState("react");
+    const [currentWord, setCurrentWord] = useState(() => getRandomWord());
     const [userGuess, setUserGuess] = useState([]);
-    
+        
     // derived values
+    const numGuessesLeft = languages.length - 1;
     const wrongGuessCount = userGuess.filter(letter => !currentWord.includes(letter)).length;
     const isGameWon = currentWord.split("").every(letter => userGuess.includes(letter));
-    const isGameLost = wrongGuessCount >= languages.length - 1;
+    const isGameLost = wrongGuessCount >= numGuessesLeft;
     const lastGuessedLetter = userGuess[userGuess.length -1];
     const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter);    
     
@@ -64,6 +66,9 @@ const AssemblyEndgame = () => {
             <button 
                 key={i}
                 className={className}
+                disabled={isGameOver}
+                aria-disabled={userGuess.includes(x)}
+                aria-label={`Letter ${x.toUpperCase()}`}
                 onClick={ () => addGuessedLetter(x) }
             >{x.toUpperCase()}</button>
         )
@@ -71,11 +76,18 @@ const AssemblyEndgame = () => {
         
     // current word
     const currWord = currentWord.split('').map((x, i) => {
+        const shouldRevealLetter = isGameLost || userGuess.includes(x);
+        const letterClassName = clsx("guess-tile", {
+            missedLetter: isGameLost && !userGuess.includes(x)
+        });
+
         return (
             <li
-                className='guess-tile'
+                className={letterClassName}
                 key={i}
-            >{userGuess.includes(x) ? x.toUpperCase() : ""}
+            >
+                {/* {userGuess.includes(x) ? x.toUpperCase() : ""} */}
+                {shouldRevealLetter ? x.toUpperCase() : ""}
             </li>
         )
     })
@@ -91,13 +103,18 @@ const AssemblyEndgame = () => {
             if (isGameWon) {
                 return (
                     <>
+                    <Confetti 
+                        recycle={false}
+                        numberOfPieces={2000}
+                    />
                     <h2>You win!</h2><p>Well done! 🎉</p>
                     </>
                 )            
             } else if (isGameLost) {
                 return (
                     <>
-                    <h2>Game Over!</h2><p>You Lost. Better start learning Assembly</p>
+                    <h2>Game Over!</h2>
+                    <p>You Lost. Better start learning Assembly</p>
                     </>
                     )
             } else {
@@ -113,7 +130,7 @@ const AssemblyEndgame = () => {
     }
 
     const newGame = () => {
-        setCurrentWord('react');
+        setCurrentWord(()=> getRandomWord());
         setUserGuess([]);
     }
 
@@ -123,7 +140,11 @@ const AssemblyEndgame = () => {
                 <h2>Assembly: Endgame</h2>
                 <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
             </div>
-            <div className={gameStatusClass}>
+            <div 
+                className={gameStatusClass}
+                aria-live="polite"
+                role="status"
+            >
                 {gameStatus()}    
             </div>
             <div className='assembly-lang-tiles'>
@@ -135,6 +156,22 @@ const AssemblyEndgame = () => {
                 <ul>
                     {currWord}
                 </ul>
+            </div>
+            <div 
+                className="sr-only"
+                aria-live="polite"
+                role="status"
+            >
+                <p>
+                    {currentWord.includes(lastGuessedLetter) ?
+                        `Correct! The letter ${lastGuessedLetter} is in the word` :
+                        `Incorrect, the letter ${lastGuessedLetter} is not in the word.`
+                    }
+                    You have {numGuessesLeft} attempts left.
+                </p>
+                <p>Current Word: {currentWord.split("").map(letter => userGuess.includes(letter) ? letter + "." : "blank").join(" ") }
+                </p>
+
             </div>
             <div className='assembly-keyboard'>
                 {keyboardElements}

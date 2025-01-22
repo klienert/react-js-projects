@@ -6,7 +6,7 @@ import CurrentDate from './components/date';
 // import TicTacToe from './components/tic-tac-toe';
 // import Todo from './components/todoList/Todo';
 import CurrentWeather from './components/weatherAPI/currentWeather';
-import RandomQuoteGenerator from './components/RandomQuote/index';
+// import RandomQuoteGenerator from './components/RandomQuote/index';
 // import Calculator from './components/calculator';
 // import Wordle from './components/wordle';
 // import StaticPage from './components/static_pages';
@@ -14,7 +14,7 @@ import RandomQuoteGenerator from './components/RandomQuote/index';
 // import ReviewMaps from './components/MapReview';
 // import Contacts from './components/Contacts';
 // import Jokes from './components/Jokes';
-import MemeGenerator from './components/memeGenerator';
+// import MemeGenerator from './components/memeGenerator';
 import ChefClaude from './components/ChefClaude';
 // import UsingUseEffect from './components/useEffect';
 import Tenzies from './components/Tenzies';
@@ -53,19 +53,21 @@ function App() {
         </div> */}
         {/* <div className='row mx-auto no-wrap'>
           <Contacts />
-        </div> */}        
+        </div>         */}
         
-        {/* <div className='row mx-auto no-wrap'>
+        <div className='row mx-auto no-wrap'>
           <ChefClaude />
-        </div> */}
+        </div>
         {/* <div className='row mx-auto no-wrap'>
           <MemeGenerator />
         </div> */}
-        {/* <div className='row mx-auto no-wrap'>
-          <Tenzies />
-        </div> */}
         <div className='row mx-auto no-wrap'>
-          <AssemblyEndgame/>
+          <div className='col-6'>
+            <Tenzies />
+          </div>
+          <div className='col-6'>
+            <AssemblyEndgame />
+          </div>
         </div>
       </div>
     </div>
