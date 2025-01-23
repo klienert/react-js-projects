@@ -139,8 +139,8 @@
 }
 
 .assembly-keyboard > button {
-    height: 1.75rem;
-    width: 1.75rem;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './styles.css';
 import { languages } from './language';
 import clsx from 'clsx';
-import Keyboard from './components/Keyboard';
 import { getFarewellText, getRandomWord } from './utils';
 import Confetti from "react-confetti";
 
