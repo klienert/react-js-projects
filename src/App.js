@@ -62,10 +62,10 @@ function App() {
           <MemeGenerator />
         </div> */}
         <div className='row mx-auto no-wrap'>
-          <div className='col-6'>
+          <div className='col'>
             <Tenzies />
           </div>
-          <div className='col-6'>
+          <div className='col'>
             <AssemblyEndgame />
           </div>
         </div>

@@ -2,22 +2,35 @@ import { useState } from 'react';
 import './styles.css';
 import { languages } from './language';
 import clsx from 'clsx';
-import { getFarewellText, getRandomWord } from './utils';
+import { getFarewellText, getRandomPhrase, getRandomWord } from './utils';
 import Confetti from "react-confetti";
 
 const AssemblyEndgame = () => {
+    const test = {category: 'testing', phrase:'JUST CHECKING IN'};
 
     // state values
     const [currentWord, setCurrentWord] = useState(() => getRandomWord());
+    // const [currentSentence, setCurrentSentence] = useState(()=> getRandomPhrase());
+    const [currentSentence, setCurrentSentence] = useState(test);
     const [userGuess, setUserGuess] = useState([]);
-        
+    const [gameMode, setGameMode] = useState(false);
+    
+    const currSentenceArray = currentSentence.phrase.split(' '); // array of words    
+    const currSentenceOneWord = currSentenceArray.reduce((res, word) => res += word.trim(), '');
+    
+    
     // derived values
-    const numGuessesLeft = languages.length - 1;
+    const numGuessesLeft = gameMode ? languages.length - 1 : currSentenceArray.reduce((total, word) => total + word.length, 0);
     const wrongGuessCount = userGuess.filter(letter => !currentWord.includes(letter)).length;
-    const isGameWon = currentWord.split("").every(letter => userGuess.includes(letter));
+    // const isGameWon = currentWord.split("").every(letter => userGuess.includes(letter));
+    const isGameWon = gameMode ? currentWord.split("").every(letter => userGuess.includes(letter)) :
+                                currSentenceOneWord.split("").every(letter => userGuess.includes(letter));
     const isGameLost = wrongGuessCount >= numGuessesLeft;
     const lastGuessedLetter = userGuess[userGuess.length -1];
-    const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter);    
+    const isLastGuessIncorrect = gameMode ?
+        lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
+        :
+        lastGuessedLetter && !currSentenceOneWord.includes(lastGuessedLetter);
     
     const isGameOver = isGameWon || isGameLost;
 
@@ -53,8 +66,8 @@ const AssemblyEndgame = () => {
     // keyboard
     const keyboardElements = letters.split('').map((x, i) => {
         const isGuessed = userGuess.includes(x);
-        const isCorrect = isGuessed && currentWord.includes(x);
-        const isWrong = isGuessed && !currentWord.includes(x);
+        const isCorrect = gameMode ? isGuessed && currentWord.includes(x) : isGuessed && currSentenceOneWord.includes(x);
+        const isWrong = gameMode ? isGuessed && !currentWord.includes(x) : isGuessed && !currSentenceOneWord.includes(x);               
         
         const className = clsx({
             keyboard_key_correct: isCorrect,
@@ -90,6 +103,27 @@ const AssemblyEndgame = () => {
             </li>
         )
     })
+
+    // current phrase
+    const currPhrase = currentSentence.phrase.split(' ').forEach((word, count) => {
+        // console.log(count); // num of word (0-based counting) -- this the number of 'spaces' required between words
+        word.split('').map((letter, i) => {
+            // console.log(letter);
+            const shouldRevealLetter = isGameLost || userGuess.includes(letter);
+            const letterClassName = clsx("guess-tile", {
+                missedLetter: isGameLost && !userGuess.includes(letter)
+            });
+            return (
+                <li
+                    className={letterClassName}
+                    key={i}
+                >
+                    {shouldRevealLetter ? letter.toUpperCase(): ""}
+                </li>
+            )
+        })
+    })
+
 
     const gameStatusClass = clsx("assembly-game-status", {
         won: isGameWon,
@@ -130,14 +164,23 @@ const AssemblyEndgame = () => {
 
     const newGame = () => {
         setCurrentWord(()=> getRandomWord());
+        setCurrentSentence(() => getRandomPhrase());
         setUserGuess([]);
     }
+
+    // const toggleGameMode = () => {
+    //     setGameMode((prevMode) => {
+    //         const newMode = !prevMode;
+            
+    //         return newMode;
+    //     })        
+    // }
 
     return (
         <section className="assembly-container">
             <div className='assembly-title'>
                 <h2>Assembly: Endgame</h2>
-                <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
+                <p>Guess the word (or sentence) in under 8 attempts to keep the programming world safe from Assembly!</p>
             </div>
             <div 
                 className={gameStatusClass}
@@ -146,18 +189,30 @@ const AssemblyEndgame = () => {
             >
                 {gameStatus()}    
             </div>
+            {/* <div className='assembly-toggle'>
+                <label className="assembly-switch">
+                    <input 
+                        type="checkbox"
+                        aria-label="game mode switch"
+                        onChange={toggleGameMode}
+                    />
+                    <span className="assembly-slider"></span>
+                </label>
+            </div> */}
             <div className='assembly-lang-tiles'>
                 <ul>                
                     {langArr}
                 </ul>
             </div>
+            {/* create a button to switch between currWord and currSentence */}
             <div className='assembly-guess-tiles'>
                 <ul>
                     {currWord}
+                    {/* {currPhrase} */}
                 </ul>
             </div>
             <div 
-                className="sr-only"
+                className="assembly-sr-only"
                 aria-live="polite"
                 role="status"
             >

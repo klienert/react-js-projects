@@ -1,8 +1,19 @@
+import { statements } from './wheel';
 import { words } from './words';
 
 export function getRandomWord() {
     const randomIndex = Math.floor(Math.random() * words.length);
     return words[randomIndex];
+}
+
+/**
+ * 
+ * @returns an object with a category and a phrase
+ */
+export function getRandomPhrase() {
+    const randomIndex = Math.floor(Math.random() * statements.length);
+    // console.log(statements[randomIndex]);
+    return statements[randomIndex];
 }
 
 export function getFarewellText(language) {
