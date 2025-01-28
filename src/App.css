@@ -14,11 +14,27 @@ body {
   color: var(--body-color);
 }
 
-.App {
+.container {
+  width: 100%;
+}
+
+.nav-bar {
+  display:flex;
+  flex-direction: column;
+  margin: 1em;
+  padding: .5em;
   
 }
 
-.container {
-  width: 100%;
-  max-width: fit-content;
+.nav-bar a {
+  text-decoration: none;
+  color: #DDD;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.nav-bar a:hover {
+  opacity: .5;
 }

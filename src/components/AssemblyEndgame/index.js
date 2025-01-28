@@ -2,21 +2,16 @@ import { useState } from 'react';
 import './styles.css';
 import { languages } from './language';
 import clsx from 'clsx';
-import { getFarewellText, getRandomPhrase, getRandomWord } from './utils';
+import { getFarewellText, getRandomWord } from './utils';
 import Confetti from "react-confetti";
 
 const AssemblyEndgame = () => {
 
 
     // state values
-    const [currentWord, setCurrentWord] = useState(() => getRandomWord());
-    const [currentSentence, setCurrentSentence] = useState(()=> getRandomPhrase());
+    const [currentWord, setCurrentWord] = useState(() => getRandomWord());    
     const [userGuess, setUserGuess] = useState([]);
-    
-    const currSentenceArray = currentSentence.phrase.split(' '); // array of words    
-    const currSentenceOneWord = currSentenceArray.reduce((res, word) => res += word.trim(), '');
-    
-    
+        
     // derived values
     const numGuessesLeft = languages.length - 1;
     const wrongGuessCount = userGuess.filter(letter => !currentWord.includes(letter)).length;
@@ -135,7 +130,6 @@ const AssemblyEndgame = () => {
 
     const newGame = () => {
         setCurrentWord(()=> getRandomWord());
-        setCurrentSentence(() => getRandomPhrase());
         setUserGuess([]);
     }
 
@@ -143,7 +137,7 @@ const AssemblyEndgame = () => {
         <section className="assembly-container">
             <div className='assembly-title'>
                 <h2>Assembly: Endgame</h2>
-                <p>Guess the word (or sentence) in under 8 attempts to keep the programming world safe from Assembly!</p>
+                <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
             </div>
             <div 
                 className={gameStatusClass}

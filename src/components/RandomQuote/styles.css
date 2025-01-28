@@ -1,34 +1,39 @@
-#wrapper {
-    position: relative;
-    z-index: 2;
+.gt-quote-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #921d1d;
+    width: 50em;
 }
 
-.quote-author {
-    width: 450px;
-    height: auto;
-    clear: both;
-    padding-top: 20px;
-    font-size: 1em;
-    text-align: right;
+.gt-quote-box {
+    border-radius: .5rem;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .quote-text {
-    text-align: center;
     font-weight: 500;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
-#quote-box {
-    border-radius: 3px;
-    width: 450px;
-    padding: 40px 50px;
-    display: table;
-    background-color: #eee;
+.quote-author {
+    padding-top: 20px;
+    font-size: 1em;    
 }
 
-.buttons {
-    width: 450px;
-    margin: auto;
-    display: block;
+.gt-footer {
+    display: flex;
+    flex-direction: row;
+    margin: 1em 3em;
+    justify-content: end;
+    padding: 1em;
 }
 
+.gt-footer > button {
+    padding: .5rem;
+    font-size: 1.25rem;
+}

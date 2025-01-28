@@ -26,24 +26,20 @@ export default class RandomQuoteGenerator extends React.Component {
             .catch((err) => {
                 console.error(err);
             })
-    }
-   
+    };
     
     render() {
         return (
-            <div id="wrapper">
-                <div id="quote-box">
+            <div className='gt-quote-container'>
+                <div className="gt-quote-box">
                     <div className="quote-text">{this.state.quote}</div>
                     <div className="quote-author">- {this.state.author}</div>
-                    <div className="buttons">
-                        <button 
-                            className="button" 
-                            id="new-quote"
-                            onClick={this.fetchQuote}
-                        >New Quote</button>
-                    </div>
                 </div>
-                <div className="footer"></div>
+                <div className="gt-footer">
+                    <button                        
+                        onClick={this.fetchQuote}
+                    >New Quote</button>
+                </div>
             </div>
         )
     }    
