@@ -5,6 +5,7 @@ import CurrentWeather from './components/weatherAPI/currentWeather';
 import ChefClaude from './components/ChefClaude';
 import Tenzies from './components/Tenzies';
 import AssemblyEndgame from './components/AssemblyEndgame';
+import MenuNav from './components/MenuChildren/index'
 
 function App() {
 
@@ -21,11 +22,19 @@ function App() {
               </div>
           </div>          
           <div className='col-3'>
-            <div className="row nav-bar">
+            {/* <div className="row nav-bar">
               <Link to="/">Home</Link>
               <Link to="/ai">Chef Claude</Link>
               <Link to="/tenzies">Tenzies</Link>
               <Link to="/assembly">Assembly Endgame</Link>              
+            </div> */}
+            <div className="row nav-bar">
+              <MenuNav menuDetails={ [
+                  {to: "/", name: "Home"},
+                  {to: "/ai", name: "Chef Claude"}, 
+                  {to: "/tenzies", name: "Tenzies"},
+                  {to: "/assembly", name: "Assembly Endgame"}
+                ] }/>
             </div>
           </div>
         </div>
