@@ -21,8 +21,20 @@ body {
 .nav-bar {
   display:flex;
   flex-direction: column;
-  margin: 1em;
-  padding: .5em;
+  padding: 1rem;  
+}
+
+.nav-bar-menu button {
+  padding: .25rem;  
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: .125rem;
+}
+
+.nav-bar-menu button:hover {
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0);
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
   
 }
 

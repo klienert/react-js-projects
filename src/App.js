@@ -5,7 +5,8 @@ import CurrentWeather from './components/weatherAPI/currentWeather';
 import ChefClaude from './components/ChefClaude';
 import Tenzies from './components/Tenzies';
 import AssemblyEndgame from './components/AssemblyEndgame';
-import MenuNav from './components/MenuChildren/index'
+import MenuNav from './components/MenuChildren/index';
+import ThemeExample from './components/ThemeEx/index';
 
 function App() {
 
@@ -33,7 +34,8 @@ function App() {
                   {to: "/", name: "Home"},
                   {to: "/ai", name: "Chef Claude"}, 
                   {to: "/tenzies", name: "Tenzies"},
-                  {to: "/assembly", name: "Assembly Endgame"}
+                  {to: "/assembly", name: "Assembly Endgame"},
+                  {to: "/theme", name: "Theme Change"}
                 ] }/>
             </div>
           </div>
@@ -41,7 +43,8 @@ function App() {
         <Routes>
           <Route path="/ai" element={<ChefClaude/>} />
           <Route path="/tenzies" element={<Tenzies />} />
-          <Route path="/assembly" element={<AssemblyEndgame />} />          
+          <Route path="/assembly" element={<AssemblyEndgame />} />
+          <Route path="/theme" element={<ThemeExample />} />
         </Routes>
       </div>      
     </BrowserRouter>

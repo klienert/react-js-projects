@@ -5,6 +5,7 @@ import MenuDropDown from "./Menu/MenuDropDown";
 import MenuItem from "./Menu/MenuItem";
 
 
+
 const MenuNav = ({ menuDetails }) => {
     
     const sports= ["Tennis", "Pickleball", "Racquetball", "Squash"]
@@ -13,12 +14,6 @@ const MenuNav = ({ menuDetails }) => {
         <Menu>
             <MenuButton>Menu</MenuButton>
             <MenuDropDown>
-                {/* {sports.map(s => {
-                    return (
-                        <MenuItem key={linkTo}>{linkName}</MenuItem>
-                    )
-                })} */}
-
                 {menuDetails.map(x => {
                     return (
                         <MenuItem 
