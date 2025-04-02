@@ -1,0 +1,38 @@
+/* Toggle Comp CSS */
+
+.toggle-comp {
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .75rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.toggle-star {
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+    transition: color .5s ease-in-out;
+    user-select: none;
+    color: #FFF;
+}
+
+.toggle-star.filled {
+    color: orange;
+}
+
+.toggle-box {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color .3s ease-in-out;
+}
+
+.toggle-box-filled {
+    background-color: blue;
+}
