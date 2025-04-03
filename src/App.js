@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import CurrentDate from './components/date';
 import CurrentWeather from './components/weatherAPI/currentWeather';
@@ -7,7 +7,10 @@ import Tenzies from './components/Tenzies';
 import AssemblyEndgame from './components/AssemblyEndgame';
 import MenuNav from './components/MenuChildren/index';
 import ThemeExample from './components/ThemeEx/index';
-import ToggleComp from './components/ToggleComp';
+import SnakeGame from './components/Snake/Game';
+// import Wordle from './components/Wordle';
+// import Wordle from './components/OLD_wordle';
+// import ToggleComp from './components/ToggleComp';
 
 
 function App() {
@@ -32,7 +35,8 @@ function App() {
                   {to: "/tenzies", name: "Tenzies"},
                   {to: "/assembly", name: "Assembly Endgame"},
                   {to: "/theme", name: "Theme Change"},
-                  {to: "/toggle", name: "Toggle"}
+                  {to: "/snake", name: "Snake Game"},
+                  // {to: "/wordle", name: "Wordle"}
                 ] }/>
             </div>
           </div>
@@ -45,7 +49,8 @@ function App() {
           <Route path="/tenzies" element={<Tenzies />} />
           <Route path="/assembly" element={<AssemblyEndgame />} />
           <Route path="/theme" element={<ThemeExample />} />
-          <Route path="/toggle" element={<ToggleComp />} />
+          <Route path="/snake" element={<SnakeGame />} />
+          {/* <Route path="/wordle" element={<Wordle />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

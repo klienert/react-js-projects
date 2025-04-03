@@ -1,0 +1,141 @@
+:root {
+    --correct: #528d4e;
+    --almost: #b49f39;
+}
+
+
+
+.wordle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid antiquewhite;
+    margin: 1rem 0 1rem;
+    padding: 1rem;
+}
+
+.wordle-title {
+    height: 60px;
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid grey;
+    display: grid;
+    place-items: center;
+}
+
+.wordle-title h2 {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.game {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 3rem 3rem;
+    flex-direction: column;
+}
+
+.wordle-board {
+    width: 450px;
+    height: 550px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+}
+
+.wordle-board-row {
+    flex: 33%;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.wordle-letter {
+    flex: 33%;
+    height: 100%;
+    border: 1px solid grey;
+    margin: 5px;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#correct { background-color: var(--correct); }
+
+#almost { background-color: var(--almost); }
+
+#error { background-color: #3a393c; }
+
+.keyboard {
+    width: 700px;
+    height: 300px;
+    margin-top: 60px;
+}
+
+.line1 {
+    flex: 33%;
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+.line2 {
+    flex: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px;
+}
+.line3 {
+    flex: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px;
+}
+
+.key {
+    width: 4rem;
+    height: 70px;
+    margin: 5px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+    background-color: grey;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.big { width: 8rem; }
+
+.disabled { background-color: #3a393c; }
+
+#big { width: 8rem; }
+
+#disabled { background-color: #3a393c; }
+
+.correct { background-color: #528d4e; }
+
+.gameOver {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameOver h3 { font-size: 2rem; }
+
+.gameOver h4 { font-size: 1.75rem;}
+
+.correctWord { color: var(--correct); }
+.incorrectWord { color: var(--almost); }
