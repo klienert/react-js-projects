@@ -48,7 +48,7 @@ const Snake = ({ snake, setSnake, direction, food, setFood, setScore }) => {
 
         const interval = setInterval(moveSnake, 300);
         return () => clearInterval(interval);
-    }, [snake, direction, food, setFood, setSnake]);
+    }, [snake, direction, food, setFood, setSnake, setScore]);
 
     return null;
 }

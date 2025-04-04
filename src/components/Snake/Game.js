@@ -29,7 +29,8 @@ const Game = () => {
         setSnake([{x: 10, y: 10}]);
         setDirection("RIGHT");
         setFood({ x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20)});
-        setIsGameOver(false);
+        setIsGameOver(true);
+        setIsPlaying(false);
         setScore(0);
     }
 
