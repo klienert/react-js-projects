@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-const Snake = ({ snake, setSnake, direction, food, setFood }) => {
+const Snake = ({ snake, setSnake, direction, food, setFood, setScore }) => {
+
     useEffect(() => {
         const moveSnake = () => {
             let newSnake = [...snake];
@@ -8,7 +9,7 @@ const Snake = ({ snake, setSnake, direction, food, setFood }) => {
 
             switch (direction) {
                 case "UP":
-                    head.y -= 1;
+                    head.y -= 1;                    
                     break;
                 case "DOWN":
                     head.y += 1;
@@ -20,7 +21,7 @@ const Snake = ({ snake, setSnake, direction, food, setFood }) => {
                     head.x -= 1;
                     break;
                 default:
-                    return;
+                    break;
             }
 
             // Collision?
@@ -37,6 +38,8 @@ const Snake = ({ snake, setSnake, direction, food, setFood }) => {
             // Check if food is eaten
             if (head.x === food.x && head.y === food.y) {
                 setFood({ x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20)});
+                // increase score
+                setScore((prev) => prev + 1);
             } else {
                 newSnake.pop(); // removes tail if no food eaten
             }

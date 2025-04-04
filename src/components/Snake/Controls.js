@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 const Controls = ({ setDirection, direction }) => {
-
+    
     useEffect(() => {
         const handleKeyDown = (event) => {
-            switch (event.key) {
+            switch (event.key) {                
                 case "ArrowUp":
                     if (direction !== "DOWN") setDirection("UP");
                     break;
@@ -24,8 +24,7 @@ const Controls = ({ setDirection, direction }) => {
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [setDirection]);
-
+    }, [direction, setDirection]);
     return null;
 }
 

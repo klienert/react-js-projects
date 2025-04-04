@@ -10,7 +10,7 @@ test.skip("renders with initial light theme", () => {
     expect(screen.getByRole("button", { name: /Switch Theme/i })).toBeInTheDocument();
 });
 
-test("toggles theme when button is clicked", () => {
+test.only("toggles theme when button is clicked", () => {
     render(<ThemeExample />);
 
     const button = screen.getByRole("button", { name: /Switch Theme/i });

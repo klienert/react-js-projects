@@ -1,11 +1,10 @@
 import React from "react";
 
-const ScoreBar = () => {
+const ScoreBar = ({ score }) => {
 
     return (
         <div className="snake-score-bar">
-            <h3>000</h3>
-            <h3>000</h3>
+            <h3>{score}</h3>
         </div>
     )
 }
