@@ -38,7 +38,7 @@ const Letter = ({ letterPos, attemptVal }) => {
         "pos":letterPos,
         "attempt":attemptVal
     };
-    console.log(letterArr);
+    // console.log(letterArr);
 
     const letterState =
         currAttempt.attempt > attemptVal &&

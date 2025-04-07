@@ -50,3 +50,10 @@
 }
 
 .food { background-color: red; }
+
+.snake-score-game-over {
+    color: red;
+    font-weight: 800;
+}
+
+.hidden { display: none; }

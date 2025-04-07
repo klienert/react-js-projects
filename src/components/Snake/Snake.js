@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Snake = ({ snake, setSnake, direction, food, setFood, setScore }) => {
+const Snake = ({ snake, setSnake, direction, food, setFood, setScore, score, speed, setCollision }) => {
 
     useEffect(() => {
         const moveSnake = () => {
@@ -29,6 +29,7 @@ const Snake = ({ snake, setSnake, direction, food, setFood, setScore }) => {
                 head.x < 0 || head.y < 0 || 
                 head.x >= 20 || head.y >= 20 || 
                 newSnake.some(seg => seg.x === head.x && seg.y === head.y)) {
+                setCollision(true);
                 return;
             }
 
@@ -46,9 +47,14 @@ const Snake = ({ snake, setSnake, direction, food, setFood, setScore }) => {
             setSnake(newSnake);
         };
 
-        const interval = setInterval(moveSnake, 300);
+        // console.log(`Speed: ${speed}`);
+        // // sets the speed
+        // if (score > 2) {
+        //     setSpeed((prev) => speed - 5);
+        // }
+        const interval = setInterval(moveSnake, speed);
         return () => clearInterval(interval);
-    }, [snake, direction, food, setFood, setSnake, setScore]);
+    }, [snake, setSnake, direction, food, setFood, setScore, score, speed, setCollision]);
 
     return null;
 }
