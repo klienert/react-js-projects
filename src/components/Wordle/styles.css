@@ -1,9 +1,8 @@
 :root {
     --correct: #528d4e;
     --almost: #b49f39;
+    --disable: #3a393c;
 }
-
-
 
 .wordle-container {
     display: flex;
@@ -72,7 +71,7 @@
 
 #almost { background-color: var(--almost); }
 
-#error { background-color: #3a393c; }
+#error { background-color: var(--disable); }
 
 .keyboard {
     width: 700px;
@@ -119,13 +118,13 @@
 
 .big { width: 8rem; }
 
-.disabled { background-color: #3a393c; }
+.disabled { background-color: var(--disable); }
 
 #big { width: 8rem; }
 
-#disabled { background-color: #3a393c; }
+#disabled { background-color: var(--disable); }
 
-.correct { background-color: #528d4e; }
+.correct { background-color: var(--correct); }
 
 .gameOver {
     display: flex;

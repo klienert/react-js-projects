@@ -18,6 +18,7 @@ export const generateWordSet = async () => {
     let todaysWord;
     let wordArr;
     let guessArr;
+    let letterCount = {};
 
     await fetch(wordBank) 
         .then((resp) => resp.text())
@@ -36,8 +37,15 @@ export const generateWordSet = async () => {
         wordSet = new Set([...wordArr, ...guessArr]);
     }
 
+    
+    const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    
+    for (let c of todaysWord.toUpperCase()) {
+        letterCount[c] = (letterCount[c] || 0) + 1;
+    }
+    
     // console.log(todaysWord);
-    // console.log(wordSet);
+    // console.log(letterCount);
 
-    return { wordSet, todaysWord };
+    return { wordSet, todaysWord, letterCount };
 }

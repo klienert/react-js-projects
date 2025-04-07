@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { WordleContext } from "./index";
 
-const Key = ({ keyVal, bigKey, disabled, correct  }) => {
-    const { onDelete, onSelectLetter, onEnter  } = useContext(WordleContext);
+const Key = ({ keyVal, bigKey, disabled, correct, almost }) => {
+    const { onDelete, onSelectLetter, onEnter } = useContext(WordleContext);
 
     const selectLetter = () => {
         if (keyVal === "ENTER") {

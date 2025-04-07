@@ -4,7 +4,7 @@ import { WordleContext } from "./index";
 
 const Keyboard = () => {
 
-    const { onEnter, onDelete, onSelectLetter, disabledLetters } = useContext(WordleContext);
+    const { onEnter, onDelete, onSelectLetter, disabledLetters, letterCount } = useContext(WordleContext);
 
     const keys = [
         ["Q","W","E","R","T","Y","U","I","O","P"], 
@@ -24,7 +24,9 @@ const Keyboard = () => {
                 }
             });
         }
-    }, [onEnter, onDelete, onSelectLetter]);    
+        // console.log(letterCount);
+        // console.log(disabledLetters);
+    }, [onEnter, onDelete, onSelectLetter, letterCount]);    
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyboard);
@@ -38,18 +40,30 @@ const Keyboard = () => {
         <div className="wordle-keyboard" onKeyDown={handleKeyboard}>
             <div className="line1">
                 {keys[0].map((key) => {
-                    return <Key key={key} keyVal={key} disabled={disabledLetters.includes(key)}/>
+                    return <Key 
+                                key={key} 
+                                keyVal={key} 
+                                disabled={disabledLetters.includes(key)}
+                            />
                 })}
             </div>
             <div className="line2">
                 {keys[1].map((key) => {
-                    return <Key key={key} keyVal={key} disabled={disabledLetters.includes(key)}/>
+                    return <Key 
+                                key={key} 
+                                keyVal={key} 
+                                disabled={disabledLetters.includes(key)}
+                            />
                 })}
             </div>
             <div className="line3">
                 <Key key={"ENTER"} keyVal={"ENTER"} bigKey/>
                 {keys[2].map((key) => {
-                    return <Key key={key} keyVal={key} disabled={disabledLetters.includes(key)}/>
+                    return <Key 
+                                key={key} 
+                                keyVal={key} 
+                                disabled={disabledLetters.includes(key)}
+                            />
                 })}
                 <Key key={"BACKSPACE"} keyVal={"←"} bigKey/>
             </div>

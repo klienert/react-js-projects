@@ -9,7 +9,6 @@ import MenuNav from './components/MenuChildren/index';
 import ThemeExample from './components/ThemeEx/index';
 import SnakeGame from './components/Snake/Game';
 import Wordle from './components/Wordle';
-// import Wordle from './components/OLD_wordle';
 // import ToggleComp from './components/ToggleComp';
 
 

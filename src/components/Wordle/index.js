@@ -16,7 +16,8 @@ const Wordle = () => {
     const [wordSet, setWordSet] = useState(new Set());
     const [disabledLetters, setDisabledLetters] = useState([]);
     const [correctLetters, setCorrectLetters] = useState([]);
-    const [correctWord, setCorrectWord] = useState("TIGHT");    
+    const [correctWord, setCorrectWord] = useState("");
+    const [letterCount, setLetterCount] = useState([]);
     const [gameOver, setGameOver] = useState({
         gameOver: false, 
         guessedWord: false});
@@ -24,8 +25,10 @@ const Wordle = () => {
     useEffect(() => {
         generateWordSet().then((words) => {
             setWordSet(words.wordSet);
-            // setCorrectWord(words.todaysWord);
+            setCorrectWord(words.todaysWord);
+            setLetterCount(words.letterCount);
         })
+        console.log(correctWord);
     }, [] );
 
     const onSelectLetter = (keyVal) => {        
@@ -92,7 +95,8 @@ const Wordle = () => {
                     correctLetters,
                     setCorrectLetters,
                     gameOver,
-                    setGameOver
+                    setGameOver, 
+                    letterCount
                 } }>
                 <div className="game">
                     <Board />
