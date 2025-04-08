@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { WordleContext } from "./index";
 
 const Letter = ({ letterPos, attemptVal }) => {
-    
+    // console.log("letter comp rendered");
     const { 
         board, 
         correctWord, 
@@ -21,7 +21,7 @@ const Letter = ({ letterPos, attemptVal }) => {
     // TODO: ReFactor how the correct/almost is configured --> Keyboard and Answer Display
     
     
-    console.log(letterCount);
+    // console.log(letterCount);
     
     // count occurences
     // let letterCounts = {};
@@ -57,16 +57,6 @@ const Letter = ({ letterPos, attemptVal }) => {
             setCorrectLetters((prev) => [...prev, letter]);
         }
         }, [almost, correct, currAttempt.attempt, letter, setDisabledLetters, setCorrectLetters]);
-
-    // useEffect(() => {
-    //     if (letter !== "" && letterState === "error") {
-    //         setDisabledLetters((prev) => [...new Set([...prev, letter])]);
-    //     }
-    //     if (letter !== "" && letterState === "correct") {
-    //         setCorrectLetters((prev) => [...new Set([...prev, letter])]);
-    //     }
-
-    // }, [almost, correct, currAttempt.attempt, letter, setDisabledLetters, setCorrectLetters]);
 
     return (
         <div 

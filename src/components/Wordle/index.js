@@ -6,6 +6,7 @@ import Keyboard from "./Keyboard";
 import { boardDefault, generateWordSet } from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from './GameOver';
+import WorldleWord from './WordleWord';
 
 export const WordleContext = createContext();
 
@@ -28,12 +29,14 @@ const Wordle = () => {
             setCorrectWord(words.todaysWord);
             setLetterCount(words.letterCount);
         })
-        console.log(correctWord);
+        // console.log(correctWord);
     }, [] );
 
-    const onSelectLetter = (keyVal) => {        
+    const onSelectLetter = (keyVal) => {
         if (currAttempt.letterPos > 4) return; // end function at length of 5
+        // console.log('index - onSelectLetter: ' + keyVal);
         const newBoard = [...board];
+        // console.log(newBoard);
         newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
         setBoard(newBoard);
         setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos + 1});
@@ -75,6 +78,14 @@ const Wordle = () => {
     // useEffect(()=> {
     //     setGameOver({gameOver: true, guessedWord: false});
     // },[])
+
+    // TODO: try using testing to figure this out
+    let guessWord = '';
+    for (let i = 0; i < 5; i++) {
+        guessWord += board[currAttempt.attempt][i];
+    }
+    const todaysWordle = new WorldleWord(correctWord, guessWord );
+    todaysWordle.print();
 
     return (
         <div>        

@@ -11,7 +11,7 @@ const Keyboard = () => {
         ["A","S","D","F","G","H","J","K","L"], 
         ["Z","X","C","V","B","N","M"]
     ];
-
+    
     const handleKeyboard = useCallback((event) => {
         if (event.key === "Enter") {
             onEnter();
@@ -26,7 +26,7 @@ const Keyboard = () => {
         }
         // console.log(letterCount);
         // console.log(disabledLetters);
-    }, [onEnter, onDelete, onSelectLetter, letterCount]);    
+    }, [onEnter, onDelete, onSelectLetter, disabledLetters, letterCount]);    
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyboard);
