@@ -1,17 +1,17 @@
-import React, { useCallback, useEffect, useContext } from "react";
+import React, { useCallback, useEffect, useContext, useState } from "react";
 import Key from "./Key";
 import { WordleContext } from "./index";
 
 const Keyboard = () => {
 
-    const { onEnter, onDelete, onSelectLetter, disabledLetters, letterCount } = useContext(WordleContext);
+    const { onEnter, onDelete, onSelectLetter, attempts, setDisabledLetters, disabledLetters } = useContext(WordleContext);
 
     const keys = [
         ["Q","W","E","R","T","Y","U","I","O","P"], 
         ["A","S","D","F","G","H","J","K","L"], 
         ["Z","X","C","V","B","N","M"]
     ];
-    
+        
     const handleKeyboard = useCallback((event) => {
         if (event.key === "Enter") {
             onEnter();
@@ -24,17 +24,19 @@ const Keyboard = () => {
                 }
             });
         }
-        // console.log(letterCount);
-        // console.log(disabledLetters);
-    }, [onEnter, onDelete, onSelectLetter, disabledLetters, letterCount]);    
+    }, [onEnter, onDelete, onSelectLetter ]);
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyboard);
 
         return () => {
-            document.removeEventListener("keydown", handleKeyboard);
+            document.removeEventListener("keydown", handleKeyboard);            
         }
     }, [handleKeyboard]);
+
+    // useEffect(() => {
+    //     console.log(attempts);
+    // }, [attempts])
 
     return (
         <div className="wordle-keyboard" onKeyDown={handleKeyboard}>
@@ -43,7 +45,7 @@ const Keyboard = () => {
                     return <Key 
                                 key={key} 
                                 keyVal={key} 
-                                disabled={disabledLetters.includes(key)}
+                                // disabled={disabledLetters.includes(key)}
                             />
                 })}
             </div>
@@ -52,7 +54,7 @@ const Keyboard = () => {
                     return <Key 
                                 key={key} 
                                 keyVal={key} 
-                                disabled={disabledLetters.includes(key)}
+                                // disabled={disabledLetters.includes(key)}
                             />
                 })}
             </div>
@@ -62,7 +64,7 @@ const Keyboard = () => {
                     return <Key 
                                 key={key} 
                                 keyVal={key} 
-                                disabled={disabledLetters.includes(key)}
+                                // disabled={disabledLetters.includes(key)}
                             />
                 })}
                 <Key key={"BACKSPACE"} keyVal={"←"} bigKey/>

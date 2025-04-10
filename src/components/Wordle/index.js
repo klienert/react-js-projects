@@ -13,12 +13,13 @@ export const WordleContext = createContext();
 const Wordle = () => {
 
     const [board, setBoard] = useState(boardDefault);
-    const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0});
+    const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0}); // each attempt and letter inputs
+    const [attempts, setAttempts] = useState({ attempt: 0, desc: []}); // fired at each enter()
     const [wordSet, setWordSet] = useState(new Set());
-    const [disabledLetters, setDisabledLetters] = useState([]);
+    const [disabledLetters, setDisabledLetters] = useState(new Set());
     const [correctLetters, setCorrectLetters] = useState([]);
     const [correctWord, setCorrectWord] = useState("");
-    const [letterCount, setLetterCount] = useState([]);
+    
     const [gameOver, setGameOver] = useState({
         gameOver: false, 
         guessedWord: false});
@@ -27,16 +28,12 @@ const Wordle = () => {
         generateWordSet().then((words) => {
             setWordSet(words.wordSet);
             setCorrectWord(words.todaysWord);
-            setLetterCount(words.letterCount);
         })
-        // console.log(correctWord);
     }, [] );
 
     const onSelectLetter = (keyVal) => {
         if (currAttempt.letterPos > 4) return; // end function at length of 5
-        // console.log('index - onSelectLetter: ' + keyVal);
         const newBoard = [...board];
-        // console.log(newBoard);
         newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
         setBoard(newBoard);
         setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos + 1});
@@ -63,29 +60,44 @@ const Wordle = () => {
         } else {
             alert("Word is not a Wordle word.");
         }
+        
+        const wordCheck = new WorldleWord(correctWord, currWord);
+        setAttempts(prev => ({
+            attempt: prev.attempt + 1, 
+            desc: [...prev.desc, wordCheck.getLetterFeedback()]
+        }));
+        
+        setDisabledLetters(prev => {
+            const updated = new Set(prev);
+            wordCheck.getDisableLetters().forEach(letter => updated.add(letter));
+            return updated;            
+        });
 
+            
+
+        // game won
         if (currWord === correctWord) {
             setGameOver({gameOver: true, guessedWord: true});
             return;
         }
 
+        // game lost
         if (currAttempt.attempt === 5) {
             setGameOver({gameOver: true, guessedWord: false});
             return;
         }
     }
 
-    // useEffect(()=> {
-    //     setGameOver({gameOver: true, guessedWord: false});
-    // },[])
-
-    // TODO: try using testing to figure this out
-    let guessWord = '';
-    for (let i = 0; i < 5; i++) {
-        guessWord += board[currAttempt.attempt][i];
-    }
-    const todaysWordle = new WorldleWord(correctWord, guessWord );
-    todaysWordle.print();
+    useEffect(() => {        
+        // setDisabledLetters(prev => {
+        //     const updated = new Set(prev);
+        //     attempts.desc.forEach(letter => (
+        //         updated.add(letter.result === 'absent')
+        //     ))                
+        //     return updated;
+        // })
+        console.log(disabledLetters);
+    }, [attempts.attempt])
 
     return (
         <div>        
@@ -107,7 +119,7 @@ const Wordle = () => {
                     setCorrectLetters,
                     gameOver,
                     setGameOver, 
-                    letterCount
+                    attempts
                 } }>
                 <div className="game">
                     <Board />

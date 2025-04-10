@@ -4,21 +4,11 @@ import guessBank from './word-guesses.txt';
 export const boardDefault = new Array(6).fill(null).map(() => 
     new Array(5).fill(""));
 
-// export const boardDefault = [
-//     ["", "", "", "", ""],
-//     ["", "", "", "", ""],
-//     ["", "", "", "", ""],
-//     ["", "", "", "", ""],
-//     ["", "", "", "", ""],
-//     ["", "", "", "", ""]
-// ];
-
 export const generateWordSet = async () => {
     let wordSet;
     let todaysWord;
     let wordArr;
     let guessArr;
-    let letterCount = {};
 
     await fetch(wordBank) 
         .then((resp) => resp.text())
@@ -40,12 +30,7 @@ export const generateWordSet = async () => {
     
     const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     
-    for (let c of todaysWord.toUpperCase()) {
-        letterCount[c] = (letterCount[c] || 0) + 1;
-    }
-    
     // console.log(todaysWord);
-    // console.log(letterCount);
 
-    return { wordSet, todaysWord, letterCount };
+    return { wordSet, todaysWord};
 }
