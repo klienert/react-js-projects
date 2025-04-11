@@ -86,4 +86,35 @@ describe('WordleWord', () => {
         const word = new WordleWord('CRANE', 'CRAMP');
         expect(word.getDisableLetters()).toStrictEqual(['M', 'P'])
     })
+
+    test('getResults()', () => {
+        const word = new WordleWord('Crane', 'crane');
+        const result = word.getResults();
+
+        expect(result.feedback).toEqual(['correct', 'correct', 'correct', 'correct', 'correct']);
+        expect(result.correctLetters).toEqual(new Set(["C", "R", "A", "N", "E"]));
+        expect(result.presentLetters).toEqual(new Set());
+        expect(result.disabledLetters).toEqual(new Set());
+    })
+
+    test('getResults() --> THIGH v. TIGHT', () => {
+        const word = new WordleWord('THIGH', 'TIGHT');
+        const result = word.getResults();
+
+        expect(result.feedback).toEqual(['correct', 'present', 'present', 'present', 'absent']);
+        expect(result.correctLetters).toEqual(new Set(["T"]));
+        expect(result.presentLetters).toEqual(new Set(["I", "G", "H"]));
+        expect(result.disabledLetters).toEqual(new Set(["T"]));
+    })
+
+    test('getResults() --> SLEEP v SHEEP', () => {
+        const word = new WordleWord("SLEEP", "SHEEP");
+        const result = word.getResults();
+
+        expect(result.feedback).toEqual(['correct', 'absent', 'correct', 'correct', 'correct']);
+        expect(result.correctLetters).toEqual(new Set(['E', 'S', 'P']))
+        expect(result.presentLetters).toEqual(new Set())
+        expect(result.disabledLetters).toEqual(new Set(['H']))
+    })
+
 })

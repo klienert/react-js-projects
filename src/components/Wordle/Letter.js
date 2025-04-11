@@ -7,6 +7,8 @@ const Letter = ({ letterPos, attemptVal }) => {
         correctWord, 
         currAttempt,
         disabledLetters,
+        presentLetters,
+        correctLetters,
         setCorrectLetters, 
         attempts
     } = useContext(WordleContext);
@@ -16,18 +18,24 @@ const Letter = ({ letterPos, attemptVal }) => {
     const almost = !correct && letter !== "" && correctWord.toUpperCase().includes(letter);    
     
     // TODO: ReFactor how the correct/almost is configured --> Keyboard and Answer Display        
+    // const letterState = currAttempt.attempt > attemptVal && (correct ? "correct" : almost ? "present" : "absent");
 
-       
-    const newLetterState = '';
-    if (letter === attempts.desc[letterPos]) {
-        console.log(attempts.desc[letterPos]);
+    const setLetterClass = () => {
+        let result = 'wordle-letter ';
+        if (currAttempt.attempt > attemptVal) {
+            if (correct) {
+                result += 'correct';
+            } else if (almost) {
+                result += 'present';
+            } else {
+                result += 'absent';
+            }
+        } 
+        return result;
     }
-    //     attempts.desc.forEach((i, letter, result) => {
-    //         console.log(`${i}) ${letter}: ${result}`);
-    //     });
+    
+    let letterClass = setLetterClass();
 
-    const letterState = 
-        currAttempt.attempt > attemptVal && (correct ? "correct" : almost ? "present" : "absent");
 
     useEffect(() => {
         if (letter !== "" && !almost && correct) {
@@ -36,9 +44,8 @@ const Letter = ({ letterPos, attemptVal }) => {
     }, [almost, correct, currAttempt.attempt, letter, setCorrectLetters]);
 
     return (
-        <div 
-            className="wordle-letter" 
-            id={letterState.toString()}
+        <div
+            className={letterClass}
         >{letter}
         </div>
     )

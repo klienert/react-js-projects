@@ -69,11 +69,14 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#correct { background-color: var(--correct); }
-
+/* #correct { background-color: var(--correct); }
 #present { background-color: var(--almost); }
+#absent { background-color: var(--absent); } */
 
-#absent { background-color: var(--disable); }
+.correct { background-color: var(--correct); }
+.present { background-color: var(--almost); }
+.absent { background-color: var(--absent); }
+
 
 .keyboard {
     width: 700px;
@@ -119,14 +122,12 @@
 }
 
 .big { width: 8rem; }
-
-.disabled { background-color: var(--disable); }
-
 #big { width: 8rem; }
 
-#disabled { background-color: var(--disable); }
+/* .disabled { background-color: var(--disable); } */
+/* #disabled { background-color: var(--disable); } */
 
-.correct { background-color: var(--correct); }
+/* .correct { background-color: var(--correct); } */
 
 .gameOver {
     display: flex;

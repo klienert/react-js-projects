@@ -12,8 +12,7 @@ class WordleWord {
         this.correctWord = correctWord.toLowerCase();
         this.guessWord = guessWord.toLowerCase();
     }
-    
-    // Getters
+        
     getCorrectWord() {
         return this.correctWord.toUpperCase();
     }
@@ -22,7 +21,6 @@ class WordleWord {
         return this.guessWord.toUpperCase();
     }
 
-    // split guess word into array
     getGuessArr() {
         let arr = this.guessWord.toUpperCase().split("");
         return arr;
@@ -72,8 +70,36 @@ class WordleWord {
                 result.add(letter);
             }
         }
-       
         return Array.from(result);
+    }
+
+
+    getResults() {
+        const feedback = this.getLetterFeedback();
+        const guessArr = this.getGuessArr();
+
+        const disabledLetters = new Set();
+        const presentLetters = new Set();
+        const correctLetters = new Set();
+
+        feedback.forEach((result, i) => {
+            const letter = guessArr[i];
+            if (result === 'correct') {
+                correctLetters.add(letter);
+            } else if (result === 'present') {
+                presentLetters.add(letter);
+            } else {
+                disabledLetters.add(letter);
+            }
+        });
+
+        return {
+            feedback,
+            guessArr,
+            correctLetters,
+            presentLetters,
+            disabledLetters
+        };
     }
 }
 

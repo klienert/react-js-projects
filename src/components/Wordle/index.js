@@ -17,7 +17,8 @@ const Wordle = () => {
     const [attempts, setAttempts] = useState({ attempt: 0, desc: []}); // fired at each enter()
     const [wordSet, setWordSet] = useState(new Set());
     const [disabledLetters, setDisabledLetters] = useState(new Set());
-    const [correctLetters, setCorrectLetters] = useState([]);
+    const [correctLetters, setCorrectLetters] = useState(new Set());
+    const [presentLetters, setPresentLetters] = useState(new Set());
     const [correctWord, setCorrectWord] = useState("");
     
     const [gameOver, setGameOver] = useState({
@@ -27,7 +28,8 @@ const Wordle = () => {
     useEffect(() => {
         generateWordSet().then((words) => {
             setWordSet(words.wordSet);
-            setCorrectWord(words.todaysWord);
+            // setCorrectWord(words.todaysWord);
+            setCorrectWord("TIGHT");
         })
     }, [] );
 
@@ -62,16 +64,15 @@ const Wordle = () => {
         }
         
         const wordCheck = new WorldleWord(correctWord, currWord);
+        const results = wordCheck.getResults();
         setAttempts(prev => ({
             attempt: prev.attempt + 1, 
-            desc: [...prev.desc, wordCheck.getLetterFeedback()]
+            desc: [...prev.desc, results.feedback]
         }));
         
-        setDisabledLetters(prev => {
-            const updated = new Set(prev);
-            wordCheck.getDisableLetters().forEach(letter => updated.add(letter));
-            return updated;            
-        });
+        setDisabledLetters(prev => new Set([...prev, ...results.disabledLetters]));
+        setCorrectLetters(prev => new Set([...prev, ...results.correctLetters]));
+        setPresentLetters(prev => new Set([...prev, ...results.presentLetters]));
 
             
 
@@ -88,16 +89,6 @@ const Wordle = () => {
         }
     }
 
-    useEffect(() => {        
-        // setDisabledLetters(prev => {
-        //     const updated = new Set(prev);
-        //     attempts.desc.forEach(letter => (
-        //         updated.add(letter.result === 'absent')
-        //     ))                
-        //     return updated;
-        // })
-        console.log(disabledLetters);
-    }, [attempts.attempt])
 
     return (
         <div>        
@@ -114,9 +105,9 @@ const Wordle = () => {
                     onSelectLetter, 
                     correctWord,
                     disabledLetters,
-                    setDisabledLetters,
                     correctLetters,
                     setCorrectLetters,
+                    presentLetters,
                     gameOver,
                     setGameOver, 
                     attempts
