@@ -1,8 +1,5 @@
 class WordleWord {
 
-    // private variables
-    #disabledLetter = [];
-
     /**
      * WordleWord constructor
      * @param {string} correctWord - the word of the day

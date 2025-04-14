@@ -2,11 +2,11 @@ import "@testing-library/jest-dom";
 import WordleWord from "./WordleWord";
 
 describe('WordleWord', () => {
-    let wordle;
+    // let wordle;
 
-    beforeEach(() => {
-        wordle = new WordleWord('THIGH', 'TIGHT')
-    });
+    // beforeEach(() => {
+    //     wordle = new WordleWord('THIGH', 'TIGHT')
+    // });
 
     // test('should return the correct word', () => {
     //     expect(wordle.getCorrectWord()).toBe('THIGH');
