@@ -2,21 +2,30 @@ import { generateWordSet } from "./Words";
 
 class WordleGame {
 
+
     constructor(correctWord, guessWord) {
         this.correctWord = correctWord.toLowerCase();
         this.guessWord = guessWord.toLowerCase();
-        this.wordSet = generateWordSet;
+        this.wordSet = null;
     }
 
-    // static method to initialize the word set
-    // static async initWordSet() {
-    //     const { wordSet } = await generateWordSet();
-    //     WordleGame.wordSet = wordSet;
-    // }
+    async init() {
+        const { wordSet } = await generateWordSet();
+        this.wordSet = wordSet;
+    }
 
+    
     // check if word is valid
-    isValidWord = () => {
-        return (wordSet?.has(this.guessWord));
+    isValidWord() {
+        return this.wordSet.has(this.guessWord);
+    }
+
+    getCorrectWord() {
+        return this.correctWord.toUpperCase();
+    }
+
+    getGuessWord() {
+        return this.guessWord.toUpperCase();
     }
 
     // get results via WordleWord obj
