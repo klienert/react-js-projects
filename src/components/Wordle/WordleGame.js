@@ -5,17 +5,18 @@ class WordleGame {
     constructor(correctWord, guessWord) {
         this.correctWord = correctWord.toLowerCase();
         this.guessWord = guessWord.toLowerCase();
+        this.wordSet = generateWordSet;
     }
 
     // static method to initialize the word set
-    static async initWordSet() {
-        const { wordSet } = await generateWordSet();
-        WordleGame.wordSet = wordSet;
-    }
+    // static async initWordSet() {
+    //     const { wordSet } = await generateWordSet();
+    //     WordleGame.wordSet = wordSet;
+    // }
 
     // check if word is valid
     isValidWord = () => {
-        return (WordleGame.wordSet?.has(this.guessWord));
+        return (wordSet?.has(this.guessWord));
     }
 
     // get results via WordleWord obj
