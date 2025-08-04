@@ -1,4 +1,5 @@
 import { generateWordSet } from "./Words";
+import WordleWord from "./WordleWord";
 
 class WordleGame {
 

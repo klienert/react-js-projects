@@ -9,6 +9,8 @@ import MenuNav from './components/MenuChildren/index';
 import ThemeExample from './components/ThemeEx/index';
 import SnakeGame from './components/Snake/Game';
 import Wordle from './components/Wordle';
+import InputPractice from './components/inputPractice';
+
 // import ToggleComp from './components/ToggleComp';
 
 
@@ -35,7 +37,8 @@ function App() {
                   {to: "/assembly", name: "Assembly Endgame"},
                   {to: "/theme", name: "Theme Change"},
                   {to: "/snake", name: "Snake Game"},
-                  {to: "/wordle", name: "Wordle"}
+                  {to: "/wordle", name: "Wordle"},
+                  {to: "/inputPractice", name: "Input Practice"}
                 ] }/>
             </div>
           </div>
@@ -50,6 +53,7 @@ function App() {
           <Route path="/theme" element={<ThemeExample />} />
           <Route path="/snake" element={<SnakeGame />} />
           <Route path="/wordle" element={<Wordle />} />
+          <Route path="/inputPractice" element={<InputPractice />} />
         </Routes>
       </div>
     </BrowserRouter>
