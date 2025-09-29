@@ -10,6 +10,7 @@ import ThemeExample from './components/ThemeEx/index';
 import SnakeGame from './components/Snake/Game';
 import Wordle from './components/Wordle';
 import InputPractice from './components/inputPractice';
+import LinkedListComp from './components/linkedList';
 
 // import ToggleComp from './components/ToggleComp';
 
@@ -38,7 +39,8 @@ function App() {
                   {to: "/theme", name: "Theme Change"},
                   {to: "/snake", name: "Snake Game"},
                   {to: "/wordle", name: "Wordle"},
-                  {to: "/inputPractice", name: "Input Practice"}
+                  {to: "/inputPractice", name: "Input Practice"},
+                  // {to: "/linkedList", name: "LinkedList Practice"}
                 ] }/>
             </div>
           </div>
@@ -54,6 +56,7 @@ function App() {
           <Route path="/snake" element={<SnakeGame />} />
           <Route path="/wordle" element={<Wordle />} />
           <Route path="/inputPractice" element={<InputPractice />} />
+          {/* <Route path="/linkedList" element={<LinkedListComp/>} /> */}
         </Routes>
       </div>
     </BrowserRouter>
