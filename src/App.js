@@ -11,6 +11,7 @@ import SnakeGame from './components/Snake/Game';
 import Wordle from './components/Wordle';
 import InputPractice from './components/inputPractice';
 import LinkedListComp from './components/linkedList';
+import ComplexFormApp from './components/form';
 
 // import ToggleComp from './components/ToggleComp';
 
@@ -41,6 +42,7 @@ function App() {
                   {to: "/wordle", name: "Wordle"},
                   {to: "/inputPractice", name: "Input Practice"},
                   // {to: "/linkedList", name: "LinkedList Practice"}
+                  {to: "/complexForm", name: 'Complex Form'}
                 ] }/>
             </div>
           </div>
@@ -57,6 +59,7 @@ function App() {
           <Route path="/wordle" element={<Wordle />} />
           <Route path="/inputPractice" element={<InputPractice />} />
           {/* <Route path="/linkedList" element={<LinkedListComp/>} /> */}
+          <Route path="/complexForm" element={<ComplexFormApp />} />
         </Routes>
       </div>
     </BrowserRouter>
