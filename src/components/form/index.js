@@ -611,16 +611,16 @@ const ComplexFormApp = () => {
                     </div>
                     
                     <div className="mt-8 p-4 bg-gray-50 rounded-lg">
-                    <h3 className="font-semibold mb-2 text-sm text-gray-700">Current Form State:</h3>
-                    <div className="text-xs bg-gray-800 text-green-400 p-3 rounded overflow-auto max-h-48">
-                        <pre>{JSON.stringify(formData, null, 2)}</pre>
-                        {formData.businessAccounts.length > 0 && (
-                        <div className="mt-3 pt-3 border-t border-gray-600">
-                            <p className="text-yellow-400 mb-1">Business Accounts Array ({formData.businessAccounts.length}):</p>
-                            <pre>{JSON.stringify(formData.businessAccounts, null, 2)}</pre>
+                        <h3 className="font-semibold mb-2 text-sm text-gray-700">Current Form State:</h3>
+                        <div className="text-xs bg-gray-800 text-green-400 p-3 rounded overflow-auto max-h-48">
+                            <pre>{JSON.stringify(formData, null, 2)}</pre>
+                            {formData.businessAccounts.length > 0 && (
+                            <div className="mt-3 pt-3 border-t border-gray-600">
+                                <p className="text-yellow-400 mb-1">Business Accounts Array ({formData.businessAccounts.length}):</p>
+                                <pre>{JSON.stringify(formData.businessAccounts, null, 2)}</pre>
+                            </div>
+                            )}
                         </div>
-                        )}
-                    </div>
                     </div>
                 </div>
             </div>
