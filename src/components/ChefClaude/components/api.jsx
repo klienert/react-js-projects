@@ -1,9 +1,10 @@
 import { Anthropic } from '@anthropic-ai/sdk';
-
+import { ENV } from '../../../config/env'
 const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You do not need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they did not mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page.`;
 
 // verify api key is available
-const API_KEY = process.env.REACT_APP_ANTHROPIC_API_KEY;
+// const API_KEY = process.env.REACT_APP_ANTHROPIC_API_KEY;
+const API_KEY = ENV.projects.chefClaude.apiKey;
 if (!API_KEY) {
     console.error("No API Key found...");    
 }

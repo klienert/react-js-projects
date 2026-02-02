@@ -18,7 +18,7 @@ export default function CurrentDate( { name }) {
         }
     }
 
-    // console.log(date.getHours());
+    console.log(date.getHours());
   
     return <div className="time">
         <h1>{greeting(date.getHours())}, {name}</h1>
