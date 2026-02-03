@@ -72,8 +72,8 @@ const users = [
         planId: "plan-2",
         status: { state: "completed", dateCompleted: "2026-01-20", scorePercent: 86, progressPercent: null },
         enrolledCourses: [
-            { title: "Bloodborne Pathogens", state: "in-progress", dateCompleted: '2026-01-19', scorePercent: 75, progressPercent: null },
-            { title: "Cybersecurity", state: "in-progress", dateCompleted: '2026-01-20', scorePercent: 100, progressPercent: null },
+            { title: "Bloodborne Pathogens", state: "completed", dateCompleted: '2026-01-19', scorePercent: 75, progressPercent: null },
+            { title: "Cybersecurity", state: "completed", dateCompleted: '2026-01-20', scorePercent: 100, progressPercent: null },
             { title: "Suicide Awareness and Prevention", state: "completed", dateCompleted: "2026-01-18", scorePercent: 85, progressPercent: null },
             { title: "Drug and Alcohol Prevention for staff", state: "completed", dateCompleted: "2026-01-20", scorePercent: 87, progressPercent: null },
         ],

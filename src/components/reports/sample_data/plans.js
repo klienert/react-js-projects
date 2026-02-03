@@ -1,6 +1,6 @@
 const plans = [
     {
-        id: 1,
+        id: 'plan-1',
         name: 'All District Plan 2026',
         courses: [
             "Bloodborne Pathogens",
@@ -8,7 +8,7 @@ const plans = [
         ]
     },
     {
-        id: 2,
+        id: 'plan-2',
         name: '9-12 Teachers (2026)',
         courses: [
             'Suicide Awareness and Prevention',
@@ -16,7 +16,7 @@ const plans = [
         ]
     },
     {
-        id: 3,
+        id: 'plan-3',
         name: 'Coaching Staff',
         courses: [
             'Concussion Awareness',

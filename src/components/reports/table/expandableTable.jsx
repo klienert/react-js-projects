@@ -5,7 +5,7 @@ const ExpandableTable = ({cols, data, getPlanName }) => {
 
     // useEffect(() => {
     //     console.log('cols? ', cols);
-    //     console.log('table data? ', data);        
+    //     console.log('table data? ', data);
     // },[]);
 
     const [expandedRows, setExpandedRows] = useState(new Set());
@@ -31,100 +31,94 @@ const ExpandableTable = ({cols, data, getPlanName }) => {
     }
 
     return (
-        <div className="w-full">
-            <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+        <div className="enrollment-table-wrapper">
+            <div className="table-container">
+                <table className="enrollment-table">
+                    <thead className="table-header">
                         <tr>
-                            <th className="px-4 py-2">
-                                {cols.map(col => {
-                                    <th key={col.key} className="px-4 text-left text-sm font-medium text-gray-700">
-                                        {col.label}
-                                    </th>
-                                })}
-                            </th>
+                            <th className="header-cell header-cell--expand"></th>
+                            {cols.map(col => (
+                                <th key={col.key} className="header-cell">
+                                    {col.label}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
-                    <tbody className="bg divide-y divide-gray-200">
+                    <tbody className="table-body">
                         {data.map(row => {
                             const isExpanded = expandedRows.has(row.id);
                             return (
                                 <React.Fragment key={row.id}>
-                                    <tr className="hover:bg-gray-50">
-                                        <td className="px-4 py-3 align-top">
+                                    <tr className="table-row">
+                                        <td className="table-cell table-cell--expand">
                                             <button
                                                 onClick={() => toggleRow(row.id)}
-                                                className="p-1 rounded hover:bg-gray-100"
+                                                className="expand-button"
                                                 title={isExpanded ? "Collapse" : "Expand"}
+                                                aria-expanded={isExpanded}
                                             >
-                                                ?
+                                                {isExpanded ? '-' : '+'}
                                             </button>
                                         </td>
-                                        {cols.map(col => {
-                                            <td key={col.key} className="px-4 py-3 align-top text-sm text-gray-800">
-                                                {/* {col.value && console.log(col.value(row))} */}
+                                        {cols.map(col => (
+                                            <td key={col.key} className="table-cell">
                                                 {col.value ? col.value(row) : (row[col.key] ?? "--")}
                                             </td>
-                                        })}
+                                        ))}
                                     </tr>
 
-                                    <tr id={`detail-${row.id}`} className="bg-gray-50">
-                                        <td colSpan={cols.length + 1} className={`px-4 py-2 transition-all ${isExpanded ? "max-h-screen" : "max-h-0 overflow-hidden"}`}>
-                                        <div className={`${isExpanded ? "block" : "hidden"} py-2`}>
-                                            <div className="grid md:grid-cols-2 gap-4">
-                                            <div>
-                                                <div className="text-sm font-semibold mb-2">Plan</div>
-                                                <div className="text-sm">{getPlanName(row.planId)}</div>
-                                            </div>
-
-                                            <div>
-                                                <div className="text-sm font-semibold mb-2">Overall status</div>
-                                                <div className="text-sm">{statusDisplay(row.status)}</div>
-                                            </div>
-                                            </div>
-
-                                            <div className="mt-3">
-                                            <div className="text-sm font-semibold mb-2">Courses</div>
-                                            <ul className="space-y-2">
-                                                {row.enrolledCourses.map((c, idx) => (
-                                                <li key={idx} className="p-2 rounded border border-gray-200">
-                                                    <div className="flex items-center justify-between">
-                                                        <div className="text-sm font-medium">{c.title}</div>
-                                                        <div className="text-xs text-gray-600">
-                                                            {c.state === "completed" ? `${c.scorePercent}% • ${c.dateCompleted}` :
-                                                            c.state === "in-progress" ? `${c.progressPercent}%` :
-                                                            "Not started"}
-                                                        </div>
+                                    <tr className="detail-row">
+                                        <td colSpan={cols.length + 1} className="detail-cell">
+                                            <div className={`detail-content ${isExpanded ? 'detail-content--expanded' : ''}`}>
+                                                <div className="detail-grid">
+                                                    <div className="detail-section">
+                                                        <div className="detail-label">Plan</div>
+                                                        <div className="detail-value">{getPlanName(row.planId)}</div>
                                                     </div>
-                                                    
-                                                    <div className="mt-2">
-                                                        <div className="w-full bg-gray-200 rounded h-2 overflow-hidden">
-                                                            <div
-                                                            className="h-2"
-                                                            style={{
-                                                                width: `${c.state === "completed" ? 100 : (c.progressPercent ?? 0)}%`,
-                                                                background: "linear-gradient(90deg, #10b981, #34d399)"
-                                                            }}
-                                                            />
-                                                        </div>
+
+                                                    <div className="detail-section">
+                                                        <div className="detail-label">Overall status</div>
+                                                        <div className="detail-value">{statusDisplay(row.status)}</div>
                                                     </div>
-                                                </li>
-                                                ))}
-                                            </ul>
+                                                </div>
+
+                                                <div className="courses-section">
+                                                    <div className="detail-label">Courses</div>
+                                                    <ul className="courses-list">
+                                                        {row.enrolledCourses.map((c, idx) => (
+                                                            <li key={idx} className="course-item">
+                                                                <div className="course-header">
+                                                                    <div className="course-title">{c.title}</div>
+                                                                    <div className="course-meta">
+                                                                        {c.state === "completed" ? `${c.scorePercent}% • ${c.dateCompleted}` :
+                                                                         c.state === "in-progress" ? `${c.progressPercent}%` :
+                                                                         "Not started"}
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div className="progress-bar-container">
+                                                                    <div 
+                                                                        className="progress-bar"
+                                                                        style={{
+                                                                            width: `${c.state === "completed" ? 100 : (c.progressPercent ?? 0)}%`
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
                                         </td>
                                     </tr>
                                 </React.Fragment>
-                            )
+                            );
                         })}
                     </tbody>
                 </table>
             </div>
         </div>
     )
-
-
 }
 
 export default ExpandableTable;
