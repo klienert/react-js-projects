@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import './table.css';
 
-const ExpandableTable = ({cols, data, getPlanName }) => {
+const ExpandableTable = ({cols, data, getPlanNames }) => {
 
     // useEffect(() => {
     //     console.log('cols? ', cols);
@@ -36,7 +36,7 @@ const ExpandableTable = ({cols, data, getPlanName }) => {
                 <table className="enrollment-table">
                     <thead className="table-header">
                         <tr>
-                            <th className="header-cell header-cell--expand"></th>
+                            <th className="header-cell header-cell--expand">&nbsp;</th>
                             {cols.map(col => (
                                 <th key={col.key} className="header-cell">
                                     {col.label}
@@ -73,7 +73,7 @@ const ExpandableTable = ({cols, data, getPlanName }) => {
                                                 <div className="detail-grid">
                                                     <div className="detail-section">
                                                         <div className="detail-label">Plan</div>
-                                                        <div className="detail-value">{getPlanName(row.planId)}</div>
+                                                        <div className="detail-value">{getPlanNames(row.planId)}</div>
                                                     </div>
 
                                                     <div className="detail-section">

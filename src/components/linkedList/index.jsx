@@ -76,7 +76,7 @@ class LinkedList {
         let curr = this.head;
         if (curr !== null) {
             if (this.find(value)) {
-                console.log(`found: ${this.find(value)}\nTODO: figure out\n\tDelete Head\n\tDelete middle\n\tDelete End/Tail`);
+                // console.log(`found: ${this.find(value)}\nTODO: figure out\n\tDelete Head\n\tDelete middle\n\tDelete End/Tail`);
 
             }
         }
@@ -93,7 +93,7 @@ class LinkedList {
             currArr.push(curr.value);
             curr = curr.next
         }
-        console.log(currArr);
+        // console.log(currArr);
     }
 }
 

@@ -7,7 +7,7 @@ import data from "./data";
 const TravelJournal = () => {
 
     const entryElements = data.map((x) => {
-        console.log(x);
+        // console.log(x);
         return (
             <Entry 
                 key={x.id}

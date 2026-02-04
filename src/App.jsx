@@ -13,6 +13,7 @@ import InputPractice from './components/inputPractice';
 import LinkedListComp from './components/linkedList';
 import ComplexFormApp from './components/form';
 import ReportsSample from './components/reports';
+import Packages from './components/packages';
 // import ToggleComp from './components/ToggleComp';
 
 function App() {
@@ -35,7 +36,8 @@ function App() {
                   // {to: "/ai", name: "Chef Claude"}, 
                   {to: "/tenzies", name: "Tenzies"},
                   {to: "/assembly", name: "Assembly Endgame"},
-                  {to: "/reportsSample", name: "Reports Sample"}
+                  {to: "/reportsSample", name: "Reports Sample"},
+                  {to: '/packages', name: 'Packages example'}
                   // {to: "/theme", name: "Theme Change"},
                   // {to: "/snake", name: "Snake Game"},
                   // {to: "/wordle", name: "Wordle"},
@@ -54,6 +56,8 @@ function App() {
           <Route path="/tenzies" element={<Tenzies />} />
           <Route path="/assembly" element={<AssemblyEndgame />} />
           <Route path="/reportsSample" element={<ReportsSample />} />
+          <Route path="/packages" element={<Packages />} />
+          
           {/* <Route path="/theme" element={<ThemeExample />} /> */}
           {/* <Route path="/snake" element={<SnakeGame />} /> */}
           {/* <Route path="/wordle" element={<Wordle />} /> */}

@@ -44,9 +44,9 @@ const Keyboard = () => {
 
     useEffect(() => {
         if (attempts.attempt > 0) {
-            console.log( disabledLetters);
-            console.log( presentLetters);
-            console.log( correctLetters);
+            // console.log( disabledLetters);
+            // console.log( presentLetters);
+            // console.log( correctLetters);
         }        
     },[attempts.attempt]);
 

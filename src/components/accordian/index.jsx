@@ -26,7 +26,7 @@ export default function Accordian() {
         setMultiple(cpyMultiple);
     }
 
-    console.log(selected, multiple);
+    // console.log(selected, multiple);
 
     return (
         <div className="acc-wrapper">

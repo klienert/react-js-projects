@@ -6,7 +6,7 @@ const users = [
         campus: "Edoras",
         primaryRole: "Administrator",
         secondaryRoles: [],
-        planId: "plan-1",
+        planId: ["plan-1"],
         // overall status (plan-level)
         status: { state: "completed", dateCompleted: "2026-01-15", scorePercent: 92, progressPercent: null },
         enrolledCourses: [
@@ -21,11 +21,13 @@ const users = [
         campus: "Hobbiton",
         primaryRole: "Teacher",
         secondaryRoles: ["9-12 Teacher"],
-        planId: "plan-1",
+        planId: ["plan-1", 'plan-2'],
         status: { state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 45 },
         enrolledCourses: [
             { title: "Bloodborne Pathogens", state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 60 },
-            { title: "Cybersecurity", state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 20 }
+            { title: "Cybersecurity", state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 20 },
+            { title: "Suicide Awareness and Prevention", state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 72 },
+            { title: "Drug and Alcohol Prevention for staff", state: "not-started", dateCompleted: null, scorePercent: null, progressPercent: 0 },
         ],
     },
     {
@@ -35,7 +37,7 @@ const users = [
         campus: "Gondor",
         primaryRole: "Teacher",
         secondaryRoles: ["9-12 Teacher", "Coach"],
-        planId: "plan-3",
+        planId: ["plan-1", "plan-2", "plan-3"],
         status: { state: "completed", dateCompleted: "2026-01-28", scorePercent: 87, progressPercent: null },
         enrolledCourses: [
             { title: "Bloodborne Pathogens", state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 50 },
@@ -53,7 +55,7 @@ const users = [
         campus: "Hobbiton",
         primaryRole: "Teacher",
         secondaryRoles: ["9-12 Teacher"],
-        planId: "plan-2",
+        planId: ["plan-1", "plan-2"],
         status: { state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 12 },
         enrolledCourses: [
             { title: "Bloodborne Pathogens", state: "in-progress", dateCompleted: null, scorePercent: null, progressPercent: 30 },
@@ -69,7 +71,7 @@ const users = [
         campus: "Hobbiton",
         primaryRole: "Teacher",
         secondaryRoles: ["9-12 Teacher"],
-        planId: "plan-2",
+        planId: ["plan-1", "plan-2"],
         status: { state: "completed", dateCompleted: "2026-01-20", scorePercent: 86, progressPercent: null },
         enrolledCourses: [
             { title: "Bloodborne Pathogens", state: "completed", dateCompleted: '2026-01-19', scorePercent: 75, progressPercent: null },

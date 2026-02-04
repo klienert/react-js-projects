@@ -38,7 +38,7 @@ const InputPractice = () => {
     }
 
     useEffect(() => {
-        console.log('states: ', states);
+        // console.log('states: ', states);
     },[]);
 
     return (

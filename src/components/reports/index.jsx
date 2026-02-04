@@ -16,7 +16,7 @@ const ReportsSample = () => {
         },
         {key: 'plan', 
             label: 'Plan Name',
-            value: (p) => getPlanName(p.planId),
+            value: (p) => getPlanNames(p.planId),
         },
         {key: 'status', 
             label: 'Status',
@@ -28,16 +28,19 @@ const ReportsSample = () => {
         },
     ];
 
-    const getPlanName = (planId) => {
-        const p = plans.find(x => x.id === planId);
-        return p ? p.name : "--";
+    const getPlanNames = (planIds) => {
+        const found = plans.filter(p => 
+            planIds.some(i => i === p.id)        
+        );        
+        const names = found.map((n) => n.name);
+        return names.join(', ');
     }
 
     return (
         <ExpandableTable 
             cols={columns}
             data={users}
-            getPlanName={getPlanName}
+            getPlanNames={getPlanNames}
         />        
     );
 }

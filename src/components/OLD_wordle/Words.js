@@ -33,8 +33,8 @@ export const generateWordSet = async () => {
         wordSet = new Set([...wordArr, ...guessArr]);
     }
 
-    console.log(todaysWord);
-    console.log(wordSet);
+    // console.log(todaysWord);
+    // console.log(wordSet);
     
 
     return { wordSet, todaysWord };

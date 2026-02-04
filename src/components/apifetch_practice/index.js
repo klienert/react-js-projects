@@ -40,7 +40,7 @@ const FetchPractice = () => {
             })
     }, []);
   
-    console.log(data.data.forecast.forecastday);
+    // console.log(data.data.forecast.forecastday);
     return (
         <h2>Fetch Practice</h2>
     )

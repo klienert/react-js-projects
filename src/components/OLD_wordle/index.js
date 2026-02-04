@@ -58,9 +58,9 @@ function Wordle () {
         } else {
             alert("Word is not a Wordle word.");
         }
-        console.log(currAttempt.attempt);
-        console.log("Current Word: " + currWord.toLowerCase());
-        console.log("Correct Word: " + correctWord);
+        // console.log(currAttempt.attempt);
+        // console.log("Current Word: " + currWord.toLowerCase());
+        // console.log("Correct Word: " + correctWord);
 
         if (currWord === correctWord) {
             setGameOver({gameOver: true, guessedWord: true});

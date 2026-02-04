@@ -8,7 +8,7 @@
 import { useEffect, useState } from "react";
 
 export default function Price() {
-    console.log('component rendering...' );
+    // console.log('component rendering...' );
     
     // objects are passed by reference, so it will re-render
     const [price, setPrice] = useState({

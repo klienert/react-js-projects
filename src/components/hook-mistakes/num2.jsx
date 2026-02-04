@@ -8,7 +8,7 @@ export default function CounterExample() {
     
     useEffect(() => {
         const i = setInterval(() => {
-            console.log('Interval func running...');
+            // console.log('Interval func running...');
             setCount(prev => prev + 1);
         }, 1000);
 

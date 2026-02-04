@@ -24,7 +24,7 @@ const handleChange = (e) => {
     });
 }
 
-console.log(form);
+// console.log(form);
     return (<div className="container">
         <form className="flex flex-col gap-y-2">
             <input 

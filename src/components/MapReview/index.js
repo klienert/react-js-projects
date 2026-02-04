@@ -9,9 +9,9 @@ const ReviewMaps = () => {
         const nums = [1, 2, 3, 4, 5]
         // -->       [1, 4, 9, 16, 25]
         // Your code here
-        console.log(nums);
+        // console.log(nums);
         const map1 = nums.map((x) => x * x);
-        console.log(map1);
+        // console.log(map1);
 
         /*
         Challenge 2:
@@ -22,9 +22,9 @@ const ReviewMaps = () => {
         const names = ["alice", "bob", "charlie", "danielle"]
         // -->        ["Alice", "Bob", "Charlie", "Danielle"]
         // Your code here
-        console.log(names);
+        // console.log(names);
         const map2 = names.map((x) => x = x.charAt(0).toUpperCase() + x.slice(1));
-        console.log(map2);
+        // console.log(map2);
 
 
         /*
