@@ -1,0 +1,186 @@
+.assembly-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    border: 1px solid antiquewhite;
+    margin: 1em 0 1em;
+    background-color: #000;
+    color: #FFF;
+    padding: 1em;
+}
+
+.assembly-title {
+    text-align: center;
+}
+
+.assembly-title h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #F9F4DA;
+}
+
+.assembly-title p {
+    font-size: 1rem;
+    margin: 0 20%;
+    color: #8E8E8E;
+}
+
+.assembly-game-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F9F4DA;
+    border-radius: .25em;
+    margin-block: 1rem;
+    margin: 1rem 1rem;
+    height: 5em;    
+}
+
+.assembly-game-status.won {
+    background-color: #10A95B;
+}
+
+.assembly-game-status.lost {
+    background-color: #BA2A2A;
+    height: fit-content;
+}
+
+.assembly-game-status p.farewell-message {
+    background-color: #7A5EA7;
+    border: 1px dashed #323232;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.assembly-lang-tiles {
+    display: flex;
+    justify-content: center;
+}
+
+.assembly-lang-tiles > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: .2em;
+}
+
+.lang-tile {
+    border-radius: .25em;
+    padding: .125rem;
+    position: relative;
+    padding: .25rem;
+}
+
+.lang-tile.lost::before {
+    content: "💀";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.8rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7) ;
+}
+
+.assembly-guess-tiles {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem 0 .5rem 0;
+}
+
+.assembly-guess-tiles > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.guess-tile {
+    height: 2rem;
+    width: 2rem;
+    background-color: #323232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #F9F4DA;
+    border-right: .5px solid #000;
+    border-left: .5px solid #000;
+}
+
+.missedLetter {
+    color: rgb(208, 43, 43);
+}
+
+.assembly-keyboard {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: .15rem;
+    margin: 1rem 2rem 1rem;
+    color: #000;
+    max-width: 45%;
+}
+
+.assembly-keyboard > button {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .25em;
+    border: 1px solid #D7D7D7;
+    cursor: pointer;
+    background-color: #FCBA29;
+}
+
+.assembly-keyboard > button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.assembly-keyboard > .keyboard_key_correct {
+    background-color: #10A95B ;
+}
+
+.assembly-keyboard > .keyboard_key_wrong {
+    background-color: #EC5D49 ;
+}
+
+.new-game {
+    background-color: #11B5E5;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    width: 225px;
+    height: 40px;
+    padding: 6px 12px;
+    display: block;
+    margin-inline: auto;
+    cursor: pointer;
+}
+
+.assembly-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
