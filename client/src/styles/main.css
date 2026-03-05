@@ -1,0 +1,26 @@
+:root {
+    color-scheme: light;
+    --body-bkg: #FFF;
+    --body-color: #000;    
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --body-bkg: #282C34;
+    --body-color: #F8F8F8;
+}
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    background-color: var(--body-bkg);
+    color: var(--body-color);
+}
+
+.container { width: 100% }
+.nav-bar {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
