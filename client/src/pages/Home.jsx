@@ -1,10 +1,11 @@
 import CurrentDate from "../components/date";
 import CurrentWeather from "../components/weatherAPI/currentWeather";
 import DemoGallery from "./DemoGallery";
-import { useTheme } from '../hooks/useTheme';
+import { useThemeContext } from "../contexts/ThemeProvider";
+
 
 const Home = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useThemeContext();
 
     return (
         <div className="container">

@@ -13,6 +13,7 @@
 html, body { height: 100%; }
 
 body {
+    /* background: red !important; */
     margin: 0;
     background-color: var(--body-bkg);
     color: var(--body-color);
