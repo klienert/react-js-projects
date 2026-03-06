@@ -1,0 +1,10 @@
+.counter-rooms {
+    padding: 1rem;
+    max-width: 75rem;
+}
+
+.counter-rooms h2 { margin-top: 0;}
+
+.counter-room-status {
+    margin-bottom: .75rem;
+}

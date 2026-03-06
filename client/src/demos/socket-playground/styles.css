@@ -1,0 +1,26 @@
+.socket-playground {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    height: auto;
+    padding: 1rem;
+}
+
+.socket-playground h2 {
+    font-size: large;
+}
+
+.socket-playground h3 {
+    font-size: medium;
+}
+
+.socket-status {
+    margin-bottom: 1rem;
+}
+
+.socket-msg {
+    padding: 1rem;
+    border: .25rem solid #aaa;    
+    margin-top: .5rem;
+    overflow-x: auto;
+}
