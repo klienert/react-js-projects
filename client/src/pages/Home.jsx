@@ -3,7 +3,6 @@ import CurrentWeather from "../components/weatherAPI/currentWeather";
 import DemoGallery from "./DemoGallery";
 import { useThemeContext } from "../contexts/ThemeProvider";
 
-
 const Home = () => {
     const { theme, toggleTheme } = useThemeContext();
 
@@ -19,8 +18,8 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="col-3">
-                    <button 
-                        className="btn btn-secondary theme-btn"
+                    <button                         
+                        className={`btn btn-${theme === 'light' ? 'dark' : 'light'} theme-btn`}
                         onClick={toggleTheme}
                     >
                         Theme: {theme === 'dark' ? 'Dark' : 'Light'}

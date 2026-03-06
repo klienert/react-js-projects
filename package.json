@@ -1,12 +1,18 @@
 {
-  "name": "react-js-projects",  
+  "name": "react-js-projects",
   "private": true,
-  "workspaces": ["client", "server"],
-  "scripts": {    
-    "dev": "npm run dev -w client",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k --handle-input -n SERVER,CLIENT -c bgYellow,bgGreen \"npm run dev -w server\" \"npm run dev -w client\"",
     "dev:server": "npm run dev -w server",
     "dev:client": "npm run dev -w client",
     "build": "npm run build -w client",
     "preview": "npm run preview -w client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

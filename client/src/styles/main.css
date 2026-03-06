@@ -10,6 +10,12 @@
     --body-color: #F8F8F8;
 }
 
+[data-theme="light"] {
+    color-scheme: light;
+    --body-bkg: #F8F8F8;
+    --body-color: #282C34;
+}
+
 html, body { height: 100%; }
 
 body {
@@ -20,5 +26,7 @@ body {
 }
 
 .container { width: 100% }
+
+/* Theme Switch*/
 
 .theme-btn { margin-top: 1rem; }

@@ -1,11 +1,10 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
-# need to fix this shit...
-/client/node_modules 
+
+# Vite cache
+**/.vite
 
 # testing
 /coverage
@@ -16,6 +15,8 @@
 # misc
 .DS_Store
 .env*
+client/.env*
+server/.env*
 
 npm-debug.log*
 yarn-debug.log*
