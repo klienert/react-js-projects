@@ -43,46 +43,51 @@ const ApiPlayground = () => {
 
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
             <button disabled={loading} onClick={() => run(() => api("/api/health"))}>
-            GET /api/health
+                GET /api/health
             </button>
 
             <button disabled={loading} onClick={() => run(() => api("/api/time"))}>
-            GET /api/time
+                GET /api/time
             </button>
 
             <button
-            disabled={loading}
-            onClick={() =>
-                run(() =>
-                api("/api/echo", {
-                    method: "POST",
-                    body: JSON.stringify({
-                    message: "Hello from client",
-                    at: new Date().toISOString(),
-                    }),
-                })
-                )
-            }
+                disabled={loading}
+                onClick={() =>
+                    run(() =>
+                    api("/api/echo", {
+                        method: "POST",
+                        body: JSON.stringify({
+                        message: "Hello from client",
+                        at: new Date().toISOString(),
+                        }),
+                    })
+                    )
+                }
             >
-            POST /api/echo
+                POST /api/echo
             </button>
 
             <button disabled={loading} onClick={() => run(() => api("/api/error"))}>
-            GET /api/error (expect 400)
+                GET /api/error (expect 400)
             </button>
+
+            {/* <button disabled={loading} onClick={() => run(() => api("/api/boom"))}>
+                GET /api/boom (it's fake...)
+            </button> */}
+
         </div>
 
         {loading && <div>Loading…</div>}
 
         {error && (
             <div style={{ padding: 12, border: "1px solid #ccc", marginTop: 12 }}>
-            <strong>Error:</strong> {error}
+                <strong>Error:</strong> {error}
             </div>
         )}
 
         {result && (
             <pre style={{ padding: 12, border: "1px solid #ccc", marginTop: 12, overflowX: "auto" }}>
-            {JSON.stringify(result, null, 2)}
+                {JSON.stringify(result, null, 2)}
             </pre>
         )}
 

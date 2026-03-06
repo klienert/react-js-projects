@@ -16,7 +16,7 @@ router.post('/echo', (req, res) => {
 });
 
 router.get('/error', (req, res) => {
-    res.status(400).json({ error: 'Example error from server'});
+    res.status(400).json({ error: 'Example error from server (*done on purpose)'});
 });
 
 module.exports = router;
