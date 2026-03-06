@@ -9,10 +9,11 @@ const useTheme = () => {
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem(STORAGE_KEY, theme);        
+        localStorage.setItem(STORAGE_KEY, theme);
     }, [theme]);
 
     const toggleTheme = () => {
+        console.log('clicked!');
         setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
     };
 

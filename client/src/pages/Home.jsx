@@ -19,7 +19,10 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="col-3">
-                    <button onClick={toggleTheme}>
+                    <button 
+                        className="btn btn-secondary theme-btn"
+                        onClick={toggleTheme}
+                    >
                         Theme: {theme === 'dark' ? 'Dark' : 'Light'}
                     </button>
                 </div>

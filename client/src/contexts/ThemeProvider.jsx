@@ -1,4 +1,4 @@
-import React, { Children, createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const STORAGE_KEY = 'theme';
 const ThemeContext = createContext({
@@ -20,7 +20,10 @@ const ThemeProvider = ({ children }) => {
         localStorage.setItem(STORAGE_KEY, theme);
     }, [theme]);
 
-    const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+    const toggleTheme = () =>  {
+        console.log('clicked?');
+        setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+    }
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>

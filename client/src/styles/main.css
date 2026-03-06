@@ -20,8 +20,5 @@ body {
 }
 
 .container { width: 100% }
-.nav-bar {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-}
+
+.theme-btn { margin-top: 1rem; }
