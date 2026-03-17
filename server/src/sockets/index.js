@@ -1,31 +1,47 @@
 const { Server } = require('socket.io');
 const { CLIENT_URL } = require('../config/env');
-const registerCounterRooms = require('./counterRooms');
+
+let io; // module-level 
 
 const initSockets = (httpServer) => {
-    const io = new Server(httpServer, {
-        cors: {
-            origin: CLIENT_URL,
-            credentials: true,
-        }
-    });
+    io = new Server(httpServer, {
+        cors: { origin: CLIENT_URL, credentials: true }
+    });    
 
     io.on('connection', (socket) => {
-        socket.emit('server:hello', { message: 'Connected to Socket.IO server'});
+        console.log(`Socket connected: ${socket.id}`);
 
-        // socket.on('client:ping', (payload) => {
-        //     socket.emit('server:pong', { ...payload, at: Date.now() });
-        // });
+        // Client tells us who they are after connecting
+        // e.g.  socket.emit('user:join', { userId: 42 })
+        socket.on('user:join', ({ userId }) => {
+            // Join a private room named after the user
+            socket.join(`user:${userId}`);
+            console.log(`User ${userId} joined their room`);
+        });
 
-        // socket.on('disconnect', () => {
-        //     // optional: log disconnects
-        // })
+        // Admin joining a special room to send broadcasts
+        socket.on('admin:join', ({ adminId }) => {
+            socket.join('admins');
+            console.log(`Admin ${adminId} joined admin room`);
+        });
+
+        socket.on('disconnect', () => {
+            console.log(`Socket disconnected: ${socket.id}`);
+        });
     });
-
-    // register features/modules
-    registerCounterRooms(io);
 
     return io;
 }
 
-module.exports = initSockets;
+// helper fns
+
+const notifyUser = (userId, notification) => {
+    io.to(`user:${userId}`).emit('notification:new', notification);
+}
+
+const notifyAll = (notification) => {
+    io.emit('notification:new', notification);
+}
+
+// module.exports = initSockets;
+module.exports = { initSockets, notifyAll, notifyUser }

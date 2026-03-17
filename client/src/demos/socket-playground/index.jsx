@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { io } from 'socket.io-client';
+import NotificationBell from "./notificationBell";
 import './styles.css';
 
 const SocketPlayground = () => {
@@ -15,7 +16,7 @@ const SocketPlayground = () => {
         // Same origin works because you're using Vite proxy for /api,
         // but Socket.IO defaults to the current origin for ws/http polling too.
         const socket = io("/", {
-        withCredentials: true,
+            withCredentials: true,
         });
 
         socketRef.current = socket;
@@ -48,20 +49,28 @@ const SocketPlayground = () => {
     return (
         <div className="socket-playground">
             <h2 className="socket-header">Socket Playground</h2>
-            <div className="socket-status">
-                Status: <strong>{status}</strong>
+            <div className="socket-row">
+                <div className="socket-col">
+                    <div className="socket-status">
+                        Status: <strong>{status}</strong>
+                    </div>
+                    <button 
+                        className={`btn btn-primary`}
+                        onClick={ping}
+                        disabled={status !== "connected"}
+                    >
+                        Send Ping!
+                    </button>
+                    <h3>Events</h3>
+                    <pre className="socket-msg">
+                        {JSON.stringify(messages, null, 2)}
+                    </pre>
+                </div>
+                <div className="socket-col">
+                    <NotificationBell userId={1} />
+                </div>
             </div>
-            <button 
-                className={`btn btn-primary`}
-                onClick={ping}
-                disabled={status !== "connected"}
-            >
-                Send Ping!
-            </button>
-            <h3>Events</h3>
-            <pre className="socket-msg">
-                {JSON.stringify(messages, null, 2)}
-            </pre>
+            
         </div>
     )
 }

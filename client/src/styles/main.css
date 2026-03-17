@@ -29,4 +29,13 @@ body {
 
 /* Theme Switch*/
 
-.theme-btn { margin-top: 1rem; }
+.theme-btn { 
+    margin: 1rem 0;
+    width: fit-content; 
+}
+
+/* Demo Gallery */
+.demo-gallery {
+    margin: 1rem 0;
+    width: fit-content;
+}
