@@ -19,7 +19,6 @@
 html, body { height: 100%; }
 
 body {
-    /* background: red !important; */
     margin: 0;
     background-color: var(--body-bkg);
     color: var(--body-color);
@@ -28,5 +27,27 @@ body {
 .container { width: 100% }
 
 /* Theme Switch*/
-
 .theme-btn { margin-top: 1rem; }
+
+/* demo gallery */
+.demo-gallery-container {
+    display: flex;    
+}
+
+.demo-gallery {
+    padding: 1rem;
+}
+
+.demo-link {
+    text-decoration: none;
+}
+
+.demo-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.demo-view-container {
+    display: flex;
+    
+}

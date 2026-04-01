@@ -1,17 +1,24 @@
-import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { useParams } from 'react-router-dom';
+import { Suspense, useMemo } from 'react';
 import { demos } from './demos/registry';
 
 const DemoRoute = () => {
+    const { demoSlug } = useParams();
+
+    const demo = demos.find((d) => d.path === demoSlug);
+
+    const Comp = useMemo(() => {
+        if (!demo) return null;
+        return demo.component;
+    }, [demoSlug, demo]);
+
+    if (!demo || !Comp) {
+        return <div style={{ padding: 16 }}>Demo not found</div>;
+    }
+
     return(
-        <Suspense fallback={<div style={{ padding: 16 }}>Loading demo...</div>}>
-            <Routes>
-                {demos.map((d) => {
-                    const Comp = lazy(d.component);
-                    return <Route key={d.route} path={d.path} element={<Comp />} />;
-                })}
-                <Route path="*" element={<div style={{ padding: 16 }}>Demo not found</div>} />
-            </Routes>
+        <Suspense fallback={<div style={{ padding: 16 }}>Loading Demo...</div>}>
+            <Comp />
         </Suspense>
     )
 }

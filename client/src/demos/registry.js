@@ -1,12 +1,7 @@
+import { lazy } from 'react';
+
 const metas = import.meta.glob("./*/meta.js", { eager: true });
 const entries = import.meta.glob("./*/index.jsx");
-
-// const titleFromPath = (p) => {
-//     const folder = p.split('/').slice(-2, -2)[0] || "Demo";
-//     return folder 
-//         .replace(/[-_]/g, " ")
-//         .replace(/\b\w/g, (c) => c.toUpperCase())
-// }
 
 export const demos = Object.entries(entries)
     .map(([entryPath, importer]) => {
@@ -21,7 +16,7 @@ export const demos = Object.entries(entries)
             path,   // 'wordle'
             route: `/demos/${path}`,
             tags: meta.tags || [],
-            component: importer,
+            component: lazy(importer),
         };
     })
     .sort((a, b) => a.name.localeCompare(b.name));

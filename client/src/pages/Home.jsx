@@ -2,6 +2,7 @@ import CurrentDate from "../components/date";
 import CurrentWeather from "../components/weatherAPI/currentWeather";
 import DemoGallery from "./DemoGallery";
 import { useThemeContext } from "../contexts/ThemeProvider";
+import { Outlet } from "react-router";
 
 const Home = () => {
     const { theme, toggleTheme } = useThemeContext();
@@ -26,8 +27,11 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            <div className="row mx-auto">
+            <div className="demo-gallery-container">
                 <DemoGallery />
+            </div>
+            <div className="demo-view-container">
+                <Outlet />
             </div>
         </div>
     )
