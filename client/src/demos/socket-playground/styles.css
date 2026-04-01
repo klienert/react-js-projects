@@ -1,7 +1,6 @@
 .socket-playground {
     display: flex;
     flex-direction: column;
-    width: 25rem;
     height: auto;
     padding: 1rem;
 }
@@ -12,6 +11,17 @@
 
 .socket-playground h3 {
     font-size: medium;
+}
+
+.socket-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
+.socket-col {
+    display: flex;
+    flex-direction: column;
 }
 
 .socket-status {

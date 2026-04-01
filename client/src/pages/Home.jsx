@@ -19,12 +19,17 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="col-3">
-                    <button                         
-                        className={`btn btn-${theme === 'light' ? 'dark' : 'light'} theme-btn`}
-                        onClick={toggleTheme}
-                    >
-                        Theme: {theme === 'dark' ? 'Dark' : 'Light'}
-                    </button>
+                    <div className="row">
+                        <button                         
+                            className={`btn btn-${theme === 'light' ? 'dark' : 'light'} theme-btn`}
+                            onClick={toggleTheme}
+                        >
+                            Theme: {theme === 'dark' ? 'Dark' : 'Light'}
+                        </button>
+                    </div>
+                    <div className="row">
+                        <DemoGallery />
+                    </div>
                 </div>
             </div>
             <div className="demo-gallery-container">
