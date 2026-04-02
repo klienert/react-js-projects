@@ -1,10 +1,10 @@
 export const DEMO_COLS = [
-    { key: 'name', header: 'Group Name', width: '200px', sortable: true },
-    { key: 'region', header: 'Region', sortable: true },
-    { key: 'district', header: 'District', sortable: true },
-    { key: 'numMembers', header: 'Number of Members', align: 'center', sortable: true },
-    { key: 'createdAt', header: 'Created', align: 'center', sortable: true },
-    { key: 'action', header: 'Action', render: (val) => <a href={`#`}>{val}</a> }
+  { key: "name", header: "Group Name", width: "200px", sortable: true, filterable: true },
+  { key: "region", header: "Region", sortable: true, filterable: true, filterType: "select" },
+  { key: "district", header: "District", sortable: true, filterable: true, filterType: "select" },
+  { key: "numMembers", header: "Members", align: "center", sortable: true, filterable: true, filterType: "number" },
+  { key: 'createdAt', header: 'Created', align: 'center', sortable: true, filterable: false },
+  { key: "action", header: "Action", render: (val) => <a href="#">{val}</a> },
 ];
 
 export const DEMO_DATA = [
