@@ -26,6 +26,7 @@ const DemoGallery = () => {
                 style={{ width: "100%", padding: 8, marginBottom: 12 }}
             />
             <ul>
+                <NavLink to={`/`} className={({ isActive }) => isActive ? 'demo-link active' : 'demo-link'}>Home</NavLink>
                 {filtered.map((d) => (
                     <li key={d.route}>
                         <NavLink 

@@ -32,9 +32,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="demo-gallery-container">
-                <DemoGallery />
-            </div>
             <div className="demo-view-container">
                 <Outlet />
             </div>
