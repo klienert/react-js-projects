@@ -5,19 +5,10 @@ const playgroundRoutes = require('./routes/playground');
 const requestLogger = require('./middleware/requestLogger');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
-const { initSockets, notifyAll, notifyUser } = require('./sockets');
+const { initSockets } = require('./sockets');
+
 
 const server = http.createServer(app);
-
-// middleware
-app.use(requestLogger);
-
-// routes
-app.use('/api', playgroundRoutes);
-
-// error handling (keep at the end)
-app.use(notFound);
-app.use(errorHandler);
 
 // sockets
 initSockets(server);
