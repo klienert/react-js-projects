@@ -16,14 +16,12 @@ const BasicTable = ({
         <div className={`bt-wrapper ${className}`.trim()}>
             <table className="bt-table" role="grid" aria-label={caption ?? undefined}>
                 {caption && <caption className="bt-caption">{caption}</caption>}
-    
                 <TableHeader
                     columns={visibleColumns}
                     sortKey={null}
                     sortDir={null}
                     onSort={null}
                 />
-    
                 <tbody>
                     {data.length === 0 ? (
                         <tr>

@@ -2,11 +2,26 @@ import { useState } from 'react';
 import Table from './TableComp/Table';
 import './styles.css';
 import { DEMO_COLS, DEMO_DATA } from './sampleData1.jsx';
+import TableController from '../../components/Table/TableController.jsx';
 
 const TableDemo = () => {
 
     const [data, setData] = useState(DEMO_DATA);
+    const handleAction = (actionId, row) => {
+        if (actionId === 'edit') console.log('edit', row);
+        if (actionId === 'delete') console.log('delete', row);
+    }
+    
+    return (
+        <TableController 
+            variant='basic'
+            columns={DEMO_COLS}
+            data={DEMO_DATA}
+            onAction={handleAction}
+        />
+    )
 
+    /* 
     return (<>        
         {data.length > 0 && 
             <>
@@ -22,6 +37,8 @@ const TableDemo = () => {
             <p>No Table Data</p>
         } 
     </>)
+    */
+    
 }
 
 export default TableDemo;
