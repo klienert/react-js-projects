@@ -1,9 +1,11 @@
-import BasicTable from "./variants/BasicTable";
 import './table.css';
+import BasicTable from "./variants/BasicTable";
+import SortableTable from './variants/SortableTable';
+
 
 const TABLE_REGISTRY = {
     basic: BasicTable,
-    // sortable
+    sortable: SortableTable,
     // data
     // server
     // etc.
@@ -14,7 +16,7 @@ const TABLE_REGISTRY = {
  * TableController - Single entry point for table variants
  * 
  * Required props:
- * - variant         {string}        - one of the keys in TABLE_REGISTRY
+ * - variant         {string}        - one of the keys in TABLE_REGISTRY (basic, sortable, ...)
  * - columns         {array}         - column definitions
  * - data            {array}         - array of row objects
  * 

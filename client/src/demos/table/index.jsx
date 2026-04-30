@@ -13,12 +13,21 @@ const TableDemo = () => {
     }
     
     return (
-        <TableController 
-            variant='basic'
-            columns={DEMO_COLS}
-            data={DEMO_DATA}
-            onAction={handleAction}
-        />
+        <>
+            {/* <TableController 
+                variant='basic'
+                columns={DEMO_COLS}
+                data={DEMO_DATA}
+                onAction={handleAction}
+            /> */}
+            <br /><hr /><br />
+            <TableController 
+                variant='sortable'
+                columns={DEMO_COLS}
+                data={DEMO_DATA}
+                onAction={handleAction}
+            />
+        </>        
     )
 
     /* 
