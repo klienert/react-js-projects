@@ -17,18 +17,24 @@ import SortControls from '../shared/SortControls';
  * The two sort methods share the same state — they stay in sync automatically.
  *
  * Props:
- *   columns         {array}   - column definitions
- *   data            {array}   - array of row objects
- *   onAction        {fn}      - (actionId, row) => void
- *   onRowClick      {fn}      - (row) => void
- *   caption         {string}  - accessible table caption
- *   emptyMessage    {string}  - shown when no rows match
- *   className       {string}  - extra class on the root wrapper
- *   searchPlaceholder {string}
- *   showSortControls  {bool}  - show/hide the select-input sort (default: true)
- *   showSearchBar     {bool}  - show/hide the search bar (default: true)
- *   initialSortKey    {string}
- *   initialSortDir    {string} - 'asc' | 'desc'
+ *  columns             {array}   - column definitions
+ *  data                {array}   - array of row objects
+ *  onAction            {fn}      - (actionId, row) => void
+ *  onRowClick          {fn}      - (row) => void
+ *  caption             {string}  - accessible table caption
+ *  emptyMessage        {string}  - shown when no rows match
+ *  className           {string}  - extra class on the root wrapper
+ *  searchPlaceholder   {string}
+ *  showSortControls    {bool}  - show/hide the select-input sort (default: false)
+ *  showSearchBar       {bool}  - show/hide the search bar (default: true)
+ *  initialSortKey      {string}
+ *  initialSortDir      {string} - 'asc' | 'desc'
+ * 
+ *  TableHeader         {@link TableHeader}
+ *  TableRow            {@link TableRow}
+ *  SearchBar           {@link SearchBar}
+ *  SortControls        {@link SortControls}
+ *         
  */
 const SortableTable = ({
     columns = [],
@@ -39,7 +45,7 @@ const SortableTable = ({
     emptyMessage = 'No results found.',
     className = '',
     searchPlaceholder = 'Search…',
-    showSortControls = true,
+    showSortControls = false,
     showSearchBar = true,
     initialSortKey = null,
     initialSortDir = 'asc',
@@ -80,9 +86,9 @@ const SortableTable = ({
             <div className="st-toolbar">
             {showSearchBar && (
                 <SearchBar
-                value={searchQuery}
-                onChange={setSearchQuery}
-                placeholder={searchPlaceholder}
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                    placeholder={searchPlaceholder}
                 />
             )}
 
@@ -119,33 +125,32 @@ const SortableTable = ({
                 sortDir={sortDir}
                 onSort={cycleSort}
             />
-
-            <tbody>
-                {filteredData.length === 0 ? (
-                <tr>
-                    <td
-                        colSpan={visibleColumns.length}
-                        className="bt-empty"
-                        aria-live="polite"
-                    >
-                    {hasActiveFilter
-                        ? `No results for "${searchQuery}".`
-                        : emptyMessage}
-                    </td>
-                </tr>
-                ) : (
-                filteredData.map((row, index) => (
-                    <TableRow
-                    key={row.id ?? index}
-                    row={row}
-                    columns={visibleColumns}
-                    onAction={onAction}
-                    onRowClick={onRowClick}
-                    rowIndex={index + 1}
-                    />
-                ))
-                )}
-            </tbody>
+                <tbody>
+                    {filteredData.length === 0 ? (
+                        <tr>
+                            <td
+                                colSpan={visibleColumns.length}
+                                className="bt-empty"
+                                aria-live="polite"
+                            >
+                            {hasActiveFilter
+                                ? `No results for "${searchQuery}".`
+                                : emptyMessage}
+                            </td>
+                        </tr>
+                    ) : (
+                        filteredData.map((row, index) => (
+                            <TableRow
+                                key={row.id ?? index}
+                                row={row}
+                                columns={visibleColumns}
+                                onAction={onAction}
+                                onRowClick={onRowClick}
+                                rowIndex={index + 1}
+                            />
+                        ))
+                    )}
+                </tbody>
             </table>
         </div>
         </div>

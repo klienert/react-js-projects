@@ -34,8 +34,6 @@ const SortIndicator = ({ direction }) => {
  *   sortKey      {string} - currently sorted column key (col.sortKey ?? col.key)
  *   sortDir      {string} - 'asc' | 'desc' | null
  *   onSort       {fn}     - (colKey) => void — called when a sortable header is clicked
- * @param {this.props.first} param0 
- * @returns 
  */
 const TableHeader = ({ columns, sortKey, sortDir, onSort}) => {
     const handleKeyDown = (e, col) => {

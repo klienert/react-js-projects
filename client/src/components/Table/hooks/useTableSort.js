@@ -65,7 +65,7 @@ export function useTableSort({
             if (typeof aVal === 'number' && typeof bVal === 'number') {
                 comparison = aVal - bVal;
             } else if (aVal instanceof Date && bVal instanceof Date) {
-                comparison = aVal.getTime() = bVal.getTime();
+                comparison = aVal.getTime() - bVal.getTime();
             } else {
                 // strings
                 comparison = String(aVal).localeCompare(String(bVal), undefined, {

@@ -1,8 +1,11 @@
-
-
 const CellContent = ({ col, row, onAction }) => {
     const value = row[col.key];
 
+    // plain value
+    if (value === null || value === undefined) {
+        return <span className="tr-empty">-</span>
+    }
+    
     // custom render
     if (typeof col.render === 'function') {
         return <>{col.render(value, row)}</>
@@ -11,6 +14,7 @@ const CellContent = ({ col, row, onAction }) => {
     // link
     if (typeof col.link === 'function') {
         const href = col.link(row);
+        console.log('href? ', col, 'value: ', value);
         return (
             <a
                 href={href}
@@ -43,20 +47,13 @@ const CellContent = ({ col, row, onAction }) => {
         )
     }
 
-    // plain value
-    if (value === null || value === undefined) {
-        return <span className="tr-empty">-</span>
-    }
-
     return <>{String(value)}</>;
 }
 
-
-
-
 /**
+ * Render the table row
  * 
- * @param {this.props.first} 
+ * Props: 
  *   row        {object}   - the data record
  *   columns    {array}    - column definitions
  *   onAction   {fn}       - (actionId, row) => void
@@ -66,8 +63,12 @@ const CellContent = ({ col, row, onAction }) => {
  * @returns single <tr> with cells
  */
 const TableRow = ({
-    row, columns, onAction,
-    onRowClick, isSelected = false, rowIndex
+    row, 
+    columns, 
+    onAction,
+    onRowClick, 
+    isSelected = false, 
+    rowIndex
 }) => {
     const isClickable = typeof onRowClick === 'function';
 
@@ -79,7 +80,9 @@ const TableRow = ({
     }
     return (
         <tr
-            className={['tr-row', isClickable ? 'tr-row--clickable' : '',
+            className={['tr-row',
+                rowIndex % 2 === 0 ? 'tr-odd' : 'tr-even',
+                isClickable ? 'tr-row--clickable' : '',
                 isSelected ? 'tr-row--selected' : '',
             ]
                 .filter(Boolean)

@@ -16,9 +16,13 @@ const TABLE_REGISTRY = {
  * TableController - Single entry point for table variants
  * 
  * Required props:
- * - variant         {string}        - one of the keys in TABLE_REGISTRY (basic, sortable, ...)
+ * - variant         {string}        - one of the keys in TABLE_REGISTRY
  * - columns         {array}         - column definitions
  * - data            {array}         - array of row objects
+ * 
+ * **variant keys: 
+ * - basic      - {@link BasicTable}
+ * - sortable   - {@link SortableTable}
  * 
  * Optional props:
  *  - onAction        {fn}            - (actionId, row) => void
