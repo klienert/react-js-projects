@@ -14,18 +14,22 @@ const TableDemo = () => {
     
     return (
         <>
-            {/* <TableController 
+            {/* Basic Table */}
+            <TableController 
                 variant='basic'
                 columns={DEMO_COLS}
                 data={DEMO_DATA}
                 onAction={handleAction}
-            /> */}
+            />
             <br /><hr /><br />
+            {/* Sortable */}
             <TableController 
                 variant='sortable'
                 columns={DEMO_COLS}
                 data={DEMO_DATA}
                 onAction={handleAction}
+                searchPlaceholder={'Search...'}
+                showSortControls={true}
             />
         </>        
     )
