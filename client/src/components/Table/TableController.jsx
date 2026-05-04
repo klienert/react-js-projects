@@ -1,12 +1,13 @@
 import './table.css';
 import BasicTable from "./variants/BasicTable";
+import DataTable from './variants/DataTable';
 import SortableTable from './variants/SortableTable';
 
 
 const TABLE_REGISTRY = {
     basic: BasicTable,
     sortable: SortableTable,
-    // data
+    data: DataTable
     // server
     // etc.
 };
@@ -23,6 +24,7 @@ const TABLE_REGISTRY = {
  * **variant keys: 
  * - basic      - {@link BasicTable}
  * - sortable   - {@link SortableTable}
+ * - data       - {@link DataTable}
  * 
  * Optional props:
  *  - onAction        {fn}            - (actionId, row) => void

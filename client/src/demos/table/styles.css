@@ -1,3 +1,14 @@
 .table-demo {
-    width: 90%;
+    width: 100%;
+} 
+
+.table-selection {
+    display: flex;
+    margin: .5rem;
+    gap: .5rem;
+
+}
+
+.table-selection-btn {    
+    padding: 0 .25rem .25rem 0.25rem;
 }

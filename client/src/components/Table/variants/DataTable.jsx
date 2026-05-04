@@ -60,7 +60,7 @@ export default function DataTable({
     showSearchBar = true,
     searchPlaceholder = 'Search…',
 
-    showSortControls = true,
+    showSortControls = false,
     initialSortKey = null,
     initialSortDir = 'asc',
 
@@ -186,7 +186,7 @@ export default function DataTable({
             </div>
 
             {showPagination && (
-            <TablePagination {...pagination} />
+                <TablePagination {...pagination} />
             )}
         </div>
 
