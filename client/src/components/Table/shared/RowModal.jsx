@@ -118,11 +118,11 @@ function AutoRowContent({ row, labelMap }) {
             let display;
 
             if (value === null || value === undefined) {
-            display = <span className="rm-empty">—</span>;
+                display = <span className="rm-empty">—</span>;
             } else if (typeof value === 'object') {
-            display = <code className="rm-code">{JSON.stringify(value, null, 2)}</code>;
+                display = <code className="rm-code">{JSON.stringify(value, null, 2)}</code>;
             } else {
-            display = String(value);
+                display = String(value);
             }
 
             return (

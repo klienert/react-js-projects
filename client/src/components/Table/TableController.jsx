@@ -33,7 +33,7 @@ const TABLE_REGISTRY = {
  *  - caption         {string}        - accessible table caption
  *  - emptyMessage    {string}        - shown when data is empty
  *  - className       {string}        - extra class on the wrapper
- *  - renderModal     {fn}            - (row) -> <JSX> (DataTable+ only)
+ *  - renderModal     {fn}            - (row) -> <JSX> 
  * 
  */
 const TableController = ({ variant = 'basic', ...props }) => {

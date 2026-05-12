@@ -85,9 +85,6 @@ const TablePagination = ({
                     <button
                         key={p}
                         className={`pg-btn pg-btn--page ${p === page ? 'pg-btn--active' : ''}`}
-                        onClick={() => {
-                            // setPage is destructured from props above
-                    }}
                         aria-label={`Page ${p}`}
                         aria-current={p === page ? 'page' : undefined}
                         onClick={() => setPage(p)}

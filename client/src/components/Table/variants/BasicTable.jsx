@@ -20,6 +20,7 @@ const BasicTable = ({
     columns = [],
     data = [],
     onAction,
+    onRowClick,
     caption,
     className = '',
     emptyMessage = 'No Data Available',
@@ -53,6 +54,7 @@ const BasicTable = ({
                                 key={row.id ?? index}
                                 row={row}
                                 columns={visibleColumns}
+                                onRowClick={onRowClick}
                                 onAction={onAction}
                                 rowIndex={index + 1}
                             />
