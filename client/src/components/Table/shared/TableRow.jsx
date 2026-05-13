@@ -99,11 +99,14 @@ const TableRow = ({
                 .map((col) => (
                     <td
                         key={col.key}
-                        className="tr-cell"
-                        style={{
-                            width: col.width ?? undefined,
-                            textAlign: col.align ?? 'left',
-                        }}
+                        className={[
+                            "tr-cell",
+                            col.align ? 
+                            `textAlign${col.align.charAt(0).toUpperCase() + col.align.slice(1, col.align.length)}` : ' textAlignLeft'
+                        ]
+                        .filter(Boolean)
+                        .join(' ')}
+                        style={{ width: col.width ?? undefined }}
                     >
                         {col.truncate ? (
                             <span className="tr-truncate" title={String(row[col.key] ?? '')}>

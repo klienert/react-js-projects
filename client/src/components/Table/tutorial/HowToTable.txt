@@ -1,0 +1,119 @@
+// ==============================================
+//      HOW THE TABLE CONTROLLER WORKS
+// ==============================================
+
+
+    In your component, import the <TableController /> which takes at the very least 3 props:
+        variant         {string}    - type of table (basic, sortable, data, etc.)
+        columns         {array}     - data columns (headers)
+        data            {array}     - actual data to be displayed
+
+        *optional props:
+        onAction        {fn}        - (actionId, row) => void
+        onRowClick      {fn}        - (row) => void
+        onFetch         {fn}        - (params) => void (ServerTable only)
+        caption         {string}    - accessible table caption
+        emptyMessage    {string}    - shown when data is empty
+        className       {string}    - extra class on the wrapper
+        renderModal     {fn}        - (row) => <JSX> (in conjunction with onRowClick)
+        
+    // ==============================================
+    //      BASIC TABLE
+    // ==============================================       
+
+        const myActionBtnHandler = (actionId, row) => {
+            console.log('actionId: ', actionId, 'row: ', row);
+            ** This will return the row data with actionId 
+            (looks for the key 'action' in the data and returns its value)
+        }
+
+        <div class='my basic table'>
+            <TableController
+                variant='basic'
+                columns={MY_COLS}
+                data={MY_DATA}
+                onAction={myActionBtnHandler} <-- your function
+            />
+        </div>
+
+        NOTE: Your handleActionFn() should be in the same or higher component 
+        than where the TableController is.
+
+
+    // ==============================================
+    //      SORTABLE TABLE
+    // ==============================================   
+
+        **Note - can (should) use the same action button handler
+
+        <div class="my sortable table">
+            <TableController 
+                variant="sortable"
+                columns={MY_COLS}
+                data={MY_DATA}
+                onAction={myActionBtnHandler}
+
+                ************************
+                **optional props:
+                ************************
+
+                onRowClick={fn}
+                caption={accessible table caption}
+                emptyMessage={string} // text for no match (default: 'No results found.')
+                showSearchBar={bool} // show the search bar (default is true)
+                searchPlaceholder={string} // placeholder text (default: 'Search...')
+                showSortControls={bool} // default is false
+                initialSortKey={string} // default is null
+                initialSortDir={string} // 'asc' or 'desc' ('asc' is default)
+            />
+        </div>
+
+
+    // ==============================================
+    //      TABLE W/ MODAL POP-UP
+    // ==============================================   
+
+        import BOTH <TableController /> and <RowModal />
+        ** use states to control the modal operation... for example:
+        
+        const [modalState, setModalState] = useState({
+            isOpen: false,
+            rowData: null
+        });
+
+        // modal funcs
+        const openModal = (row) => {
+            setModalState({isOpen: true, rowData: row});            
+        }
+
+        const closeModal = () => {
+            setModalState({isOpen: false, rowData: null});
+        }
+
+        <div class='my basic table with modal popup'>
+            <TableController
+                variant='basic'
+                columns={MY_COLS}
+                data={MY_DATA}
+                onRowClick={openModal}
+            />
+            <RowModal
+                isOpen={modalState.isOpen}
+                rowData={modalState.rowData}
+                onClose={closeModal}
+                title={'This is my Modal popup title!'}
+                renderModal={(row) => (
+                    <>Your JSX here<>
+                    // example 
+                    <>
+                        <h3>{row.name}</h3>
+                        <p>{row.description}</p>
+                        etc.
+                    <>
+                )}
+            />
+        </div>
+
+    // ==============================================
+    //      DATA TABLE (TODO: need this...)
+    // ==============================================

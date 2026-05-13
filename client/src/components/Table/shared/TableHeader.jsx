@@ -59,13 +59,12 @@ const TableHeader = ({ columns, sortKey, sortDir, onSort}) => {
                         'th-cell',
                         isSortable ? 'th-cell--sortable' : '',
                         isActive ? 'th-cell--active' : '',
+                        col.align ? 
+                                    `textAlign${col.align.charAt(0).toUpperCase() + col.align.slice(1, col.align.length)}` : ' textAlignLeft'
                         ]
                         .filter(Boolean)
                         .join(' ')}
-                        style={{
-                        width: col.width ?? undefined,
-                        textAlign: col.align ?? 'left',
-                        }}
+                        style={{width: col.width ?? undefined}}
                         onClick={isSortable ? () => onSort(activeSortKey) : undefined}
                         onKeyDown={isSortable ? (e) => handleKeyDown(e, col) : undefined}
                         tabIndex={isSortable ? 0 : undefined}
