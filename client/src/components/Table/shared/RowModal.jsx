@@ -75,27 +75,28 @@ export default function RowModal({
 
                 {/* Header */}
                 <div className="rm-header">
-                <h2 className="rm-title">{title ?? 'Details'}</h2>
-                <button
-                    ref={closeBtnRef}
-                    className="rm-close"
-                    onClick={onClose}
-                    aria-label="Close modal"
-                >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 3L13 13M13 3L3 13" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                    </svg>
-                </button>
-            </div>
+                    <h2 className="rm-title">{title ?? 'Details'}</h2>
+                    <button
+                        ref={closeBtnRef}
+                        className="rm-close"
+                        onClick={onClose}
+                        aria-label="Close modal"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 3L13 13M13 3L3 13" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                        </svg>
+                    </button>
+                </div>
 
-            {/* Body */}
-            <div className="rm-body">
-                {rowData && (
-                    typeof renderModal === 'function'
-                    ? renderModal(rowData)
-                    : <AutoRowContent row={rowData} labelMap={labelMap} />
-                )}
-            </div>
+                {/* Body */}
+                <div className="rm-body">
+                    {typeof renderModal === 'function'
+                        ? renderModal(rowData)
+                        : rowData
+                            ? <AutoRowContent row={rowData} labelMap={labelMap} />
+                            : null
+                    }
+                </div>
             </div>
         </div>
     );

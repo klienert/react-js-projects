@@ -130,10 +130,10 @@ export default function DataTable({
                 )}
                 {showSortControls && (
                     <SortControls
-                    columns={visibleColumns}
-                    sortKey={sortKey}
-                    sortDir={sortDir}
-                    onSort={setSort}
+                        columns={visibleColumns}
+                        sortKey={sortKey}
+                        sortDir={sortDir}
+                        onSort={setSort}
                     />
                 )}
                 </div>

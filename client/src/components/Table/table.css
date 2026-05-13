@@ -3,7 +3,7 @@
    Prefixes:
      bt-  BasicTable wrapper/table/empty
      th-  TableHeader cells
-     tr-  TableRow cells + states
+     tr-  TableRow cells + states     
      st-  SortableTable toolbar
      sb-  SearchBar
      sc-  SortControls
