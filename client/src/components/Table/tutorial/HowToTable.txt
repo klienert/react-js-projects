@@ -17,9 +17,9 @@
         className       {string}    - extra class on the wrapper
         renderModal     {fn}        - (row) => <JSX> (in conjunction with onRowClick)
         
-    // ==============================================
-    //      BASIC TABLE
-    // ==============================================       
+// ==============================================
+//      BASIC TABLE
+// ==============================================       
 
         const myActionBtnHandler = (actionId, row) => {
             console.log('actionId: ', actionId, 'row: ', row);
@@ -40,9 +40,9 @@
         than where the TableController is.
 
 
-    // ==============================================
-    //      SORTABLE TABLE
-    // ==============================================   
+// ==============================================
+//      SORTABLE TABLE
+// ==============================================   
 
         **Note - can (should) use the same action button handler
 
@@ -69,9 +69,9 @@
         </div>
 
 
-    // ==============================================
-    //      TABLE W/ MODAL POP-UP
-    // ==============================================   
+// ==============================================
+//      TABLE W/ MODAL POP-UP
+// ==============================================   
 
         import BOTH <TableController /> and <RowModal />
         ** use states to control the modal operation... for example:
@@ -114,6 +114,21 @@
             />
         </div>
 
-    // ==============================================
-    //      DATA TABLE (TODO: need this...)
-    // ==============================================
+// ==============================================
+//      DATA TABLE (TODO: need this...)
+// ==============================================
+
+
+// ==============================================
+//      SAMPLE COLUMNS AND DATA
+// ==============================================
+
+const [columns, setColumns] = useState([
+    {key: 'name', header: 'Name', sortable: true, filterable: true },
+    /* 
+        can add:
+            - align: 'center' [ or 'left' (default) or 'right' ]
+            - width: '200px' --> results in an in-line CSS styling
+    */
+
+])
