@@ -2,13 +2,13 @@ import './table.css';
 import BasicTable from "./variants/BasicTable";
 import DataTable from './variants/DataTable';
 import SortableTable from './variants/SortableTable';
-
+import ServerTable from './variants/ServerTable';
 
 const TABLE_REGISTRY = {
     basic: BasicTable,
     sortable: SortableTable,
-    data: DataTable
-    // server
+    data: DataTable,
+    server: ServerTable
     // etc.
 };
 
@@ -25,6 +25,7 @@ const TABLE_REGISTRY = {
  * - basic      - {@link BasicTable}
  * - sortable   - {@link SortableTable}
  * - data       - {@link DataTable}
+ * - server     - {@link ServerTable}
  * 
  * Optional props:
  *  - onAction        {fn}            - (actionId, row) => void
@@ -34,6 +35,14 @@ const TABLE_REGISTRY = {
  *  - emptyMessage    {string}        - shown when data is empty
  *  - className       {string}        - extra class on the wrapper
  *  - renderModal     {fn}            - (row) -> <JSX> 
+ *  - modalTitle      {string}
+ * 
+ *  - onFetch         {fn}            - ({ page, perPage, sortKey, sortDir, search }) => void
+ *  - totalRows       {number}        - total row count (ServerTable)
+ *  - loading         {bool}          - loading state (ServerTable)
+ *  - syncToUrl       {bool}          - sync state to URL params (ServerTable)
+ *  - urlPrefix        {string}        - namespace URL params (ServerTable)
+ *   
  * 
  */
 const TableController = ({ variant = 'basic', ...props }) => {

@@ -661,3 +661,65 @@
     --header-height: calc(var(--spacing) * 5 + 5px);
 }
 */
+
+/* server table? */
+/* ── ServerTable loading + reset ────────────── */
+.server-table-container {
+  position: relative;
+}
+ 
+.server-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 8px;
+}
+ 
+.server-loading-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: st-spin 0.7s linear infinite;
+}
+ 
+@keyframes server-spin {
+  to { transform: rotate(360deg); }
+}
+ 
+/* Dim the table while loading but keep it visible */
+.server-table--loading {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+ 
+/* Reset button */
+.server-reset-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+}
+ 
+.server-reset-btn:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-hover);
+}
+ 
+.server-reset-btn:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 1px;
+}

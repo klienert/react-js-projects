@@ -7,7 +7,7 @@ import TableController from '../../components/Table/TableController.jsx';
 
 const TableDemo = () => {
     const { theme } = useThemeContext();
-    const tableViews = ['basic', 'sortable', 'data'];
+    const tableViews = ['basic', 'sortable', 'data', 'server'];
     const [currentTable, setCurrentTable] = useState(null);
     const [dataCol, setDataCol] = useState([
         { key: "name", header: "Group Name", width: "200px", sortable: true, filterable: true },
@@ -82,8 +82,7 @@ const TableDemo = () => {
                         data={data}
                         onAction={handleAction}
                         rowClickable={true}
-                        modalTitle={'Modal Title'}
-                        
+                        modalTitle={`Modal Title (${currentTable})`}
                     />
                     <hr />
                 </div>
