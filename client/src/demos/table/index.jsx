@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useThemeContext } from '../../contexts/ThemeProvider.jsx';
-import Table from './TableComp/Table';
 import './styles.css';
-import { DEMO_COLS, DEMO_DATA } from './sampleData1.jsx';
+import Table from './TableComp/Table';
 import TableController from '../../components/Table/TableController.jsx';
 
 const TableDemo = () => {
@@ -30,7 +29,9 @@ const TableDemo = () => {
         {id: 1, name: 'Group for Teachers', region: 'Demo', district: 'LOTR ISD', numMembers: 120, createdAt: '2026-01-01', action: 'edit' },
         {id: 2, name: 'Group for Coaches', region: 'Demo', district: 'LOTR ISD', numMembers: 18, createdAt: '2025-12-31', action: 'edit'},
         {id: 3, name: 'Group for Admin', region: '6', district: 'ESC Region 6', numMembers: 4, createdAt: '2026-03-31', action: 'edit'},
-        {id: 4, name: 'Group for Graphic Designers', region: '6', district: 'ESC Region 6', numMembers: 3, createdAt: '2026-02-27', action: 'edit'}
+        {id: 4, name: 'Group for Graphic Designers', region: '6', district: 'ESC Region 6', numMembers: 3, createdAt: '2026-02-27', action: 'edit'},
+        {id: 5, name: 'Some other group', region: 'Demo', district: 'LOTR ISD', numMembers: 20, createdAt: '2026-05-27', action: 'edit'},
+        {id: 6, name: 'Another group...', region: '4', district: 'Aldine ISD', numMembers: 305, createdAt: '2026-05-26', action: 'edit'}
     ]);
     const handleAction = (actionId, row) => {
         console.log('actionId: ', actionId, '\nrow: ', row);
@@ -83,31 +84,15 @@ const TableDemo = () => {
                         onAction={handleAction}
                         rowClickable={true}
                         modalTitle={`Modal Title (${currentTable})`}
+                        showSearchBar={true}
+                        searchPlaceholder={`Search in "${currentTable}" table`}
+                        showSortControls={true}
                     />
                     <hr />
                 </div>
             )}
         </section>        
     )
-
-    /* 
-    return (<>        
-        {data.length > 0 && 
-            <>
-                <p>{data.length} records</p>
-                <Table 
-                    columns={DEMO_COLS}
-                    data={data}
-                    emptyMessage='No data, try again...'
-                />
-            </>            
-        }
-        {(!data || data.length === 0) && 
-            <p>No Table Data</p>
-        } 
-    </>)
-    */
-    
 }
 
 export default TableDemo;

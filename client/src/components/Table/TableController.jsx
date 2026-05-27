@@ -41,8 +41,7 @@ const TABLE_REGISTRY = {
  *  - totalRows       {number}        - total row count (ServerTable)
  *  - loading         {bool}          - loading state (ServerTable)
  *  - syncToUrl       {bool}          - sync state to URL params (ServerTable)
- *  - urlPrefix        {string}        - namespace URL params (ServerTable)
- *   
+ *  - urlPrefix       {string}        - namespace URL params (ServerTable)
  * 
  */
 const TableController = ({ variant = 'basic', ...props }) => {

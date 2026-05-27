@@ -1,134 +1,445 @@
-// ==============================================
-//      HOW THE TABLE CONTROLLER WORKS
-// ==============================================
+================================================================================
+    HOW THE TABLE CONTROLLER WORKS
+    Last updated: 05/27/2026
+================================================================================
 
+    In your component, import the <TableController />
+    *Four variants available:
+        - basic         static display, can have optional row click (modal)
+        - sortable      adds search bar + column sort + select-input sort (Client-Side)
+        - data          Full-featured client-side. Sort + filter + pagination + modal
+        - server        API-driven. All sort/filter/pagination fires onFetch to server
 
-    In your component, import the <TableController /> which takes at the very least 3 props:
-        variant         {string}    - type of table (basic, sortable, data, etc.)
-        columns         {array}     - data columns (headers)
-        data            {array}     - actual data to be displayed
+================================================================================
+    COLUMN DEFINITIONS
+================================================================================
 
-        *optional props:
+    columns={array} -- all table variants share the same shape.
+
+    const columns = [
+        {
+            // -- Required ------------------------------------------
+            key: 'name',            // matches the key on your data row object
+            name: 'Full Name'       // displayed in the column header
+
+            // -- Sorting ------------------------------------------
+            sortable: true,         // enables sort on this column (default: false)
+            sortKey: 'full_name'    // optional: server-side field name if different
+                                    // from key (i.e., key='createdBy', sortKey='created_by')
+
+            // -- Cell rendering (render > link > actions > plain) --
+            render: (value, row) => <StatusBadge status={value} />,
+                                    // full custom render - wins over everything
+                                    // NOTE: must return JSX, use () not {}
+                                    // example:
+                                    //      render: (val, row) => (<button>...</button>)
+                                    //  NOT render: (val, row) => { <button>...</button> }
+            link: (row) => `/users/${row.id}`,
+                                    // wraps cell value in an <a> tag
+
+            actions: [              // renders one or more buttons in cell
+                {
+                    label:      'Edit'      // button text (used for aria-label + icon title)
+                    actionId:   'edit'      // identifier passed to onAction(actionId, row)
+                    variant:    'default',  // 'default' | 'primary' | 'danger'
+                    icon:       <EditIcon size={14} />,     // optional React element
+                    icon:       '/icons/edit.svg'           // optional path string (CSS mask)
+                    iconOnly: true,         // hide label, show icon only (labe still used)
+                },
+                {
+                    label:      'Delete',
+                    actionId:   'delete',
+                    variant:    'danger'
+
+                }
+            ],
+
+            // -- Display ------------------------------------------
+            width:      '200px'     // inline-css column wisth
+            alight:     'left'      // 'left' | 'center' | 'right' (uses className CSS)
+            truncate:   true        // clip overflow with ellipsis
+            hidden:     false       // exclude column from render
+
+            // -- Filtering ------------------------------------------
+            filterable:     false   // set to false to exclude from global search 
+                                    // columns with render or actions are excluded
+
+            // -- Accessibility ------------------------------------------
+            ariaLabel:      'User name',    // overrired header text for screen readers
+        }
+    ];
+
+    **Cell rendering precedence:
+        1.  render (value, row)     - custom JSX, full control
+        2.  link(row)               - anchor wrapping cell value
+        3.  actions[]               - one or more buttons
+        4.  plain value             - String(row[key])
+        null/undefined              - renders as -- (em dash)
+    
+    Action Handlers:
+        Action button clicks do NOT live in column definition.
+        Pass onAction prop to the table instead:
+
+            onAction={(actionId, row) => {
+                if (actionId === 'edit')    navigate(`/route/edit/${row.id}`);
+                if (actionId === 'delete')  deleteRow(row.id);
+            }}
+        
+        This keeps column config as a pure data object.
+        Column configs can then live in a separate file and be reused.
+        
+================================================================================
+    BASIC TABLE
+================================================================================
+
+    Static display table. No sort, filter, or pagination
+    Add onRowClick to make rows open a modal or navigate
+
+    REQUIRED PROPS:
+        variant='basic'
+        columns={array}
+        data={array}
+
+    OPTIONAL PROPS:
         onAction        {fn}        - (actionId, row) => void
         onRowClick      {fn}        - (row) => void
-        onFetch         {fn}        - (params) => void (ServerTable only)
         caption         {string}    - accessible table caption
         emptyMessage    {string}    - shown when data is empty
         className       {string}    - extra class on the wrapper
         renderModal     {fn}        - (row) => <JSX> (in conjunction with onRowClick)
         
-// ==============================================
-//      BASIC TABLE
-// ==============================================       
-
+    EXAMPLE #1 - basic
+        // action button handler 
         const myActionBtnHandler = (actionId, row) => {
             console.log('actionId: ', actionId, 'row: ', row);
             ** This will return the row data with actionId 
             (looks for the key 'action' in the data and returns its value)
         }
 
-        <div class='my basic table'>
-            <TableController
-                variant='basic'
-                columns={MY_COLS}
-                data={MY_DATA}
-                onAction={myActionBtnHandler} <-- your function
-            />
-        </div>
+        <TableController 
+            variant="basic"
+            columns={cols}
+            data={data}
+            onAction={myActionBtnHandler} <-- your function
+        />
 
         NOTE: Your handleActionFn() should be in the same or higher component 
         than where the TableController is.
-
-
-// ==============================================
-//      SORTABLE TABLE
-// ==============================================   
-
-        **Note - can (should) use the same action button handler
-
-        <div class="my sortable table">
-            <TableController 
-                variant="sortable"
-                columns={MY_COLS}
-                data={MY_DATA}
-                onAction={myActionBtnHandler}
-
-                ************************
-                **optional props:
-                ************************
-
-                onRowClick={fn}
-                caption={accessible table caption}
-                emptyMessage={string} // text for no match (default: 'No results found.')
-                showSearchBar={bool} // show the search bar (default is true)
-                searchPlaceholder={string} // placeholder text (default: 'Search...')
-                showSortControls={bool} // default is false
-                initialSortKey={string} // default is null
-                initialSortDir={string} // 'asc' or 'desc' ('asc' is default)
-            />
-        </div>
-
-
-// ==============================================
-//      TABLE W/ MODAL POP-UP
-// ==============================================   
-
-        import BOTH <TableController /> and <RowModal />
-        ** use states to control the modal operation... for example:
-        
+    
+    EXAMPLE #2 - with row click modal:
         const [modalState, setModalState] = useState({
             isOpen: false,
+            mode: null,
             rowData: null
         });
 
-        // modal funcs
-        const openModal = (row) => {
-            setModalState({isOpen: true, rowData: row});            
-        }
+        const openEdit = (row) => setModalState({ isOpen: true, mode: 'edit', rowData: row });
+        const openCreate = () => setModalState({ isOpen: true, mode: 'create', rowData: null });
+        const closeModal = () => setModalState((prev) => ({...prev, isOpen: false }));
 
-        const closeModal = () => {
-            setModalState({isOpen: false, rowData: null});
-        }
+        <button onClick={openCreate}>+ New Thing!</button>
 
-        <div class='my basic table with modal popup'>
-            <TableController
-                variant='basic'
-                columns={MY_COLS}
-                data={MY_DATA}
-                onRowClick={openModal}
+        <TableController 
+            variant="basic"
+            columns={cols}
+            data={data}
+            onRowClick={openEdit}
+            onAction={(acctionId, row) => {
+                if (actionId === 'edit') openEdit(row);
+            }}
+        />
+
+        <RowModal 
+            isOpen={modalState.isOpen}
+            rowData={modalState.rowData}
+            onClose={closeModal}
+            title={modalState.mode === 'edit' ? 'Edit Something' : 'New Something'}
+            renderModal={() => (
+                <YourJSX 
+                    key={`${modalState.mode}-${modalState.rowData?.id ?? 'new'}`}
+                    mode={modalState.mode}
+                    rowData={modalState.rowData}
+                    value={formData} // manage formData in this container/component
+                    onChange={handleChange}
+                    onSubmit={handleSubmit}
+                    onCancel={closeModal}
+                    ... etc.
+                />
+            )}
+        />
+
+================================================================================
+    SORTABLE TABLE
+================================================================================
+
+    *Extends basic table with a search bar, sort column headers, select-input 
+    sort control. NOTE - All sort/fitler is client-side.
+
+    REQUIRED PROPS:
+        variant='sortable'
+        columns={array}             sortable: true (columns appear in sort select)        
+        data={array}                full dataset - filter/sorting happens in browser
+
+    OPTIONAL PROPS:
+        onAction            {fn}        - (actionId, row) => void
+        onRowClick          {fn}        - (row) => void
+        caption             {string}    - accessible table caption
+        emptyMessage        {string}    - shown when data is empty
+        className           {string}    - extra class on the wrapper
+        renderModal     {fn}        - (row) => <JSX> (in conjunction with onRowClick)
+
+        showSearchBar       {bool}      - show/hide search input (default: true)
+        searchPlaceholder   {string}    - 'Search me?'
+        showSortControls    {bool}      - show/hide column select + direction (default: true)
+        initialSortKey      {string}    - column key to sort by on mount
+        initialSortDir      {string}    - 'asc' | 'desc' (default: 'asc')
+
+        NOTES:
+            - columns with render function are excluded from global search
+            - set filterable: false on a column to exclude it from search
+            - sort cycles: asc -> desc -> clear
+            - select-input and sort column header share same state
+
+    EXAMPLE #1 - sortable
+        // use myActionBtnHandler() (same as above)
+
+        <TableController 
+            variant="sortable"
+            columns={cols}
+            data={data}
+            initialSortKey={'name'} 
+            initialSortDir={'asc'} 
+            searchPlaceholder={'Searching...'}
+            showSortControls={true}
+            onAction={myActionBtnHandler} <-- your function
+        />
+
+================================================================================
+    DATA TABLE 
+================================================================================
+    Full-featured client-side table. Combines sort + filter + pagination + modal
+    *Dataset needs to load all at once (so, kinda small...)
+
+    REQUIRED PROPS:
+        variant='data'
+        columns={array}             
+        data={array}                full dataset loaded upfront
+
+    OPTIONAL PROPS:
+        onAction            {fn}        - (actionId, row) => void
+        caption             {string}    - table caption
+        emptyMessage        {string}    - (default: 'No results found')
+        className           {string}    - extra class on the wrapper
+
+        showSearchBar       {bool}
+        searchPlaceholder   {string}
+        showSortControls    {bool}      - default: true
+        initialSortKey      {string}
+        initialSortDir      {string}    - 'asc' | 'desc'
+
+        showPagination      {bool}      - (default: true)
+        initialPerPage      {integer}   - rows per page on mount (default: 10)
+        perPageOptions      {array}     - rows-per-page choices
+                                        - (default: [10, 25, 50, 100])
+        
+        rowClickable        {bool}      - enables row click -> modal (default: true)
+        modalTitle          {string}    - heading show in modal
+        renderModal         {fn}        - (row) => <JSX>
+
+    MODAL CONTENT:
+        Default (no renderModal):
+            All row fields rendered as a labelled key/value list.
+            Keys starting with _ are skipped
+    
+    EXAMPLE #1 - data table
+        // use myActionBtnHandler() (same as above)
+        <TableController 
+            variant="data"
+            columns={cols}
+            data={data}
+            initialPerPage={25}
+            rowClickable={true}
+            modalTitle="Details"
+            renderModal={(row) => <MySpecificModal data={row} />}
+            onAction={myActionBtnHandler}
+        />
+
+
+================================================================================
+    SERVER TABLE
+================================================================================
+
+    API driven table. Every sort, filter, and page change fires onFetch with 
+    current params. Your component recieves teh results and passes them back as 
+    'data' and 'totalRows'. Stat is optionally synced to the URL
+
+    NOTE: For large datasets
+
+    REQUIRED PROPS:
+        variant='server'
+        columns={array}             
+        data={array}            CURRENT PAGE only - returned from your API
+        totalRows={number}      Total row count across all pages - returned from your API
+        onFetch={fn}            ({ page, perPage, sortKey, sortDir, search }) => void
+                                Called on mount and on every param change.
+                                Your function should call your API and update 'data' 
+                                and 'totalRows' in state
+
+    OPTIONAL PROPS:
+        onAction={fn}               (actionId, row) => void
+        loading={bool}              shows a loading spinner overlay (default: false)
+        caption={string}
+        emptyMessage={string}       (default: 'No results found.')
+        className={string}
+        
+        showSearchBar={bool}        (default: true)
+        searchPlaceholder={string}
+        showSortControls={bool}     (default: true)
+        
+        showPagination={bool}       (default: true)
+        initialPerPage={number}     (default: 10)
+        perPageOptions={array}      (default: [10, 25, 50, 100])
+        
+        syncToUrl={bool}            sync sort/filter/page state to URL params (default: true)
+                                    Enables shareable links + back-button support.
+        urlPrefix={string}          namespaces URL params — REQUIRED if more than one
+                                    ServerTable appears on the same page.
+                                    e.g. urlPrefix="users" → ?users_page=2&users_sortKey=name
+        
+        rowClickable={bool}         (default: false)
+        modalTitle={string}
+        renderModal={fn}            (row) => JSX
+    
+    NOTES: 
+        - data hsould be ONLY the current pages' rows, not the full dataset
+        - totalRows drives pagination calculations (total pages, range display).
+        - The Reset button appears automatically when search/sort/page are active.
+        - Requires react-router-dom v6 for URL sync.
+
+    EXAMPLE #1 - server table
+        // for a sample users page
+        const [users, setUsers]     = useState([]);
+        const [totalRows, setTotal] = useState(0);
+        const [loading, setLoading] = useState(false);
+    
+        const handleFetch = async ({ page, perPage, sortKey, sortDir, search }) => {
+            setLoading(true);
+            try {
+                const res = await api.get('/users', {
+                    params: { page, perPage, sortKey, sortDir, search }
+                });
+                setUsers(res.data);
+                setTotal(res.total);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        ... other logic for component
+        return (
+            <TableController 
+                variant="server"
+                columns={userColumns}
+                data={users}
+                totalRows={totalRows}
+                loading={loading}
+                onFetch={handleFetch}
+                urlPrefix="users"
+                syncToUrl={true}
+                searchPlaceholder="Search users…"
+                onAction={(actionId, row) => { ... }}
             />
-            <RowModal
-                isOpen={modalState.isOpen}
-                rowData={modalState.rowData}
-                onClose={closeModal}
-                title={'This is my Modal popup title!'}
-                renderModal={(row) => (
-                    <>Your JSX here<>
-                    // example 
-                    <>
-                        <h3>{row.name}</h3>
-                        <p>{row.description}</p>
-                        etc.
-                    <>
-                )}
-            />
-        </div>
+        )
 
-// ==============================================
-//      DATA TABLE (TODO: need this...)
-// ==============================================
+    MULTIPLE SERVER TABLES ON ONE PAGE:
+        Each table must have a unique urlPrefix to avoid collisions
+        <TableController variant='server' urlPrefix="users" ... />
+        <TableController variant='server' urlPrefix="groups" ... />
+
+        Results in: ?users_page=2&users_sortKey=name&groups_page=1
 
 
-// ==============================================
-//      SAMPLE COLUMNS AND DATA
-// ==============================================
 
-const [columns, setColumns] = useState([
-    {key: 'name', header: 'Name', sortable: true, filterable: true },
-    /* 
-        can add:
-            - align: 'center' [ or 'left' (default) or 'right' ]
-            - width: '200px' --> results in an in-line CSS styling
-    */
+================================================================================
+    ROW MODAL -- STANDALONE USAGE
+================================================================================
 
-])
+    DataTable and ServerTable manage their own modal internally.
+    BasicTable and SortableTable, import and manage RowModal:
+
+        import { RowModal } from '...';
+
+        PROPS:
+            isOpen={bool}           controls visibility
+            rowData={object|null}   the row that was clicked (null in create mode)
+            onClose={fn}            () => void
+            title={string}          modal heading
+            columns={array}         used to map keys to readable labels in auto-render
+            renderModal={fn}        optional: (row) => JSX — overrides auto key/value list
+ 
+        MODAL CONTENT STRATEGY:
+            No renderModal prop:
+                Auto-renders all row fields as a key → value list.
+                camelCase → "Camel Case", snake_case → "Snake Case" automatically.
+                Keys starting with _ are skipped.
+                Objects/arrays are JSON stringified.
+ 
+        With renderModal:
+            Your JSX renders in the modal body. Row data is passed as the argument.
+            In create mode rowData is null — your form should read from page state,
+            not from the rowData argument.
+ 
+        CREATE vs EDIT PATTERN:
+            Manage a modalState object in the parent page:
+ 
+            const [modalState, setModalState] = useState({
+                isOpen: false,   // controls modal open/close
+                mode:   null,    // 'edit' | 'create'
+                rowData: null,   // populated for edit, null for create
+            });
+ 
+            renderModal fires regardless of whether rowData is null or not.
+            Your form reads from formData (page state), not from rowData directly.
+ 
+            See the BasicTable example above for full create/edit wiring.
+ 
+================================================================================
+    FILE STRUCTURE
+================================================================================
+
+  src/components/table/
+    index.js                    ← import everything from here
+    TableController.jsx         ← single entry point
+    variants/
+      BasicTable.jsx
+      SortableTable.jsx
+      DataTable.jsx
+      ServerTable.jsx
+    hooks/
+      useTableSort.js
+      useTableFilter.js
+      useTablePagination.js
+      useRowModal.js
+      useServerSync.js
+      useUrlState.js
+    shared/
+      TableHeader.jsx
+      TableRow.jsx
+      TablePagination.jsx
+      SearchBar.jsx
+      SortControls.jsx
+      RowModal.jsx
+      table.css               ← import once in app root
+
+
+================================================================================
+  QUICK REFERENCE — WHICH VARIANT TO USE?
+================================================================================
+ 
+    Your data fits in memory AND you don't need pagination   → basic
+    Your data fits in memory AND you need sort/search        → sortable
+    Your data fits in memory AND you need pagination         → data
+    Large dataset, API-driven, or needs URL-shareable state  → server
+ 
+    Rule of thumb: under ~500 rows, client-side variants work well.
+    Over 500 rows, or if rows are fetched lazily, use server.

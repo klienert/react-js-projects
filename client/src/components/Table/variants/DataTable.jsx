@@ -60,7 +60,7 @@ export default function DataTable({
     showSearchBar = true,
     searchPlaceholder = 'Search…',
 
-    showSortControls = false,
+    showSortControls = true,
     initialSortKey = null,
     initialSortDir = 'asc',
 

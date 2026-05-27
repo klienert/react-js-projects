@@ -7,7 +7,7 @@ import { useState, useMemo } from "react";
  * Works for both client-side sorting (pass `data`) and server-side
  * (omit `data` — the hook just tracks state for you to pass to onFetch).
  * 
- * @param {object} options
+ * @param {object}   options
  * @param {array}    options.data        - full client-side dataset (omit for server)
  * @param {string}   options.initialKey  - column key to sort by on mount (default: null)
  * @param {string}   options.initialDir  - 'asc' | 'desc' (default: 'asc')

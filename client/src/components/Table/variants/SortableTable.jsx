@@ -34,7 +34,6 @@ import SortControls from '../shared/SortControls';
  *  TableRow            {@link TableRow}
  *  SearchBar           {@link SearchBar}
  *  SortControls        {@link SortControls}
- *         
  */
 const SortableTable = ({
     columns = [],
@@ -45,7 +44,7 @@ const SortableTable = ({
     emptyMessage = 'No results found.',
     className = '',
     searchPlaceholder = 'Search…',
-    showSortControls = false,
+    showSortControls = true,
     showSearchBar = true,
     initialSortKey = null,
     initialSortDir = 'asc',
@@ -60,11 +59,10 @@ const SortableTable = ({
     });
 
     // ── Filter — runs on already-sorted data ────────────────────────────────
-    const {
-        filteredData,
-        searchQuery,
-        setSearchQuery,
-        hasActiveFilter,
+    const { filteredData, 
+        searchQuery, 
+        setSearchQuery, 
+        hasActiveFilter 
     } = useTableFilter({
         data: sortedData,
         columns: visibleColumns,
@@ -91,22 +89,21 @@ const SortableTable = ({
                     placeholder={searchPlaceholder}
                 />
             )}
-
-            <div className="st-toolbar-right">
-                {resultSummary && (
-                <span className="st-result-count" aria-live="polite" aria-atomic="true">
-                    {resultSummary}
-                </span>
-                )}
-                {showSortControls && (
-                <SortControls
-                    columns={visibleColumns}
-                    sortKey={sortKey}
-                    sortDir={sortDir}
-                    onSort={setSort}
-                />
-                )}
-            </div>
+                <div className="st-toolbar-right">
+                    {resultSummary && (
+                    <span className="st-result-count" aria-live="polite" aria-atomic="true">
+                        {resultSummary}
+                    </span>
+                    )}
+                    {showSortControls && (
+                    <SortControls
+                        columns={visibleColumns}
+                        sortKey={sortKey}
+                        sortDir={sortDir}
+                        onSort={setSort}
+                    />
+                    )}
+                </div>
             </div>
         )}
 

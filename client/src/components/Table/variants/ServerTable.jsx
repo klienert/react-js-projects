@@ -53,48 +53,48 @@ import RowModal               from '../shared/RowModal';
  *   renderModal         {fn}      - (row) => JSX
  */
 export default function ServerTable({
-  columns = [],
-  data = [],
-  totalRows = 0,
-  onFetch,
-  onAction,
-  loading = false,
-  caption,
-  emptyMessage = 'No results found.',
-  className = '',
+    columns = [],
+    data = [],
+    totalRows = 0,
+    onFetch,
+    onAction,
+    loading = false,
+    caption,
+    emptyMessage = 'No results found.',
+    className = '',
 
-  showSearchBar = true,
-  searchPlaceholder = 'Search…',
+    showSearchBar = true,
+    searchPlaceholder = 'Search…',
 
-  showSortControls = true,
+    showSortControls = true,
 
-  showPagination = true,
-  initialPerPage = 10,
-  perPageOptions = [10, 25, 50, 100],
+    showPagination = true,
+    initialPerPage = 10,
+    perPageOptions = [10, 25, 50, 100],
 
-  syncToUrl = true,
-  urlPrefix = '',
+    syncToUrl = true,
+    urlPrefix = '',
 
-  rowClickable = false,
-  modalTitle,
-  renderModal,
+    rowClickable = false,
+    modalTitle,
+    renderModal,
 }) {
   const visibleColumns = columns.filter((col) => !col.hidden);
 
   // ── 1. Server sync — owns all param state, fires onFetch on change ─────
   const {
-    params,
-    setPage,
-    setPerPage,
-    setSort,
-    cycleSort,
-    setSearch,
-    resetParams,
-  } = useServerSync({
-    onFetch,
-    syncToUrl,
-    urlPrefix,
-    initialParams: { perPage: initialPerPage },
+      params,
+      setPage,
+      setPerPage,
+      setSort,
+      cycleSort,
+      setSearch,
+      resetParams,
+    } = useServerSync({
+      onFetch,
+      syncToUrl,
+      urlPrefix,
+      initialParams: { perPage: initialPerPage },
   });
 
   // ── 2. Pagination UI — server-side, uses totalRows from prop ───────────
@@ -102,33 +102,33 @@ export default function ServerTable({
   // rangeEnd, totalPages, canPrev/canNext) but pass serverSide:true so
   // it never slices the data — that's already done by the server.
   const pagination = useTablePagination({
-    data,
-    serverSide: true,
-    totalRows,
-    initialPerPage: params.perPage,
-    perPageOptions,
+      data,
+      serverSide: true,
+      totalRows,
+      initialPerPage: params.perPage,
+      perPageOptions,
   });
 
   // Keep pagination UI in sync with useServerSync params
   // (page may have been set via URL on mount)
   const paginationWithSync = {
-    ...pagination,
-    page:    params.page,
-    perPage: params.perPage,
-    // Override the hook's setters with useServerSync's — so param changes
-    // flow through useServerSync and trigger onFetch
-    setPage,
-    setPerPage,
-    goToFirst: () => setPage(1),
-    goToPrev:  () => setPage(params.page - 1),
-    goToNext:  () => setPage(params.page + 1),
-    goToLast:  () => setPage(Math.ceil(totalRows / params.perPage)),
-    canPrev:   params.page > 1,
-    canNext:   params.page < Math.ceil(totalRows / params.perPage),
-    rangeStart: totalRows === 0 ? 0 : (params.page - 1) * params.perPage + 1,
-    rangeEnd:   Math.min(params.page * params.perPage, totalRows),
-    totalRows,
-    totalPages: Math.max(1, Math.ceil(totalRows / params.perPage)),
+      ...pagination,
+      page:    params.page,
+      perPage: params.perPage,
+      // Override the hook's setters with useServerSync's — so param changes
+      // flow through useServerSync and trigger onFetch
+      setPage,
+      setPerPage,
+      goToFirst: () => setPage(1),
+      goToPrev:  () => setPage(params.page - 1),
+      goToNext:  () => setPage(params.page + 1),
+      goToLast:  () => setPage(Math.ceil(totalRows / params.perPage)),
+      canPrev:   params.page > 1,
+      canNext:   params.page < Math.ceil(totalRows / params.perPage),
+      rangeStart: totalRows === 0 ? 0 : (params.page - 1) * params.perPage + 1,
+      rangeEnd:   Math.min(params.page * params.perPage, totalRows),
+      totalRows,
+      totalPages: Math.max(1, Math.ceil(totalRows / params.perPage)),
   };
 
   // ── 3. Modal ────────────────────────────────────────────────────────────
@@ -140,7 +140,6 @@ export default function ServerTable({
   return (
     <>
       <div className={`st-root ${className}`.trim()}>
-
         {showToolbar && (
           <div className="st-toolbar">
             {showSearchBar && (
@@ -186,7 +185,7 @@ export default function ServerTable({
         {/* Table with loading overlay wrapper */}
         <div className="server-table-container">
           {loading && (
-            <div className="server-loading-overlay" aria-live="polite" aria-label="Loading">
+            <div className="server-loading-overlay" aria-live="polite">
               <div className="server-loading-spinner" />
             </div>
           )}
