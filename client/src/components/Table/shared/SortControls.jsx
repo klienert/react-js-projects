@@ -15,7 +15,8 @@ import React from 'react';
 const SortControls = ({ columns, sortKey, sortDir, onSort }) => {
     const sortableColumns = columns.filter((col) => col.sortable && !col.hidden);
 
-    if (sortableColumns.length === 0) return null;
+    // if (sortableColumns.length === 0) return null;
+    if (sortableColumns.length === 0 || typeof onSort !== 'function') return null;
 
     return (
         <div className="sc-wrapper" role="group" aria-label="Sort options">

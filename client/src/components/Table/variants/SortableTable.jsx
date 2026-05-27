@@ -25,7 +25,7 @@ import SortControls from '../shared/SortControls';
  *  emptyMessage        {string}  - shown when no rows match
  *  className           {string}  - extra class on the root wrapper
  *  searchPlaceholder   {string}
- *  showSortControls    {bool}  - show/hide the select-input sort (default: false)
+ *  showSortControls    {bool}  - show/hide the select-input sort (default: true)
  *  showSearchBar       {bool}  - show/hide the search bar (default: true)
  *  initialSortKey      {string}
  *  initialSortDir      {string} - 'asc' | 'desc'
@@ -96,12 +96,12 @@ const SortableTable = ({
                     </span>
                     )}
                     {showSortControls && (
-                    <SortControls
-                        columns={visibleColumns}
-                        sortKey={sortKey}
-                        sortDir={sortDir}
-                        onSort={setSort}
-                    />
+                        <SortControls
+                            columns={visibleColumns}
+                            sortKey={sortKey}
+                            sortDir={sortDir}
+                            onSort={setSort}
+                        />
                     )}
                 </div>
             </div>

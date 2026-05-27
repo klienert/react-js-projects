@@ -45,7 +45,7 @@ export function useTableSort({
     };
 
     const setSort = (key, dir) => {
-        setSort(key || null);
+        setSortKey(key || null);
         setSortDir(key ? (dir || 'asc') : null);
     }
 
@@ -78,5 +78,5 @@ export function useTableSort({
         })
     }, [data, sortKey, sortDir, serverSide]);
 
-    return { sortedData, sortKey, sortDir, cycleSort }
+    return { sortedData, sortKey, sortDir, setSort, cycleSort }
 }

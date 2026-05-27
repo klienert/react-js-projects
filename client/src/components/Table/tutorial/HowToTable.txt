@@ -311,7 +311,7 @@
         renderModal={fn}            (row) => JSX
     
     NOTES: 
-        - data hsould be ONLY the current pages' rows, not the full dataset
+        - data should be ONLY the current pages' rows, not the full dataset
         - totalRows drives pagination calculations (total pages, range display).
         - The Reset button appears automatically when search/sort/page are active.
         - Requires react-router-dom v6 for URL sync.
