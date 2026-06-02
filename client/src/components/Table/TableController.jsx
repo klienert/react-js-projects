@@ -3,12 +3,16 @@ import BasicTable from "./variants/BasicTable";
 import DataTable from './variants/DataTable';
 import SortableTable from './variants/SortableTable';
 import ServerTable from './variants/ServerTable';
+import FilteredDataTable from './variants/FilteredDataTable';
+import FilteredServerTable from './variants/FilteredServerTable';
 
 const TABLE_REGISTRY = {
     basic: BasicTable,
     sortable: SortableTable,
     data: DataTable,
-    server: ServerTable
+    server: ServerTable,
+    filteredData: FilteredDataTable,
+    filteredServer: FilteredServerTable
     // etc.
 };
 
@@ -22,10 +26,13 @@ const TABLE_REGISTRY = {
  * - data            {array}         - array of row objects
  * 
  * **variant keys: 
- * - basic      - {@link BasicTable}
- * - sortable   - {@link SortableTable}
- * - data       - {@link DataTable}
- * - server     - {@link ServerTable}
+ * - basic          - {@link BasicTable}
+ * - sortable       - {@link SortableTable}
+ * - data           - {@link DataTable}
+ * - server         - {@link ServerTable}
+ * - filteredData    - {@link FilteredDataTable}
+ * - filteredServer  - {@link FilteredServerTable}
+ * 
  * 
  * Optional props:
  *  - onAction        {fn}            - (actionId, row) => void

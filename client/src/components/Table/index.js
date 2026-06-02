@@ -5,6 +5,8 @@ export { default as TableController } from './TableController';
 export { default as BasicTable } from './variants/BasicTable';
 export { default as SortableTable } from './variants/SortableTable';
 export { default as ServerTable } from './variants/ServerTable';
+export { default as FilteredDataTable } from './variants/FilteredDataTable';
+export { default as FilteredServerTable } from './variants/FilteredServerTable';
 
 // export hooks
 export { useTableSort } from './hooks/useTableSort';
@@ -13,6 +15,7 @@ export { useTablePagination } from './hooks/useTablePagination';
 export { useRowModal } from './hooks/useRowModal';
 export { useServerSync } from './hooks/useServerSync';
 export { useUrlState } from './hooks/useUrlState';
+export { useFilterBar } from './hooks/useFilterBar';
 
 // export shared components if needed as standalone
 export { default as TableHeader } from './shared/TableHeader';

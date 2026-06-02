@@ -7,11 +7,17 @@ import RowModal from '../../components/Table/shared/RowModal.jsx';
 
 const TableDemo = () => {
     const { theme } = useThemeContext();
-    const tableViews = ['basic', 'sortable', 'data', 'server'];
+    const tableViews = ['basic', 'sortable', 'data', 'server', 'filteredData'];
     const [currentTable, setCurrentTable] = useState('basic');
     const [dataCol, setDataCol] = useState([
         { key: "name", header: "Group Name", width: "200px", sortable: true, filterable: true },
-        { key: "region", header: "Region", sortable: true, filterable: true, filterType: "select" },
+        { key: "region", header: "Region", sortable: true, filterable: true, filterType: "select", filters: [
+            { label: 'All', value: null },
+            { label: '4', value: 4 },
+            { label: '6', value: 6 },
+            { label: 'demo', value: "Demo" },
+
+        ] },
         { key: "district", header: "District", sortable: true, filterable: true, filterType: "select" },
         { key: "numMembers", header: "Members", align: "center", sortable: true, filterable: true, filterType: "number" },
         { key: 'createdAt', header: 'Created', align: 'center', sortable: true, filterable: false },
@@ -79,7 +85,7 @@ const TableDemo = () => {
     }
 
     // which variants handle their own modal
-    const hasInternalModal = currentTable === 'data' || currentTable === 'server';
+    const hasInternalModal = currentTable === 'data' || currentTable === 'server' || currentTable === 'filteredData';
     
     return (
         <section className='table-demo'>
@@ -150,6 +156,20 @@ const TableDemo = () => {
                         searchPlaceholder='Search groups…'
                         showSortControls={true}
                         syncToUrl={false}
+                    />
+                )}
+                {currentTable === 'filteredData' && (
+                    <TableController 
+                        variant='filteredData'
+                        columns={dataCol}
+                        data={serverData}
+                        filteredMode={'multi'}
+                        onAction={handleAction}
+                        // caption="FilteredData table"
+                        searchPlaceholder={`Search in '${currentTable}'`}
+                        showSortControls={false}
+                        rowClickable={true}
+                        modalTitle={`${currentTable} table details`}
                     />
                 )}
                 {!hasInternalModal && (
