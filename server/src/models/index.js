@@ -1,44 +1,49 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 const sequelize = require('../config/db');
 
 const models = {};
 
-const modelFiles = fs
-    .readdirSync(__dirname)
-    .filter(
-        (file) => 
-            file !== 'index.js' && file.endsWith('.js')
-    );
+const modelEntries = fs.readdirSync(__dirname, {
+    withFileTypes: true,
+});
 
-// initialize every model
-for (const files of modelFiles) {
-    const initializeModel = require(path.join(__dirname, file));
+// Find model files directly in models/ and index.js files
+// inside model subdirectories.
+const modelFiles = modelEntries
+    .filter((entry) => entry.name !== 'index.js')
+    .flatMap((entry) => {
+        if (entry.isFile() && entry.name.endsWith('.js')) {
+            return [path.join(__dirname, entry.name)];
+        }
+
+        if (entry.isDirectory()) {
+            const indexFile = path.join(
+                __dirname,
+                entry.name,
+                'index.js'
+            );
+
+            return fs.existsSync(indexFile) ? [indexFile] : [];
+        }
+
+        return [];
+    });
+
+// Initialize all discovered models
+for (const file of modelFiles) {
+    const initializeModel = require(file);
     const model = initializeModel(sequelize);
 
     models[model.name] = model;
 }
 
-// fs.readdirSync(__dirname)
-//     .filter(file => 
-//         file !== 'index.js' &&
-//         file.endsWith(".js")
-//     )
-//     .forEach(file => {
-//         const model = require(path.join(__dirname, file));
-//         const sequelizeModel = model.initModel(sequelize);
-
-//         db[sequelizeModel.name] = sequelizeModel;
-//         db[sequelizeModel.name].associate =
-//             model.associate;
-//     });
-
-// Build associations after all models exist
-// Object.values(db).forEach(model => {
-//     if (model.associate) {
-//         model.associate(db);
-//     }
-// });
+// Initialize associations, if defined
+Object.values(models).forEach((model) => {
+    if (typeof model.associate === 'function') {
+        model.associate(models);
+    }
+});
 
 models.sequelize = sequelize;
 

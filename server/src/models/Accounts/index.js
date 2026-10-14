@@ -1,5 +1,4 @@
 const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../../config/db');
 
 module.exports = (sequelize) => {
     class Accounts extends Model {}
@@ -9,7 +8,8 @@ module.exports = (sequelize) => {
         account_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         account_name: {
             type: DataTypes.STRING

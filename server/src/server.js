@@ -32,5 +32,5 @@ const start = async () => {
         
     }
 }
-
- // server.listen(PORT, () => console.log(`API on :${PORT}`));
+start();
+// server.listen(PORT, () => console.log(`API on :${PORT}`));
